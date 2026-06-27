@@ -6,34 +6,100 @@
   "duration": "1 MIN",
   "category": "media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Scaleflex is an AI-powered DAM (digital asset management) and visual experience platform. They handle the upload-to-delivery lifecycle for brand assets: ingest, AI tagging, transformation, optimisation, and delivery.\n\nMACH-certified (Microservices, API-first, Cloud-native, Headless). Listed in the Forrester DAM Landscape." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Scaleflex runs on Linode/LKE for the application layer, with Akamai Object Storage as the asset bucket and Akamai CDN for global delivery. Pairs naturally with EdgeWorkers for image transforms (resize, format conversion, watermarking) at the PoP." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "E-commerce, retail, travel, real estate, online news — anyone with a sprawling asset library across CMS, PIM, and commerce systems. Different from a pure CDN play: customers want AI tagging, transformations, and the back-office workflow tooling." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Scaleflex = DAM + visual delivery on Akamai. AI tagging, transforms, and Object Storage as the bucket.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "Scaleflex is an AI-powered DAM (digital asset management) and visual experience platform. They handle the upload-to-delivery lifecycle for brand assets: ingest, AI tagging, transformation, optimisation, and delivery.\n\nMACH-certified (Microservices, API-first, Cloud-native, Headless). Listed in the Forrester DAM Landscape."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "Scaleflex runs on Linode/LKE for the application layer, with Akamai Object Storage as the asset bucket and Akamai CDN for global delivery. Pairs naturally with EdgeWorkers for image transforms (resize, format conversion, watermarking) at the PoP."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "E-commerce, retail, travel, real estate, online news — anyone with a sprawling asset library across CMS, PIM, and commerce systems. Different from a pure CDN play: customers want AI tagging, transformations, and the back-office workflow tooling."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Scaleflex = DAM + visual delivery on Akamai. AI tagging, transforms, and Object Storage as the bucket.\""
+    }
   ],
   "quiz": [
     {
       "question": "A retailer has 4M product images across CMS, PIM, and three e-commerce sites. They want AI tagging and dynamic transforms. Which QCP?",
       "options": [
-        { "text": "Yospace", "correct": false, "explain": "Yospace is video ad insertion, not image management." },
-        { "text": "Scaleflex on Linode/LKE + Object Storage", "correct": true, "explain": "Scaleflex is exactly this: DAM + visual experience + AI tagging across multiple back-offices." },
-        { "text": "EZDRM", "correct": false, "explain": "EZDRM is video DRM." },
-        { "text": "Hydrolix", "correct": false, "explain": "Hydrolix is observability." }
+        {
+          "text": "Yospace",
+          "correct": false,
+          "explain": "Yospace is video ad insertion, not image management."
+        },
+        {
+          "text": "Scaleflex on Linode/LKE + Object Storage",
+          "correct": true,
+          "explain": "Scaleflex is exactly this: DAM + visual experience + AI tagging across multiple back-offices."
+        },
+        {
+          "text": "EZDRM",
+          "correct": false,
+          "explain": "EZDRM is video DRM."
+        },
+        {
+          "text": "Hydrolix",
+          "correct": false,
+          "explain": "Hydrolix is observability."
+        }
       ]
     },
     {
       "question": "Why does Object Storage fit naturally beneath a Scaleflex deployment?",
       "options": [
-        { "text": "Object Storage is the only storage option on Akamai", "correct": false, "explain": "There's also Block Storage. Object is right for DAM because of the access pattern." },
-        { "text": "Asset libraries are large, write-once, read-many — exactly Object Storage's shape", "correct": true, "explain": "DAM = millions of immutable assets, frequently read, rarely modified. Object Storage is the perfect fit." },
-        { "text": "Block Storage would lock the assets to one Linode", "correct": false, "explain": "Partly true, but the access pattern is the real reason." },
-        { "text": "Object Storage has built-in image transforms", "correct": false, "explain": "Object Storage stores; transforms happen in Scaleflex or EdgeWorkers." }
+        {
+          "text": "Object Storage is the only storage option on Akamai",
+          "correct": false,
+          "explain": "There's also Block Storage. Object is right for DAM because of the access pattern."
+        },
+        {
+          "text": "Asset libraries are large, write-once, read-many — exactly Object Storage's shape",
+          "correct": true,
+          "explain": "DAM = millions of immutable assets, frequently read, rarely modified. Object Storage is the perfect fit."
+        },
+        {
+          "text": "Block Storage would lock the assets to one Linode",
+          "correct": false,
+          "explain": "Partly true, but the access pattern is the real reason."
+        },
+        {
+          "text": "Object Storage has built-in image transforms",
+          "correct": false,
+          "explain": "Object Storage stores; transforms happen in Scaleflex or EdgeWorkers."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Scaleflex + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
-    "free": [{ "title": "Scaleflex platform overview", "meta": "Free · scaleflex.com", "tag": "free" }],
+    "official": [
+      {
+        "title": "Scaleflex + Akamai press release",
+        "meta": "akamai.com/newsroom",
+        "tag": "official",
+        "url": "https://www.scaleflex.com/"
+      }
+    ],
+    "free": [
+      {
+        "title": "Scaleflex platform overview",
+        "meta": "Free · scaleflex.com",
+        "tag": "free",
+        "url": "https://www.scaleflex.com/"
+      }
+    ],
     "paid": []
   }
 }

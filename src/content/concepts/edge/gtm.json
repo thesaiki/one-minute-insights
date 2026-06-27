@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "GTM is the air traffic controller. Every flight (DNS query) gets directed to the runway with the shortest queue, best weather, and a working ILS." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "GTM is health-checked, weighted, geo-aware DNS steering. Properties define data centers (origins) and rules:\n\n- Performance: send users to the lowest-latency DC\n- Geographic: route by user country\n- Weighted: split traffic by ratio\n- Failover: passive secondary kicks in only on health-check failure\n\nHealth checks run from Akamai's liveness network — you can't spoof them from origin." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Multi-region active-active setup: two LKE clusters (us-east, eu-west), each with a NodeBalancer. GTM Performance property steers each user to their closest cluster. If us-east health-check fails, traffic shifts to eu-west until it recovers." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"GTM = DNS-based traffic steering with health checks. Active-active across regions becomes a config change, not a project.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "GTM is the air traffic controller. Every flight (DNS query) gets directed to the runway with the shortest queue, best weather, and a working ILS."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "GTM is health-checked, weighted, geo-aware DNS steering. Properties define data centers (origins) and rules:\n\n- Performance: send users to the lowest-latency DC\n- Geographic: route by user country\n- Weighted: split traffic by ratio\n- Failover: passive secondary kicks in only on health-check failure\n\nHealth checks run from Akamai's liveness network — you can't spoof them from origin."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Multi-region active-active setup: two LKE clusters (us-east, eu-west), each with a NodeBalancer. GTM Performance property steers each user to their closest cluster. If us-east health-check fails, traffic shifts to eu-west until it recovers."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"GTM = DNS-based traffic steering with health checks. Active-active across regions becomes a config change, not a project.\""
+    }
   ],
   "quiz": [
     {
       "question": "You want users in Europe to hit your eu-west cluster, US users to hit us-east. What do you configure?",
       "options": [
-        { "text": "A NodeBalancer with geo rules", "correct": false, "explain": "NodeBalancers are regional L4/L7 — they don't do geo steering." },
-        { "text": "A GTM Geographic property mapping countries to data centers", "correct": true, "explain": "GTM Geographic maps user country/region to a specific data center. DNS resolves to the right NodeBalancer IP." },
-        { "text": "EdgeWorker geo redirect on every request", "correct": false, "explain": "Works but adds a redirect hop — GTM does it at DNS resolution, no redirect needed." },
-        { "text": "Two separate domains, one per region", "correct": false, "explain": "Awful UX. Don't do this." }
+        {
+          "text": "A NodeBalancer with geo rules",
+          "correct": false,
+          "explain": "NodeBalancers are regional L4/L7 — they don't do geo steering."
+        },
+        {
+          "text": "A GTM Geographic property mapping countries to data centers",
+          "correct": true,
+          "explain": "GTM Geographic maps user country/region to a specific data center. DNS resolves to the right NodeBalancer IP."
+        },
+        {
+          "text": "EdgeWorker geo redirect on every request",
+          "correct": false,
+          "explain": "Works but adds a redirect hop — GTM does it at DNS resolution, no redirect needed."
+        },
+        {
+          "text": "Two separate domains, one per region",
+          "correct": false,
+          "explain": "Awful UX. Don't do this."
+        }
       ]
     },
     {
       "question": "How does GTM know your origin is healthy?",
       "options": [
-        { "text": "Trust — origins self-report", "correct": false, "explain": "Origins can't self-report; that's untrustworthy." },
-        { "text": "Active liveness checks from Akamai's health-check network", "correct": true, "explain": "GTM probes your origins from multiple Akamai locations. Independent, can't be spoofed from origin." },
-        { "text": "Manual ping by your ops team", "correct": false, "explain": "Not scalable. GTM does this automatically." },
-        { "text": "It doesn't — failover is manual", "correct": false, "explain": "Failover is automatic on health-check failure." }
+        {
+          "text": "Trust — origins self-report",
+          "correct": false,
+          "explain": "Origins can't self-report; that's untrustworthy."
+        },
+        {
+          "text": "Active liveness checks from Akamai's health-check network",
+          "correct": true,
+          "explain": "GTM probes your origins from multiple Akamai locations. Independent, can't be spoofed from origin."
+        },
+        {
+          "text": "Manual ping by your ops team",
+          "correct": false,
+          "explain": "Not scalable. GTM does this automatically."
+        },
+        {
+          "text": "It doesn't — failover is manual",
+          "correct": false,
+          "explain": "Failover is automatic on health-check failure."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "GTM Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "GTM Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management"
+      }
+    ],
     "free": [
-      { "title": "GTM property recipes", "meta": "Free · TechDocs samples", "tag": "free" }
+      {
+        "title": "GTM property recipes",
+        "meta": "Free · TechDocs samples",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/gtm/docs/welcome-to-global-traffic-management"
+      }
     ],
     "paid": []
   }

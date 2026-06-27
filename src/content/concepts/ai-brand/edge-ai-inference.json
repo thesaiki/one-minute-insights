@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Centralised AI inference is like calling head office for every decision. Edge AI inference puts a trained expert at every branch — they handle routine questions instantly, only escalating the hard ones to HQ." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai's edge AI inference story combines multiple products:\n\n- **Akamai Inference Cloud**: Hosted model serving with API access, GPU-backed\n- **Neural Magic on Linode CPUs**: Sparsified models running on commodity CPU instances across 30+ regions\n- **Akamai Functions**: Lightweight pre/post-processing of inference requests at the edge (prompt sanitization, response shaping)\n- **EdgeWorkers**: Ultra-light classification (e.g., bot-or-not, geo-routing to nearest inference endpoint)\n\nThe pattern: EdgeWorker classifies at the PoP → Function pre-processes → Inference Cloud runs the model → Function post-processes → CDN caches where possible." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Use cases already in production: real-time content moderation for UGC platforms, fraud scoring at checkout, personalized recommendation ranking, image classification for automated tagging. The latency requirement determines the tier: <5ms = EdgeWorker, <50ms = Function + cached model, <500ms = Inference Cloud GPU." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Edge AI = tiered inference. Light decisions at the PoP (EdgeWorkers), medium at distributed regions (Functions), heavy on GPU (Inference Cloud). Match latency budget to tier.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Centralised AI inference is like calling head office for every decision. Edge AI inference puts a trained expert at every branch — they handle routine questions instantly, only escalating the hard ones to HQ."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai's edge AI inference story combines multiple products:\n\n- **Akamai Inference Cloud**: Hosted model serving with API access, GPU-backed\n- **Neural Magic on Linode CPUs**: Sparsified models running on commodity CPU instances across 30+ regions\n- **Akamai Functions**: Lightweight pre/post-processing of inference requests at the edge (prompt sanitization, response shaping)\n- **EdgeWorkers**: Ultra-light classification (e.g., bot-or-not, geo-routing to nearest inference endpoint)\n\nThe pattern: EdgeWorker classifies at the PoP → Function pre-processes → Inference Cloud runs the model → Function post-processes → CDN caches where possible."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Use cases already in production: real-time content moderation for UGC platforms, fraud scoring at checkout, personalized recommendation ranking, image classification for automated tagging. The latency requirement determines the tier: <5ms = EdgeWorker, <50ms = Function + cached model, <500ms = Inference Cloud GPU."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Edge AI = tiered inference. Light decisions at the PoP (EdgeWorkers), medium at distributed regions (Functions), heavy on GPU (Inference Cloud). Match latency budget to tier.\""
+    }
   ],
   "quiz": [
     {
       "question": "A customer needs real-time fraud scoring with <50ms latency globally. What's the recommended architecture?",
       "options": [
-        { "text": "Single GPU cluster in us-east", "correct": false, "explain": "Single region can't serve <50ms globally — too much network latency." },
-        { "text": "Sparsified model on Neural Magic (CPU Linodes) across multiple regions, with Akamai Functions for pre/post-processing", "correct": true, "explain": "CPU inference via Neural Magic distributes across 30+ regions. Functions handle request shaping. <50ms achievable globally." },
-        { "text": "EdgeWorker with inline model", "correct": false, "explain": "EdgeWorkers can't run full ML models — CPU time is too bounded." },
-        { "text": "Client-side inference in the browser", "correct": false, "explain": "Browser inference is too slow and exposes the model." }
+        {
+          "text": "Single GPU cluster in us-east",
+          "correct": false,
+          "explain": "Single region can't serve <50ms globally — too much network latency."
+        },
+        {
+          "text": "Sparsified model on Neural Magic (CPU Linodes) across multiple regions, with Akamai Functions for pre/post-processing",
+          "correct": true,
+          "explain": "CPU inference via Neural Magic distributes across 30+ regions. Functions handle request shaping. <50ms achievable globally."
+        },
+        {
+          "text": "EdgeWorker with inline model",
+          "correct": false,
+          "explain": "EdgeWorkers can't run full ML models — CPU time is too bounded."
+        },
+        {
+          "text": "Client-side inference in the browser",
+          "correct": false,
+          "explain": "Browser inference is too slow and exposes the model."
+        }
       ]
     },
     {
       "question": "What's the tiered inference pattern on Akamai's edge?",
       "options": [
-        { "text": "Everything runs on one GPU", "correct": false, "explain": "Tiered means different compute for different latency budgets." },
-        { "text": "EdgeWorker (ultra-light, <5ms) → Function (medium, <50ms) → Inference Cloud (heavy, <500ms)", "correct": true, "explain": "Match the model complexity to the compute tier. Light classification at PoPs, full inference on GPUs." },
-        { "text": "All inference happens client-side", "correct": false, "explain": "Server-side inference is the point of Akamai's offering." },
-        { "text": "Only CPU or only GPU, never mixed", "correct": false, "explain": "The tiered model explicitly mixes CPU and GPU tiers." }
+        {
+          "text": "Everything runs on one GPU",
+          "correct": false,
+          "explain": "Tiered means different compute for different latency budgets."
+        },
+        {
+          "text": "EdgeWorker (ultra-light, <5ms) → Function (medium, <50ms) → Inference Cloud (heavy, <500ms)",
+          "correct": true,
+          "explain": "Match the model complexity to the compute tier. Light classification at PoPs, full inference on GPUs."
+        },
+        {
+          "text": "All inference happens client-side",
+          "correct": false,
+          "explain": "Server-side inference is the point of Akamai's offering."
+        },
+        {
+          "text": "Only CPU or only GPU, never mixed",
+          "correct": false,
+          "explain": "The tiered model explicitly mixes CPU and GPU tiers."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Akamai Inference Cloud", "meta": "akamai.com/products/inference", "tag": "official" }],
+    "official": [
+      {
+        "title": "Akamai Inference Cloud",
+        "meta": "akamai.com/products/inference",
+        "tag": "official",
+        "url": "https://www.akamai.com/products/cloud-computing"
+      }
+    ],
     "free": [
-      { "title": "Neural Magic + Akamai edge inference patterns", "meta": "Free · akamai.com/blog", "tag": "free" }
+      {
+        "title": "Neural Magic + Akamai edge inference patterns",
+        "meta": "Free · akamai.com/blog",
+        "tag": "free",
+        "url": "https://neuralmagic.com/"
+      }
     ],
     "paid": []
   }

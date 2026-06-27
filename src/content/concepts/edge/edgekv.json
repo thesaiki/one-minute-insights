@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "EdgeKV is a tiny notebook in every Akamai office. Receptionists (EdgeWorkers) read and write to it instantly — no calling head office for every lookup." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "EdgeKV is a low-latency, eventually-consistent KV store accessible from EdgeWorkers. Reads happen at the edge in single-digit ms; writes propagate globally in seconds.\n\n- Namespaces + groups for organization\n- Per-item TTL\n- Tokens scoped per namespace\n- Designed for read-heavy edge state" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Common patterns: feature flags, A/B test assignments, valet-claim-check token storage, geo-IP overrides, kill switches. Don't use it as a primary database — use it as the read-fast cache in front of one." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"EdgeKV = read-fast KV at every PoP. Use it for flags, tokens, and lookups — not as your source of truth.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "EdgeKV is a tiny notebook in every Akamai office. Receptionists (EdgeWorkers) read and write to it instantly — no calling head office for every lookup."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "EdgeKV is a low-latency, eventually-consistent KV store accessible from EdgeWorkers. Reads happen at the edge in single-digit ms; writes propagate globally in seconds.\n\n- Namespaces + groups for organization\n- Per-item TTL\n- Tokens scoped per namespace\n- Designed for read-heavy edge state"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Common patterns: feature flags, A/B test assignments, valet-claim-check token storage, geo-IP overrides, kill switches. Don't use it as a primary database — use it as the read-fast cache in front of one."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"EdgeKV = read-fast KV at every PoP. Use it for flags, tokens, and lookups — not as your source of truth.\""
+    }
   ],
   "quiz": [
     {
       "question": "Your EdgeWorker needs to check a feature flag. Best store?",
       "options": [
-        { "text": "A REST call back to a Linode", "correct": false, "explain": "Adds round-trip latency to every request — defeats the point of edge." },
-        { "text": "EdgeKV — read at the edge in single-digit ms", "correct": true, "explain": "EdgeKV is built for exactly this. Update from your control plane; read from any EdgeWorker." },
-        { "text": "A cookie on the user's browser", "correct": false, "explain": "You'd be trusting the client. Edge-side flags are server-controlled." },
-        { "text": "Hardcode in the EdgeWorker", "correct": false, "explain": "Then every flag flip is a deploy. Defeats the purpose of flags." }
+        {
+          "text": "A REST call back to a Linode",
+          "correct": false,
+          "explain": "Adds round-trip latency to every request — defeats the point of edge."
+        },
+        {
+          "text": "EdgeKV — read at the edge in single-digit ms",
+          "correct": true,
+          "explain": "EdgeKV is built for exactly this. Update from your control plane; read from any EdgeWorker."
+        },
+        {
+          "text": "A cookie on the user's browser",
+          "correct": false,
+          "explain": "You'd be trusting the client. Edge-side flags are server-controlled."
+        },
+        {
+          "text": "Hardcode in the EdgeWorker",
+          "correct": false,
+          "explain": "Then every flag flip is a deploy. Defeats the purpose of flags."
+        }
       ]
     },
     {
       "question": "EdgeKV is best described as:",
       "options": [
-        { "text": "Strongly consistent globally", "correct": false, "explain": "It's eventually consistent — writes propagate in seconds." },
-        { "text": "Read-optimized, eventually consistent KV at every PoP", "correct": true, "explain": "Reads are fast everywhere. Writes converge globally within seconds. Use accordingly." },
-        { "text": "A primary database replacement", "correct": false, "explain": "Not its job. Pair with a real DB." },
-        { "text": "Block storage at the edge", "correct": false, "explain": "Block storage is for filesystems, not KV lookups." }
+        {
+          "text": "Strongly consistent globally",
+          "correct": false,
+          "explain": "It's eventually consistent — writes propagate in seconds."
+        },
+        {
+          "text": "Read-optimized, eventually consistent KV at every PoP",
+          "correct": true,
+          "explain": "Reads are fast everywhere. Writes converge globally within seconds. Use accordingly."
+        },
+        {
+          "text": "A primary database replacement",
+          "correct": false,
+          "explain": "Not its job. Pair with a real DB."
+        },
+        {
+          "text": "Block storage at the edge",
+          "correct": false,
+          "explain": "Block storage is for filesystems, not KV lookups."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "EdgeKV Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "EdgeKV Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/edgekv/docs/welcome-to-edgekv"
+      }
+    ],
     "free": [
-      { "title": "EdgeKV samples on GitHub", "meta": "Free · Sample bundles", "tag": "free" }
+      {
+        "title": "EdgeKV samples on GitHub",
+        "meta": "Free · Sample bundles",
+        "tag": "free",
+        "url": "https://github.com/akamai/edgeworkers-examples"
+      }
     ],
     "paid": []
   }

@@ -37,7 +37,7 @@ const nextConcept = track.concepts[conceptIdx + 1];
       <div class="resource-section">
         <div class="resource-section-label">📘 OFFICIAL DOCS</div>
         {r.official.map(item => (
-          <ResourceLink title={item.title} meta={item.meta} tag="official" />
+          <ResourceLink title={item.title} meta={item.meta} tag="official" url={item.url} />
         ))}
       </div>
     )}
@@ -46,7 +46,7 @@ const nextConcept = track.concepts[conceptIdx + 1];
       <div class="resource-section">
         <div class="resource-section-label">🆓 FREE RESOURCES</div>
         {r.free.map(item => (
-          <ResourceLink title={item.title} meta={item.meta} tag="free" />
+          <ResourceLink title={item.title} meta={item.meta} tag="free" url={item.url} />
         ))}
       </div>
     )}
@@ -55,7 +55,7 @@ const nextConcept = track.concepts[conceptIdx + 1];
       <div class="resource-section">
         <div class="resource-section-label">💳 PAID — WORTH IT</div>
         {r.paid.map(item => (
-          <ResourceLink title={item.title} meta={item.meta} tag="paid" />
+          <ResourceLink title={item.title} meta={item.meta} tag="paid" url={item.url} />
         ))}
       </div>
     )}

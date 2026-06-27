@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "AI guardrails are the bouncer and the dress code at a nightclub. The bouncer checks IDs on the way in (prompt validation), and the dress code ensures nobody leaves wearing something they shouldn't (output filtering for PII/secrets)." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai positions AI guardrails at the edge — between the user and the AI model — using App & API Protector and EdgeWorkers/Functions:\n\n- **Inbound**: Detect and block prompt injection, jailbreak attempts, and adversarial inputs before they reach the model\n- **Outbound**: Filter model responses for PII leakage, hallucinated URLs, or prohibited content\n- **Rate limiting**: Per-user, per-token throttling to prevent abuse\n- **API schema enforcement**: Validate that AI API calls conform to expected structure\n\nThe edge is the natural enforcement point — bad requests never reach origin or consume GPU cycles." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "A customer deploys a customer-service chatbot. Without guardrails, users can prompt-inject to extract training data or system prompts. With Akamai's edge guardrails: AAP catches injection patterns, an EdgeWorker strips PII from responses, and rate limiting prevents one user from monopolising GPU capacity." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"AI guardrails at the edge: block bad prompts inbound, filter sensitive data outbound, rate-limit abuse — all before hitting your model.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "AI guardrails are the bouncer and the dress code at a nightclub. The bouncer checks IDs on the way in (prompt validation), and the dress code ensures nobody leaves wearing something they shouldn't (output filtering for PII/secrets)."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai positions AI guardrails at the edge — between the user and the AI model — using App & API Protector and EdgeWorkers/Functions:\n\n- **Inbound**: Detect and block prompt injection, jailbreak attempts, and adversarial inputs before they reach the model\n- **Outbound**: Filter model responses for PII leakage, hallucinated URLs, or prohibited content\n- **Rate limiting**: Per-user, per-token throttling to prevent abuse\n- **API schema enforcement**: Validate that AI API calls conform to expected structure\n\nThe edge is the natural enforcement point — bad requests never reach origin or consume GPU cycles."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "A customer deploys a customer-service chatbot. Without guardrails, users can prompt-inject to extract training data or system prompts. With Akamai's edge guardrails: AAP catches injection patterns, an EdgeWorker strips PII from responses, and rate limiting prevents one user from monopolising GPU capacity."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"AI guardrails at the edge: block bad prompts inbound, filter sensitive data outbound, rate-limit abuse — all before hitting your model.\""
+    }
   ],
   "quiz": [
     {
       "question": "Why is the edge the right place for AI guardrails?",
       "options": [
-        { "text": "It's cheaper to run there", "correct": false, "explain": "Cost isn't the primary reason — security and efficiency are." },
-        { "text": "Bad requests are blocked before consuming GPU cycles or reaching the model", "correct": true, "explain": "Blocking at the edge saves expensive GPU compute and prevents the model from ever seeing adversarial inputs." },
-        { "text": "Models can't protect themselves", "correct": false, "explain": "Models can have internal safety, but edge enforcement is the first line of defense." },
-        { "text": "Edge guardrails replace model fine-tuning", "correct": false, "explain": "They complement model-level safety, not replace it." }
+        {
+          "text": "It's cheaper to run there",
+          "correct": false,
+          "explain": "Cost isn't the primary reason — security and efficiency are."
+        },
+        {
+          "text": "Bad requests are blocked before consuming GPU cycles or reaching the model",
+          "correct": true,
+          "explain": "Blocking at the edge saves expensive GPU compute and prevents the model from ever seeing adversarial inputs."
+        },
+        {
+          "text": "Models can't protect themselves",
+          "correct": false,
+          "explain": "Models can have internal safety, but edge enforcement is the first line of defense."
+        },
+        {
+          "text": "Edge guardrails replace model fine-tuning",
+          "correct": false,
+          "explain": "They complement model-level safety, not replace it."
+        }
       ]
     },
     {
       "question": "What are the two directions of AI guardrail enforcement?",
       "options": [
-        { "text": "North-south and east-west", "correct": false, "explain": "That's network traffic terminology, not guardrail directions." },
-        { "text": "Inbound (prompt validation, injection detection) and outbound (PII filtering, content safety)", "correct": true, "explain": "Guard what goes into the model AND what comes out of it." },
-        { "text": "Training and inference", "correct": false, "explain": "Guardrails operate at inference time, not training time." },
-        { "text": "API and UI", "correct": false, "explain": "Guardrails apply regardless of the interface." }
+        {
+          "text": "North-south and east-west",
+          "correct": false,
+          "explain": "That's network traffic terminology, not guardrail directions."
+        },
+        {
+          "text": "Inbound (prompt validation, injection detection) and outbound (PII filtering, content safety)",
+          "correct": true,
+          "explain": "Guard what goes into the model AND what comes out of it."
+        },
+        {
+          "text": "Training and inference",
+          "correct": false,
+          "explain": "Guardrails operate at inference time, not training time."
+        },
+        {
+          "text": "API and UI",
+          "correct": false,
+          "explain": "Guardrails apply regardless of the interface."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Akamai AI Security Solutions", "meta": "akamai.com/solutions/ai-security", "tag": "official" }],
+    "official": [
+      {
+        "title": "Akamai AI Security Solutions",
+        "meta": "akamai.com/solutions/ai-security",
+        "tag": "official",
+        "url": "https://www.akamai.com/solutions/ai"
+      }
+    ],
     "free": [
-      { "title": "OWASP Top 10 for LLMs", "meta": "Free · owasp.org", "tag": "free" }
+      {
+        "title": "OWASP Top 10 for LLMs",
+        "meta": "Free · owasp.org",
+        "tag": "free",
+        "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+      }
     ],
     "paid": []
   }

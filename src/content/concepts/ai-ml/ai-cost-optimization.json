@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Running a GPU 24/7 for a model that gets 10 requests per hour is like keeping a helicopter running on the helipad all day because you might need it. Land it (stop the instance), and call it when you need it." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Cost levers for AI on Linode:\n\n- **Quantization** — run 4-bit models (GPTQ, AWQ) to fit larger models on smaller GPUs\n- **Right-sizing** — match GPU plan to model size (7B fits 1 GPU, 70B needs 4)\n- **Batch inference** — process requests in batches instead of one-at-a-time\n- **CPU inference** — use Neural Magic's sparse models on CPU Linodes for lighter workloads\n- **Scheduled scaling** — stop GPU instances during off-hours via API or cron\n- **Flat pricing** — Linode's hourly billing with no egress surprises" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "A quantized 7B model (AWQ 4-bit) runs comfortably on a single RTX 4000 Ada (16GB VRAM). That's ~$1.50/hour vs. ~$6/hour for a 4-GPU setup running the full-precision 70B model. For low-traffic APIs, script linode-cli to spin up GPU instances on demand and shut them down after idle periods." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Quantize models to fit smaller GPUs, use CPU inference for light workloads, stop instances when idle. Linode's flat pricing means no egress surprises eating your AI budget.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Running a GPU 24/7 for a model that gets 10 requests per hour is like keeping a helicopter running on the helipad all day because you might need it. Land it (stop the instance), and call it when you need it."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Cost levers for AI on Linode:\n\n- **Quantization** — run 4-bit models (GPTQ, AWQ) to fit larger models on smaller GPUs\n- **Right-sizing** — match GPU plan to model size (7B fits 1 GPU, 70B needs 4)\n- **Batch inference** — process requests in batches instead of one-at-a-time\n- **CPU inference** — use Neural Magic's sparse models on CPU Linodes for lighter workloads\n- **Scheduled scaling** — stop GPU instances during off-hours via API or cron\n- **Flat pricing** — Linode's hourly billing with no egress surprises"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "A quantized 7B model (AWQ 4-bit) runs comfortably on a single RTX 4000 Ada (16GB VRAM). That's ~$1.50/hour vs. ~$6/hour for a 4-GPU setup running the full-precision 70B model. For low-traffic APIs, script linode-cli to spin up GPU instances on demand and shut them down after idle periods."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Quantize models to fit smaller GPUs, use CPU inference for light workloads, stop instances when idle. Linode's flat pricing means no egress surprises eating your AI budget.\""
+    }
   ],
   "quiz": [
     {
       "question": "A 7B parameter model is too slow on CPU. What's the cheapest GPU option?",
       "options": [
-        { "text": "4× RTX 4000 Ada instance", "correct": false, "explain": "4 GPUs is massive overkill for a 7B model." },
-        { "text": "1× RTX 4000 Ada with a 4-bit quantized model (AWQ/GPTQ)", "correct": true, "explain": "A quantized 7B model fits in ~4GB VRAM. One 16GB GPU is more than enough." },
-        { "text": "A Dedicated CPU with more RAM", "correct": false, "explain": "More RAM doesn't help — you need GPU acceleration for acceptable latency." },
-        { "text": "Use an EdgeWorker instead", "correct": false, "explain": "EdgeWorkers run lightweight JS, not ML inference." }
+        {
+          "text": "4× RTX 4000 Ada instance",
+          "correct": false,
+          "explain": "4 GPUs is massive overkill for a 7B model."
+        },
+        {
+          "text": "1× RTX 4000 Ada with a 4-bit quantized model (AWQ/GPTQ)",
+          "correct": true,
+          "explain": "A quantized 7B model fits in ~4GB VRAM. One 16GB GPU is more than enough."
+        },
+        {
+          "text": "A Dedicated CPU with more RAM",
+          "correct": false,
+          "explain": "More RAM doesn't help — you need GPU acceleration for acceptable latency."
+        },
+        {
+          "text": "Use an EdgeWorker instead",
+          "correct": false,
+          "explain": "EdgeWorkers run lightweight JS, not ML inference."
+        }
       ]
     },
     {
       "question": "Your GPU inference API gets traffic only during US business hours. How do you cut costs?",
       "options": [
-        { "text": "Keep it running — the hourly rate doesn't change", "correct": false, "explain": "Hourly billing means you pay for idle time. Shut it down to stop charges." },
-        { "text": "Script linode-cli to stop the instance at 7pm and start it at 7am", "correct": true, "explain": "You only pay when the instance is running. Automate start/stop with cron or CI/CD." },
-        { "text": "Move to a smaller plan at night", "correct": false, "explain": "GPU plans can't be resized live. Stop/start is simpler and more effective." },
-        { "text": "Use reserved instances", "correct": false, "explain": "Linode doesn't have a reserved instance model — it's all on-demand hourly." }
+        {
+          "text": "Keep it running — the hourly rate doesn't change",
+          "correct": false,
+          "explain": "Hourly billing means you pay for idle time. Shut it down to stop charges."
+        },
+        {
+          "text": "Script linode-cli to stop the instance at 7pm and start it at 7am",
+          "correct": true,
+          "explain": "You only pay when the instance is running. Automate start/stop with cron or CI/CD."
+        },
+        {
+          "text": "Move to a smaller plan at night",
+          "correct": false,
+          "explain": "GPU plans can't be resized live. Stop/start is simpler and more effective."
+        },
+        {
+          "text": "Use reserved instances",
+          "correct": false,
+          "explain": "Linode doesn't have a reserved instance model — it's all on-demand hourly."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Linode Pricing", "meta": "linode.com/pricing", "tag": "official" }],
+    "official": [
+      {
+        "title": "Linode Pricing",
+        "meta": "linode.com/pricing",
+        "tag": "official",
+        "url": "https://www.linode.com/pricing/"
+      }
+    ],
     "free": [
-      { "title": "Neural Magic — CPU Inference Guide", "meta": "Free · neuralmagic.com/docs", "tag": "free" },
-      { "title": "vLLM Quantization Guide", "meta": "Free · vllm.readthedocs.io", "tag": "free" }
+      {
+        "title": "Neural Magic — CPU Inference Guide",
+        "meta": "Free · neuralmagic.com/docs",
+        "tag": "free",
+        "url": "https://neuralmagic.com/"
+      },
+      {
+        "title": "vLLM Quantization Guide",
+        "meta": "Free · vllm.readthedocs.io",
+        "tag": "free",
+        "url": "https://docs.vllm.ai/en/latest/quantization/"
+      }
     ],
     "paid": []
   }

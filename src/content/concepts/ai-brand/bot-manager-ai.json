@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "AI scraper bots are like tourists who photograph every painting in a museum, then sell prints without permission. Bot Manager is the museum security team — it distinguishes genuine visitors from commercial photographers and enforces the rules." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai Bot Manager uses ML-based behavioral analysis to classify bots:\n\n- **Known bots**: Googlebot, Bingbot — allow or throttle per policy\n- **AI training crawlers**: GPTBot, ClaudeBot, Common Crawl — block or serve alternate content\n- **Aggressive scrapers**: Headless browsers, rotating proxies — fingerprint and challenge\n\nNew AI-specific features:\n- AI crawler identification by user-agent and behavioral fingerprint\n- robots.txt enforcement at the edge (many AI crawlers ignore it)\n- Selective content serving: show crawlers a stripped version, real users get the full site" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Publishers and media companies face a dilemma: block AI crawlers entirely (lose AI search visibility) or allow everything (donate content for free). Bot Manager enables a middle path: allow indexing by approved crawlers, block training-data harvesters, and rate-limit the rest. Revenue-critical for any content business." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Bot Manager = ML-powered bot classification. In the AI era, it's the gatekeeper deciding which crawlers see your content and on what terms.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "AI scraper bots are like tourists who photograph every painting in a museum, then sell prints without permission. Bot Manager is the museum security team — it distinguishes genuine visitors from commercial photographers and enforces the rules."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai Bot Manager uses ML-based behavioral analysis to classify bots:\n\n- **Known bots**: Googlebot, Bingbot — allow or throttle per policy\n- **AI training crawlers**: GPTBot, ClaudeBot, Common Crawl — block or serve alternate content\n- **Aggressive scrapers**: Headless browsers, rotating proxies — fingerprint and challenge\n\nNew AI-specific features:\n- AI crawler identification by user-agent and behavioral fingerprint\n- robots.txt enforcement at the edge (many AI crawlers ignore it)\n- Selective content serving: show crawlers a stripped version, real users get the full site"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Publishers and media companies face a dilemma: block AI crawlers entirely (lose AI search visibility) or allow everything (donate content for free). Bot Manager enables a middle path: allow indexing by approved crawlers, block training-data harvesters, and rate-limit the rest. Revenue-critical for any content business."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Bot Manager = ML-powered bot classification. In the AI era, it's the gatekeeper deciding which crawlers see your content and on what terms.\""
+    }
   ],
   "quiz": [
     {
       "question": "A publisher wants to appear in AI-powered search results but doesn't want their content used for model training. What's the Bot Manager strategy?",
       "options": [
-        { "text": "Block all bots", "correct": false, "explain": "Blocking everything kills search visibility too." },
-        { "text": "Allow approved search crawlers (Googlebot), block training-data crawlers (GPTBot, Common Crawl), rate-limit unknowns", "correct": true, "explain": "Granular policy: search indexing yes, training scraping no, unknowns get challenged." },
-        { "text": "Add a robots.txt and hope for the best", "correct": false, "explain": "Many AI crawlers ignore robots.txt. Edge enforcement is more reliable." },
-        { "text": "Remove all content from the site", "correct": false, "explain": "That's not a business strategy." }
+        {
+          "text": "Block all bots",
+          "correct": false,
+          "explain": "Blocking everything kills search visibility too."
+        },
+        {
+          "text": "Allow approved search crawlers (Googlebot), block training-data crawlers (GPTBot, Common Crawl), rate-limit unknowns",
+          "correct": true,
+          "explain": "Granular policy: search indexing yes, training scraping no, unknowns get challenged."
+        },
+        {
+          "text": "Add a robots.txt and hope for the best",
+          "correct": false,
+          "explain": "Many AI crawlers ignore robots.txt. Edge enforcement is more reliable."
+        },
+        {
+          "text": "Remove all content from the site",
+          "correct": false,
+          "explain": "That's not a business strategy."
+        }
       ]
     },
     {
       "question": "How does Bot Manager distinguish an AI training crawler from a legitimate search bot?",
       "options": [
-        { "text": "IP address only", "correct": false, "explain": "IP is one signal, but bots rotate IPs. Behavioral analysis is the key." },
-        { "text": "ML-based behavioral fingerprinting: request patterns, user-agent, JavaScript execution, mouse movement", "correct": true, "explain": "Multi-signal ML classification combines user-agent, request cadence, JS capabilities, and behavioral patterns." },
-        { "text": "Ask the bot nicely", "correct": false, "explain": "Bots don't self-identify honestly." },
-        { "text": "Check the referrer header", "correct": false, "explain": "Referrer is easily spoofed and unreliable for classification." }
+        {
+          "text": "IP address only",
+          "correct": false,
+          "explain": "IP is one signal, but bots rotate IPs. Behavioral analysis is the key."
+        },
+        {
+          "text": "ML-based behavioral fingerprinting: request patterns, user-agent, JavaScript execution, mouse movement",
+          "correct": true,
+          "explain": "Multi-signal ML classification combines user-agent, request cadence, JS capabilities, and behavioral patterns."
+        },
+        {
+          "text": "Ask the bot nicely",
+          "correct": false,
+          "explain": "Bots don't self-identify honestly."
+        },
+        {
+          "text": "Check the referrer header",
+          "correct": false,
+          "explain": "Referrer is easily spoofed and unreliable for classification."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Akamai Bot Manager Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Akamai Bot Manager Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/bot-manager/docs/welcome-to-bot-manager"
+      }
+    ],
     "free": [
-      { "title": "Akamai State of the Internet — Bot Traffic Report", "meta": "Free · akamai.com/soti", "tag": "free" }
+      {
+        "title": "Akamai State of the Internet — Bot Traffic Report",
+        "meta": "Free · akamai.com/soti",
+        "tag": "free",
+        "url": "https://www.akamai.com/resources/state-of-the-internet"
+      }
     ],
     "paid": []
   }

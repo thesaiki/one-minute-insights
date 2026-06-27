@@ -6,34 +6,100 @@
   "duration": "1 MIN",
   "category": "non-media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Avesha provides two related Kubernetes products:\n\n- KubeSlice: secure, application-level connectivity that bridges multiple Kubernetes clusters across clouds and on-prem into a single virtual network\n- Smart Autoscaler: workload-aware autoscaling that considers cost and performance signals\n\nKey value: stage migrations off hyperscalers without rewriting application code." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "KubeSlice runs as a control plane on LKE plus operators in each connected cluster (LKE + EKS, GKE, AKS, on-prem). Microservices communicate across clusters as if they were local — zero code changes in the application.\n\nMakes \"lift one service at a time off AWS to LKE\" a viable migration story instead of a rip-and-replace." },
-    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Any customer mid-flight on a cloud migration who can't do a single-shot cutover. Reference: G&L Systemhaus uses KubeSlice to bridge media-processing microservices across on-prem and Akamai clusters for German broadcasters." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Avesha KubeSlice = staged Kubernetes migration. Bridge clusters first, move workloads second, no code changes.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "Avesha provides two related Kubernetes products:\n\n- KubeSlice: secure, application-level connectivity that bridges multiple Kubernetes clusters across clouds and on-prem into a single virtual network\n- Smart Autoscaler: workload-aware autoscaling that considers cost and performance signals\n\nKey value: stage migrations off hyperscalers without rewriting application code."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "KubeSlice runs as a control plane on LKE plus operators in each connected cluster (LKE + EKS, GKE, AKS, on-prem). Microservices communicate across clusters as if they were local — zero code changes in the application.\n\nMakes \"lift one service at a time off AWS to LKE\" a viable migration story instead of a rip-and-replace."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "When To Position",
+      "body": "Any customer mid-flight on a cloud migration who can't do a single-shot cutover. Reference: G&L Systemhaus uses KubeSlice to bridge media-processing microservices across on-prem and Akamai clusters for German broadcasters."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Avesha KubeSlice = staged Kubernetes migration. Bridge clusters first, move workloads second, no code changes.\""
+    }
   ],
   "quiz": [
     {
       "question": "A customer wants to move from EKS to LKE but can't take a maintenance window. Which QCP unlocks staged migration?",
       "options": [
-        { "text": "Neural Magic", "correct": false, "explain": "Neural Magic is AI inference acceleration — different problem." },
-        { "text": "Avesha KubeSlice — bridge EKS and LKE, then move workloads incrementally", "correct": true, "explain": "Exactly the use case. Connect clusters first, move services one at a time without code changes." },
-        { "text": "APIContext", "correct": false, "explain": "API monitoring — doesn't move workloads." },
-        { "text": "Hydrolix", "correct": false, "explain": "Observability — doesn't move workloads." }
+        {
+          "text": "Neural Magic",
+          "correct": false,
+          "explain": "Neural Magic is AI inference acceleration — different problem."
+        },
+        {
+          "text": "Avesha KubeSlice — bridge EKS and LKE, then move workloads incrementally",
+          "correct": true,
+          "explain": "Exactly the use case. Connect clusters first, move services one at a time without code changes."
+        },
+        {
+          "text": "APIContext",
+          "correct": false,
+          "explain": "API monitoring — doesn't move workloads."
+        },
+        {
+          "text": "Hydrolix",
+          "correct": false,
+          "explain": "Observability — doesn't move workloads."
+        }
       ]
     },
     {
       "question": "What's the key technical claim of KubeSlice?",
       "options": [
-        { "text": "It replaces Kubernetes", "correct": false, "explain": "It runs on top of Kubernetes — doesn't replace it." },
-        { "text": "Application-level connectivity across clusters with no code changes", "correct": true, "explain": "Apps see services in another cluster as if they were local. No rewrite needed." },
-        { "text": "It only works with LKE", "correct": false, "explain": "It bridges LKE with EKS, GKE, AKS, on-prem." },
-        { "text": "It's a CNI replacement", "correct": false, "explain": "It works alongside the CNI, not as one." }
+        {
+          "text": "It replaces Kubernetes",
+          "correct": false,
+          "explain": "It runs on top of Kubernetes — doesn't replace it."
+        },
+        {
+          "text": "Application-level connectivity across clusters with no code changes",
+          "correct": true,
+          "explain": "Apps see services in another cluster as if they were local. No rewrite needed."
+        },
+        {
+          "text": "It only works with LKE",
+          "correct": false,
+          "explain": "It bridges LKE with EKS, GKE, AKS, on-prem."
+        },
+        {
+          "text": "It's a CNI replacement",
+          "correct": false,
+          "explain": "It works alongside the CNI, not as one."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Avesha + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
-    "free": [{ "title": "KubeSlice on GitHub", "meta": "Free · open source", "tag": "free" }],
+    "official": [
+      {
+        "title": "Avesha + Akamai press release",
+        "meta": "akamai.com/newsroom",
+        "tag": "official",
+        "url": "https://avesha.io/"
+      }
+    ],
+    "free": [
+      {
+        "title": "KubeSlice on GitHub",
+        "meta": "Free · open source",
+        "tag": "free",
+        "url": "https://github.com/kubeslice"
+      }
+    ],
     "paid": []
   }
 }

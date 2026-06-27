@@ -6,34 +6,100 @@
   "duration": "1 MIN",
   "category": "media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "EZDRM coined the term DRMaaS (DRM as a Service) over 20 years ago. They issue licenses for Widevine, FairPlay, and PlayReady — the three DRM systems every streaming platform must support to satisfy studio licensing requirements.\n\nNo studio content (Netflix, Disney+, Max, Prime) ships without DRM. EZDRM handles the key servers and license issuance." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "EZDRM offers an Akamai Connected Cloud-native configuration. Their license servers run on Linode and LKE adjacent to edge encoders/packagers (Ateme, Bitmovin), so license requests don't round-trip across the public internet.\n\nResult: lower-latency license issuance, which translates to faster player startup time." },
-    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Any deal involving premium/studio content, paid SVOD, or live sports rights — DRM is non-negotiable. Position EZDRM alongside Ateme (encoder/packager) and Yospace (SSAI) for a full premium-streaming stack on Akamai." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"EZDRM = DRMaaS adjacent to your encoders. Faster license issuance = faster player startup.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "EZDRM coined the term DRMaaS (DRM as a Service) over 20 years ago. They issue licenses for Widevine, FairPlay, and PlayReady — the three DRM systems every streaming platform must support to satisfy studio licensing requirements.\n\nNo studio content (Netflix, Disney+, Max, Prime) ships without DRM. EZDRM handles the key servers and license issuance."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "EZDRM offers an Akamai Connected Cloud-native configuration. Their license servers run on Linode and LKE adjacent to edge encoders/packagers (Ateme, Bitmovin), so license requests don't round-trip across the public internet.\n\nResult: lower-latency license issuance, which translates to faster player startup time."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "When To Position",
+      "body": "Any deal involving premium/studio content, paid SVOD, or live sports rights — DRM is non-negotiable. Position EZDRM alongside Ateme (encoder/packager) and Yospace (SSAI) for a full premium-streaming stack on Akamai."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"EZDRM = DRMaaS adjacent to your encoders. Faster license issuance = faster player startup.\""
+    }
   ],
   "quiz": [
     {
       "question": "Why does EZDRM run adjacent to edge encoders on Akamai?",
       "options": [
-        { "text": "Lower license-issuance latency = faster player startup", "correct": true, "explain": "License calls happen on every play/seek. Co-locating with the packager cuts the round-trip." },
-        { "text": "It's the only place Linodes are available", "correct": false, "explain": "Linodes are everywhere — proximity to the packager is the actual reason." },
-        { "text": "DRM keys must be stored on the encoder", "correct": false, "explain": "Keys live in the license server, not the encoder." },
-        { "text": "Cost — edge regions are cheaper", "correct": false, "explain": "Linode pricing is flat across regions. Latency is the driver." }
+        {
+          "text": "Lower license-issuance latency = faster player startup",
+          "correct": true,
+          "explain": "License calls happen on every play/seek. Co-locating with the packager cuts the round-trip."
+        },
+        {
+          "text": "It's the only place Linodes are available",
+          "correct": false,
+          "explain": "Linodes are everywhere — proximity to the packager is the actual reason."
+        },
+        {
+          "text": "DRM keys must be stored on the encoder",
+          "correct": false,
+          "explain": "Keys live in the license server, not the encoder."
+        },
+        {
+          "text": "Cost — edge regions are cheaper",
+          "correct": false,
+          "explain": "Linode pricing is flat across regions. Latency is the driver."
+        }
       ]
     },
     {
       "question": "A customer is launching an SVOD service. Which three QCPs likely belong in the stack together?",
       "options": [
-        { "text": "Hydrolix + APIContext + Neural Magic", "correct": false, "explain": "These are all valid QCPs but not the streaming trio." },
-        { "text": "Ateme + Yospace + EZDRM", "correct": true, "explain": "Ateme encodes, Yospace inserts ads (if ad-supported), EZDRM protects with license issuance. The streaming trio." },
-        { "text": "MediaMelon + Scaleflex + Avesha", "correct": false, "explain": "MediaMelon is analytics, Scaleflex is DAM, Avesha is K8s — not the live streaming trio." },
-        { "text": "Ateme alone is enough", "correct": false, "explain": "Ateme handles encoding, but you still need DRM for studio content." }
+        {
+          "text": "Hydrolix + APIContext + Neural Magic",
+          "correct": false,
+          "explain": "These are all valid QCPs but not the streaming trio."
+        },
+        {
+          "text": "Ateme + Yospace + EZDRM",
+          "correct": true,
+          "explain": "Ateme encodes, Yospace inserts ads (if ad-supported), EZDRM protects with license issuance. The streaming trio."
+        },
+        {
+          "text": "MediaMelon + Scaleflex + Avesha",
+          "correct": false,
+          "explain": "MediaMelon is analytics, Scaleflex is DAM, Avesha is K8s — not the live streaming trio."
+        },
+        {
+          "text": "Ateme alone is enough",
+          "correct": false,
+          "explain": "Ateme handles encoding, but you still need DRM for studio content."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "EZDRM + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
-    "free": [{ "title": "EZDRM developer docs", "meta": "Free · ezdrm.com", "tag": "free" }],
+    "official": [
+      {
+        "title": "EZDRM + Akamai press release",
+        "meta": "akamai.com/newsroom",
+        "tag": "official",
+        "url": "https://www.ezdrm.com/"
+      }
+    ],
+    "free": [
+      {
+        "title": "EZDRM developer docs",
+        "meta": "Free · ezdrm.com",
+        "tag": "free",
+        "url": "https://www.ezdrm.com/"
+      }
+    ],
     "paid": []
   }
 }

@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Monitoring is the smoke detector, not the fire truck. You want the alarm before the house is engulfed, not after the neighbours call. The three pillars: metrics (temperature), logs (security camera footage), traces (breadcrumb trail through the house)." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Monitoring stack on Linode:\n\n- **Prometheus + Grafana** — self-hosted on a Dedicated Linode or LKE. Prometheus scrapes metrics, Grafana visualizes.\n- **Longview** — Linode's built-in agent for CPU, RAM, disk, network stats. Free for up to 12 hours of history.\n- **Node Exporter** — Prometheus exporter for hardware/OS metrics\n- **Loki** — log aggregation (pairs with Grafana)\n- **Alertmanager** — sends alerts via Slack, PagerDuty, email" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Quick start: Install Longview agent on every Linode for basic monitoring (free). For deeper observability, deploy the kube-prometheus-stack Helm chart on LKE — it bundles Prometheus, Grafana, Alertmanager, and node-exporter with sensible defaults and pre-built dashboards." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Longview for quick basics. Prometheus + Grafana on LKE for production observability. Three pillars: metrics, logs, traces.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Monitoring is the smoke detector, not the fire truck. You want the alarm before the house is engulfed, not after the neighbours call. The three pillars: metrics (temperature), logs (security camera footage), traces (breadcrumb trail through the house)."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Monitoring stack on Linode:\n\n- **Prometheus + Grafana** — self-hosted on a Dedicated Linode or LKE. Prometheus scrapes metrics, Grafana visualizes.\n- **Longview** — Linode's built-in agent for CPU, RAM, disk, network stats. Free for up to 12 hours of history.\n- **Node Exporter** — Prometheus exporter for hardware/OS metrics\n- **Loki** — log aggregation (pairs with Grafana)\n- **Alertmanager** — sends alerts via Slack, PagerDuty, email"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Quick start: Install Longview agent on every Linode for basic monitoring (free). For deeper observability, deploy the kube-prometheus-stack Helm chart on LKE — it bundles Prometheus, Grafana, Alertmanager, and node-exporter with sensible defaults and pre-built dashboards."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Longview for quick basics. Prometheus + Grafana on LKE for production observability. Three pillars: metrics, logs, traces.\""
+    }
   ],
   "quiz": [
     {
       "question": "What's the fastest way to get basic monitoring on a new Linode instance?",
       "options": [
-        { "text": "Install a full Prometheus stack", "correct": false, "explain": "Prometheus is great but overkill for basic monitoring of a single instance." },
-        { "text": "Install the Longview agent — it's built-in and free", "correct": true, "explain": "Longview provides CPU, RAM, disk, and network metrics with zero configuration. Available in Cloud Manager." },
-        { "text": "SSH in and run htop manually", "correct": false, "explain": "htop is real-time only — no history, no alerts." },
-        { "text": "Check the Akamai CDN dashboard", "correct": false, "explain": "CDN analytics don't monitor your Linode instance health." }
+        {
+          "text": "Install a full Prometheus stack",
+          "correct": false,
+          "explain": "Prometheus is great but overkill for basic monitoring of a single instance."
+        },
+        {
+          "text": "Install the Longview agent — it's built-in and free",
+          "correct": true,
+          "explain": "Longview provides CPU, RAM, disk, and network metrics with zero configuration. Available in Cloud Manager."
+        },
+        {
+          "text": "SSH in and run htop manually",
+          "correct": false,
+          "explain": "htop is real-time only — no history, no alerts."
+        },
+        {
+          "text": "Check the Akamai CDN dashboard",
+          "correct": false,
+          "explain": "CDN analytics don't monitor your Linode instance health."
+        }
       ]
     },
     {
       "question": "You're running 20 services on LKE. What monitoring stack should you deploy?",
       "options": [
-        { "text": "Longview on each node", "correct": false, "explain": "Longview monitors nodes, not Kubernetes workloads. You need pod-level observability." },
-        { "text": "kube-prometheus-stack (Prometheus + Grafana + Alertmanager) via Helm", "correct": true, "explain": "The kube-prometheus-stack is the standard for Kubernetes monitoring. Pre-built dashboards, auto-discovery, alerting." },
-        { "text": "A cron job that emails you uptime status", "correct": false, "explain": "Cron + email doesn't give you metrics, dashboards, or real-time alerting." },
-        { "text": "Just check `kubectl get pods` periodically", "correct": false, "explain": "Manual checks miss transient issues and don't provide historical data." }
+        {
+          "text": "Longview on each node",
+          "correct": false,
+          "explain": "Longview monitors nodes, not Kubernetes workloads. You need pod-level observability."
+        },
+        {
+          "text": "kube-prometheus-stack (Prometheus + Grafana + Alertmanager) via Helm",
+          "correct": true,
+          "explain": "The kube-prometheus-stack is the standard for Kubernetes monitoring. Pre-built dashboards, auto-discovery, alerting."
+        },
+        {
+          "text": "A cron job that emails you uptime status",
+          "correct": false,
+          "explain": "Cron + email doesn't give you metrics, dashboards, or real-time alerting."
+        },
+        {
+          "text": "Just check `kubectl get pods` periodically",
+          "correct": false,
+          "explain": "Manual checks miss transient issues and don't provide historical data."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Longview Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Longview Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/longview"
+      }
+    ],
     "free": [
-      { "title": "Prometheus Documentation", "meta": "Free · prometheus.io/docs", "tag": "free" },
-      { "title": "Grafana Documentation", "meta": "Free · grafana.com/docs", "tag": "free" }
+      {
+        "title": "Prometheus Documentation",
+        "meta": "Free · prometheus.io/docs",
+        "tag": "free",
+        "url": "https://prometheus.io/docs/"
+      },
+      {
+        "title": "Grafana Documentation",
+        "meta": "Free · grafana.com/docs",
+        "tag": "free",
+        "url": "https://grafana.com/docs/"
+      }
     ],
     "paid": []
   }

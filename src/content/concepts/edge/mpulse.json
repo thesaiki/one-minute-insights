@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "mPulse is the suggestion box at every storefront. Every visitor leaves a note about how their visit went — and you read all of them at once." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "mPulse is RUM (real-user monitoring). A small JS beacon collects:\n\n- Core Web Vitals (LCP, FID/INP, CLS)\n- Page load timings (TTFB, DOM ready)\n- Custom timers and metadata\n- User context (geo, ASN, device, browser)\n\nData lands in dashboards within seconds. Often bundled free with Ion." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Pair mPulse (real users) with synthetic monitoring (lab conditions) for full coverage. Use the alert engine to catch regressions per-route. Export raw beacons via DataStream for custom analytics." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"mPulse = real users telling you how the site actually feels. Pair with synthetic for full coverage.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "mPulse is the suggestion box at every storefront. Every visitor leaves a note about how their visit went — and you read all of them at once."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "mPulse is RUM (real-user monitoring). A small JS beacon collects:\n\n- Core Web Vitals (LCP, FID/INP, CLS)\n- Page load timings (TTFB, DOM ready)\n- Custom timers and metadata\n- User context (geo, ASN, device, browser)\n\nData lands in dashboards within seconds. Often bundled free with Ion."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Pair mPulse (real users) with synthetic monitoring (lab conditions) for full coverage. Use the alert engine to catch regressions per-route. Export raw beacons via DataStream for custom analytics."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"mPulse = real users telling you how the site actually feels. Pair with synthetic for full coverage.\""
+    }
   ],
   "quiz": [
     {
       "question": "Difference between RUM and synthetic monitoring?",
       "options": [
-        { "text": "They're the same thing", "correct": false, "explain": "They measure different things." },
-        { "text": "RUM = real users; Synthetic = scripted lab tests", "correct": true, "explain": "RUM tells you what users actually experience. Synthetic tells you what a controlled test sees. Use both." },
-        { "text": "RUM only works on mobile", "correct": false, "explain": "RUM works on any browser-served page." },
-        { "text": "Synthetic is more accurate", "correct": false, "explain": "Synthetic is more controlled, not more accurate. Real users are the truth." }
+        {
+          "text": "They're the same thing",
+          "correct": false,
+          "explain": "They measure different things."
+        },
+        {
+          "text": "RUM = real users; Synthetic = scripted lab tests",
+          "correct": true,
+          "explain": "RUM tells you what users actually experience. Synthetic tells you what a controlled test sees. Use both."
+        },
+        {
+          "text": "RUM only works on mobile",
+          "correct": false,
+          "explain": "RUM works on any browser-served page."
+        },
+        {
+          "text": "Synthetic is more accurate",
+          "correct": false,
+          "explain": "Synthetic is more controlled, not more accurate. Real users are the truth."
+        }
       ]
     },
     {
       "question": "Which Core Web Vital measures interactivity?",
       "options": [
-        { "text": "LCP — Largest Contentful Paint", "correct": false, "explain": "LCP measures rendering speed, not interactivity." },
-        { "text": "INP — Interaction to Next Paint (replaced FID)", "correct": true, "explain": "INP is Google's replacement for FID. Measures the responsiveness of interactions across the whole page lifecycle." },
-        { "text": "CLS — Cumulative Layout Shift", "correct": false, "explain": "CLS measures visual stability, not interactivity." },
-        { "text": "TTFB — Time to First Byte", "correct": false, "explain": "TTFB is server response time, not user interactivity." }
+        {
+          "text": "LCP — Largest Contentful Paint",
+          "correct": false,
+          "explain": "LCP measures rendering speed, not interactivity."
+        },
+        {
+          "text": "INP — Interaction to Next Paint (replaced FID)",
+          "correct": true,
+          "explain": "INP is Google's replacement for FID. Measures the responsiveness of interactions across the whole page lifecycle."
+        },
+        {
+          "text": "CLS — Cumulative Layout Shift",
+          "correct": false,
+          "explain": "CLS measures visual stability, not interactivity."
+        },
+        {
+          "text": "TTFB — Time to First Byte",
+          "correct": false,
+          "explain": "TTFB is server response time, not user interactivity."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "mPulse Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "mPulse Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/mpulse/docs/welcome-to-mpulse"
+      }
+    ],
     "free": [
-      { "title": "web.dev — Core Web Vitals", "meta": "Free · Google official", "tag": "free" }
+      {
+        "title": "web.dev — Core Web Vitals",
+        "meta": "Free · Google official",
+        "tag": "free",
+        "url": "https://web.dev/vitals/"
+      }
     ],
     "paid": []
   }

@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Training a model is cooking the meal. Serving it is running the restaurant. A great recipe (model) means nothing if orders take 30 minutes (high latency) or the kitchen burns down under rush hour (no scaling)." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Common serving stacks on Linode GPU instances:\n\n- **vLLM** — high-throughput LLM serving with PagedAttention, OpenAI-compatible API\n- **Text Generation Inference (TGI)** — Hugging Face's optimized server, supports quantized models\n- **Triton Inference Server** — NVIDIA's multi-framework server (ONNX, TensorRT, PyTorch)\n- **Ollama** — simple local LLM runner, good for prototyping\n\nAll run in Docker containers with NVIDIA GPU passthrough." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Quick start with vLLM: `docker run --gpus all -p 8000:8000 vllm/vllm-openai --model Qwen/Qwen2.5-7B-Instruct`. This gives you an OpenAI-compatible API in one command. For production, add a NodeBalancer in front of multiple GPU instances for load balancing and health checks." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"vLLM for LLMs, TGI for Hugging Face models, Triton for multi-framework. All run on GPU Linodes with Docker + NVIDIA Container Toolkit.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Training a model is cooking the meal. Serving it is running the restaurant. A great recipe (model) means nothing if orders take 30 minutes (high latency) or the kitchen burns down under rush hour (no scaling)."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Common serving stacks on Linode GPU instances:\n\n- **vLLM** — high-throughput LLM serving with PagedAttention, OpenAI-compatible API\n- **Text Generation Inference (TGI)** — Hugging Face's optimized server, supports quantized models\n- **Triton Inference Server** — NVIDIA's multi-framework server (ONNX, TensorRT, PyTorch)\n- **Ollama** — simple local LLM runner, good for prototyping\n\nAll run in Docker containers with NVIDIA GPU passthrough."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Quick start with vLLM: `docker run --gpus all -p 8000:8000 vllm/vllm-openai --model Qwen/Qwen2.5-7B-Instruct`. This gives you an OpenAI-compatible API in one command. For production, add a NodeBalancer in front of multiple GPU instances for load balancing and health checks."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"vLLM for LLMs, TGI for Hugging Face models, Triton for multi-framework. All run on GPU Linodes with Docker + NVIDIA Container Toolkit.\""
+    }
   ],
   "quiz": [
     {
       "question": "You need an OpenAI-compatible API for a 7B parameter LLM. What do you use?",
       "options": [
-        { "text": "Train a model from scratch", "correct": false, "explain": "You'd serve a pre-trained model, not train one." },
-        { "text": "vLLM with the --model flag pointing to a Hugging Face model", "correct": true, "explain": "vLLM provides an OpenAI-compatible API out of the box. Point it at any supported model." },
-        { "text": "Host the model on Object Storage", "correct": false, "explain": "Object Storage stores files — it doesn't serve inference." },
-        { "text": "Use EdgeWorkers", "correct": false, "explain": "EdgeWorkers run lightweight JS, not GPU inference workloads." }
+        {
+          "text": "Train a model from scratch",
+          "correct": false,
+          "explain": "You'd serve a pre-trained model, not train one."
+        },
+        {
+          "text": "vLLM with the --model flag pointing to a Hugging Face model",
+          "correct": true,
+          "explain": "vLLM provides an OpenAI-compatible API out of the box. Point it at any supported model."
+        },
+        {
+          "text": "Host the model on Object Storage",
+          "correct": false,
+          "explain": "Object Storage stores files — it doesn't serve inference."
+        },
+        {
+          "text": "Use EdgeWorkers",
+          "correct": false,
+          "explain": "EdgeWorkers run lightweight JS, not GPU inference workloads."
+        }
       ]
     },
     {
       "question": "How do you scale inference across multiple GPU Linodes?",
       "options": [
-        { "text": "Run one giant model across all GPUs via MPI", "correct": false, "explain": "That's distributed training, not serving. For serving, each instance runs independently." },
-        { "text": "NodeBalancer in front of multiple GPU instances, each running the same model", "correct": true, "explain": "Horizontal scaling: each GPU Linode serves the same model, NodeBalancer distributes requests." },
-        { "text": "You can't — one GPU only", "correct": false, "explain": "You absolutely can scale horizontally with a load balancer." },
-        { "text": "Use Kubernetes HPA on CPU metrics", "correct": false, "explain": "GPU workloads need GPU-aware scaling, not CPU-based HPA." }
+        {
+          "text": "Run one giant model across all GPUs via MPI",
+          "correct": false,
+          "explain": "That's distributed training, not serving. For serving, each instance runs independently."
+        },
+        {
+          "text": "NodeBalancer in front of multiple GPU instances, each running the same model",
+          "correct": true,
+          "explain": "Horizontal scaling: each GPU Linode serves the same model, NodeBalancer distributes requests."
+        },
+        {
+          "text": "You can't — one GPU only",
+          "correct": false,
+          "explain": "You absolutely can scale horizontally with a load balancer."
+        },
+        {
+          "text": "Use Kubernetes HPA on CPU metrics",
+          "correct": false,
+          "explain": "GPU workloads need GPU-aware scaling, not CPU-based HPA."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Linode AI/ML Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Linode AI/ML Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/gpu-instances"
+      }
+    ],
     "free": [
-      { "title": "vLLM Documentation", "meta": "Free · vllm.readthedocs.io", "tag": "free" },
-      { "title": "Hugging Face TGI Guide", "meta": "Free · huggingface.co", "tag": "free" }
+      {
+        "title": "vLLM Documentation",
+        "meta": "Free · vllm.readthedocs.io",
+        "tag": "free",
+        "url": "https://docs.vllm.ai/en/latest/"
+      },
+      {
+        "title": "Hugging Face TGI Guide",
+        "meta": "Free · huggingface.co",
+        "tag": "free",
+        "url": "https://huggingface.co/docs/text-generation-inference/"
+      }
     ],
     "paid": []
   }

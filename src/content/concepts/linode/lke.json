@@ -6,39 +6,113 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "LKE is like hiring a building superintendent. You bring the tenants (your pods); Akamai keeps the elevators (control plane), HVAC (etcd), and security (master nodes) running 24/7." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "LKE = Linode Kubernetes Engine. Akamai runs and patches the Kubernetes control plane for free. You only pay for worker nodes (which are Linodes). You get:\n\n- A kubeconfig in one CLI call\n- HA control plane available as a paid add-on\n- Built-in NodeBalancer integration via Service type=LoadBalancer\n- Block storage CSI driver for dynamic PVCs" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Provision: linode-cli lke cluster-create --label prod --k8s_version 1.30 --region us-east --node_pools.type g6-dedicated-4 --node_pools.count 3. Add a GPU pool for inference workloads. Use KEDA for event-driven autoscaling on top of HPA." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"LKE = vanilla Kubernetes you actually own — control plane is free, you only pay for worker Linodes.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "LKE is like hiring a building superintendent. You bring the tenants (your pods); Akamai keeps the elevators (control plane), HVAC (etcd), and security (master nodes) running 24/7."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "LKE = Linode Kubernetes Engine. Akamai runs and patches the Kubernetes control plane for free. You only pay for worker nodes (which are Linodes). You get:\n\n- A kubeconfig in one CLI call\n- HA control plane available as a paid add-on\n- Built-in NodeBalancer integration via Service type=LoadBalancer\n- Block storage CSI driver for dynamic PVCs"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Provision: linode-cli lke cluster-create --label prod --k8s_version 1.30 --region us-east --node_pools.type g6-dedicated-4 --node_pools.count 3. Add a GPU pool for inference workloads. Use KEDA for event-driven autoscaling on top of HPA."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"LKE = vanilla Kubernetes you actually own — control plane is free, you only pay for worker Linodes.\""
+    }
   ],
   "quiz": [
     {
       "question": "Who pays for the LKE control plane?",
       "options": [
-        { "text": "You — at the same rate as a Linode", "correct": false, "explain": "Akamai runs the control plane for you at no charge." },
-        { "text": "Nobody — the control plane is free", "correct": true, "explain": "You only pay for worker nodes. HA control plane is a separate paid add-on." },
-        { "text": "It's billed per pod-hour", "correct": false, "explain": "Pricing is per-node, never per-pod." },
-        { "text": "You run the control plane yourself", "correct": false, "explain": "In LKE, Akamai runs the control plane. If you want self-managed, use plain Linodes with kubeadm." }
+        {
+          "text": "You — at the same rate as a Linode",
+          "correct": false,
+          "explain": "Akamai runs the control plane for you at no charge."
+        },
+        {
+          "text": "Nobody — the control plane is free",
+          "correct": true,
+          "explain": "You only pay for worker nodes. HA control plane is a separate paid add-on."
+        },
+        {
+          "text": "It's billed per pod-hour",
+          "correct": false,
+          "explain": "Pricing is per-node, never per-pod."
+        },
+        {
+          "text": "You run the control plane yourself",
+          "correct": false,
+          "explain": "In LKE, Akamai runs the control plane. If you want self-managed, use plain Linodes with kubeadm."
+        }
       ]
     },
     {
       "question": "How do you expose a service with a public IP on LKE?",
       "options": [
-        { "text": "Manually create a NodeBalancer and patch each pod", "correct": false, "explain": "LKE handles this automatically — no manual patching." },
-        { "text": "Set Service type=LoadBalancer; LKE provisions a NodeBalancer", "correct": true, "explain": "LKE's cloud-controller-manager auto-creates a NodeBalancer with a public IP when you set type=LoadBalancer." },
-        { "text": "Use a ClusterIP and hope for the best", "correct": false, "explain": "ClusterIP is internal-only — no public exposure." },
-        { "text": "It's not supported on LKE", "correct": false, "explain": "It's the standard pattern for LKE." }
+        {
+          "text": "Manually create a NodeBalancer and patch each pod",
+          "correct": false,
+          "explain": "LKE handles this automatically — no manual patching."
+        },
+        {
+          "text": "Set Service type=LoadBalancer; LKE provisions a NodeBalancer",
+          "correct": true,
+          "explain": "LKE's cloud-controller-manager auto-creates a NodeBalancer with a public IP when you set type=LoadBalancer."
+        },
+        {
+          "text": "Use a ClusterIP and hope for the best",
+          "correct": false,
+          "explain": "ClusterIP is internal-only — no public exposure."
+        },
+        {
+          "text": "It's not supported on LKE",
+          "correct": false,
+          "explain": "It's the standard pattern for LKE."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "LKE Documentation", "meta": "techdocs.akamai.com/lke", "tag": "official" }],
+    "official": [
+      {
+        "title": "LKE Documentation",
+        "meta": "techdocs.akamai.com/lke",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke"
+      }
+    ],
     "free": [
-      { "title": "LKE Guides on TechDocs", "meta": "Free · Step-by-step", "tag": "free" },
-      { "title": "kubectl + linode-cli combo", "meta": "Free · CLI ergonomics", "tag": "free" }
+      {
+        "title": "LKE Guides on TechDocs",
+        "meta": "Free · Step-by-step",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke"
+      },
+      {
+        "title": "kubectl + linode-cli combo",
+        "meta": "Free · CLI ergonomics",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke"
+      }
     ],
     "paid": [
-      { "title": "CKA / CKAD (CNCF)", "meta": "$395 · Vendor-neutral K8s cert", "tag": "paid" }
+      {
+        "title": "CKA / CKAD (CNCF)",
+        "meta": "$395 · Vendor-neutral K8s cert",
+        "tag": "paid",
+        "url": "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/"
+      }
     ]
   }
 }

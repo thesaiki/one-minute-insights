@@ -6,38 +6,107 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A GPU Linode is like renting a Formula 1 car instead of a sedan. You don't need it for grocery runs (web servers), but for the race track (ML training, inference), nothing else comes close." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Linode GPU instances expose dedicated NVIDIA GPUs with pre-installed drivers:\n\n- RTX 4000 Ada Generation (16GB VRAM)\n- Up to 4 GPUs per instance\n- NVIDIA CUDA toolkit pre-configured\n- Full root access — install any framework (PyTorch, TensorFlow, vLLM, TGI)\n- Available in select regions (verify with `linode-cli linodes types | grep gpu`)" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Provision a single-GPU instance: `linode-cli linodes create --type g1-gpu-rtx4000-1 --region us-ord --image linode/ubuntu24.04`. Install Docker + NVIDIA Container Toolkit, then run any GPU workload in containers. For multi-GPU training, provision multiple GPU Linodes and use distributed frameworks like DeepSpeed or FSDP." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"GPU Linodes = dedicated NVIDIA GPUs with full root access. No reserved instances, no spot interruptions, flat hourly pricing.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "A GPU Linode is like renting a Formula 1 car instead of a sedan. You don't need it for grocery runs (web servers), but for the race track (ML training, inference), nothing else comes close."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Linode GPU instances expose dedicated NVIDIA GPUs with pre-installed drivers:\n\n- RTX 4000 Ada Generation (16GB VRAM)\n- Up to 4 GPUs per instance\n- NVIDIA CUDA toolkit pre-configured\n- Full root access — install any framework (PyTorch, TensorFlow, vLLM, TGI)\n- Available in select regions (verify with `linode-cli linodes types | grep gpu`)"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Provision a single-GPU instance: `linode-cli linodes create --type g1-gpu-rtx4000-1 --region us-ord --image linode/ubuntu24.04`. Install Docker + NVIDIA Container Toolkit, then run any GPU workload in containers. For multi-GPU training, provision multiple GPU Linodes and use distributed frameworks like DeepSpeed or FSDP."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"GPU Linodes = dedicated NVIDIA GPUs with full root access. No reserved instances, no spot interruptions, flat hourly pricing.\""
+    }
   ],
   "quiz": [
     {
       "question": "What GPU hardware is available on Linode GPU instances?",
       "options": [
-        { "text": "AMD Radeon Pro", "correct": false, "explain": "Linode uses NVIDIA GPUs, not AMD." },
-        { "text": "NVIDIA RTX 4000 Ada Generation", "correct": true, "explain": "Linode offers RTX 4000 Ada GPUs with 16GB VRAM per card." },
-        { "text": "Google TPUs", "correct": false, "explain": "TPUs are Google-proprietary. Linode uses NVIDIA GPUs." },
-        { "text": "Intel Arc", "correct": false, "explain": "Linode uses NVIDIA GPUs for ML workloads." }
+        {
+          "text": "AMD Radeon Pro",
+          "correct": false,
+          "explain": "Linode uses NVIDIA GPUs, not AMD."
+        },
+        {
+          "text": "NVIDIA RTX 4000 Ada Generation",
+          "correct": true,
+          "explain": "Linode offers RTX 4000 Ada GPUs with 16GB VRAM per card."
+        },
+        {
+          "text": "Google TPUs",
+          "correct": false,
+          "explain": "TPUs are Google-proprietary. Linode uses NVIDIA GPUs."
+        },
+        {
+          "text": "Intel Arc",
+          "correct": false,
+          "explain": "Linode uses NVIDIA GPUs for ML workloads."
+        }
       ]
     },
     {
       "question": "How do you check GPU availability in a specific region?",
       "options": [
-        { "text": "Call Akamai support", "correct": false, "explain": "You can check programmatically via CLI." },
-        { "text": "linode-cli linodes types | grep gpu", "correct": true, "explain": "This lists all GPU plan types and their availability across regions." },
-        { "text": "GPUs are available everywhere", "correct": false, "explain": "GPU instances are in select regions only — always verify." },
-        { "text": "Check the Akamai CDN dashboard", "correct": false, "explain": "GPU instances are managed through Cloud Manager or linode-cli, not the CDN dashboard." }
+        {
+          "text": "Call Akamai support",
+          "correct": false,
+          "explain": "You can check programmatically via CLI."
+        },
+        {
+          "text": "linode-cli linodes types | grep gpu",
+          "correct": true,
+          "explain": "This lists all GPU plan types and their availability across regions."
+        },
+        {
+          "text": "GPUs are available everywhere",
+          "correct": false,
+          "explain": "GPU instances are in select regions only — always verify."
+        },
+        {
+          "text": "Check the Akamai CDN dashboard",
+          "correct": false,
+          "explain": "GPU instances are managed through Cloud Manager or linode-cli, not the CDN dashboard."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "GPU Instance Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "GPU Instance Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/gpu-instances"
+      }
+    ],
     "free": [
-      { "title": "Linode GPU Getting Started Guide", "meta": "Free · TechDocs", "tag": "free" }
+      {
+        "title": "Linode GPU Getting Started Guide",
+        "meta": "Free · TechDocs",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/gpu-instances"
+      }
     ],
     "paid": [
-      { "title": "Fast.ai Practical Deep Learning", "meta": "Free course · GPU recommended", "tag": "paid" }
+      {
+        "title": "Fast.ai Practical Deep Learning",
+        "meta": "Free course · GPU recommended",
+        "tag": "paid",
+        "url": "https://course.fast.ai/"
+      }
     ]
   }
 }

@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Media Analytics is the Nielsen ratings for the streaming age — but instead of sampling a few households, you measure every single viewer, every second, across every device and ISP." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai Media Analytics provides real-time and historical data on streaming quality:\n\n- **Viewer Experience**: Rebuffering ratio, startup time, bitrate distribution, error rates\n- **Audience Metrics**: Concurrent viewers, geographic distribution, device/OS/browser breakdown\n- **Engagement**: Play duration, drop-off points, ad completion rates\n- **QoS Alerts**: Real-time thresholds on rebuffering, errors, and viewer drops\n\nData sources: CDN logs (DataStream), player-side beacons (mPulse/MediaMelon), and AMD-level metrics. Dashboards available in Akamai Control Center." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "During a live event, the operations team monitors concurrent viewers, rebuffering by ISP, and error spikes by region. If rebuffering spikes in a specific ASN, they can escalate to the ISP or reroute through alternate PoPs. Post-event, the data feeds capacity planning for the next broadcast." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Media Analytics = every viewer, every second. Real-time QoS monitoring + historical analysis for capacity planning.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Media Analytics is the Nielsen ratings for the streaming age — but instead of sampling a few households, you measure every single viewer, every second, across every device and ISP."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai Media Analytics provides real-time and historical data on streaming quality:\n\n- **Viewer Experience**: Rebuffering ratio, startup time, bitrate distribution, error rates\n- **Audience Metrics**: Concurrent viewers, geographic distribution, device/OS/browser breakdown\n- **Engagement**: Play duration, drop-off points, ad completion rates\n- **QoS Alerts**: Real-time thresholds on rebuffering, errors, and viewer drops\n\nData sources: CDN logs (DataStream), player-side beacons (mPulse/MediaMelon), and AMD-level metrics. Dashboards available in Akamai Control Center."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "During a live event, the operations team monitors concurrent viewers, rebuffering by ISP, and error spikes by region. If rebuffering spikes in a specific ASN, they can escalate to the ISP or reroute through alternate PoPs. Post-event, the data feeds capacity planning for the next broadcast."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Media Analytics = every viewer, every second. Real-time QoS monitoring + historical analysis for capacity planning.\""
+    }
   ],
   "quiz": [
     {
       "question": "During a live broadcast, rebuffering spikes for viewers on a specific ISP. What do you check first?",
       "options": [
-        { "text": "Origin server CPU", "correct": false, "explain": "If it's ISP-specific, the issue is downstream of the origin." },
-        { "text": "Media Analytics ISP/ASN breakdown — identify the affected network and check PoP health in that region", "correct": true, "explain": "ISP-specific issues are usually last-mile or peering problems. Analytics pinpoints the ASN; ops can reroute or escalate." },
-        { "text": "Player software version", "correct": false, "explain": "Player issues would affect all ISPs, not just one." },
-        { "text": "Encoding bitrate ladder", "correct": false, "explain": "Encoding issues would affect all viewers regardless of ISP." }
+        {
+          "text": "Origin server CPU",
+          "correct": false,
+          "explain": "If it's ISP-specific, the issue is downstream of the origin."
+        },
+        {
+          "text": "Media Analytics ISP/ASN breakdown — identify the affected network and check PoP health in that region",
+          "correct": true,
+          "explain": "ISP-specific issues are usually last-mile or peering problems. Analytics pinpoints the ASN; ops can reroute or escalate."
+        },
+        {
+          "text": "Player software version",
+          "correct": false,
+          "explain": "Player issues would affect all ISPs, not just one."
+        },
+        {
+          "text": "Encoding bitrate ladder",
+          "correct": false,
+          "explain": "Encoding issues would affect all viewers regardless of ISP."
+        }
       ]
     },
     {
       "question": "What's the difference between Media Analytics and mPulse?",
       "options": [
-        { "text": "They're the same product", "correct": false, "explain": "Different products with different focus areas." },
-        { "text": "Media Analytics focuses on streaming-specific metrics (rebuffering, concurrent viewers, bitrate); mPulse focuses on web page performance (Core Web Vitals, page load)", "correct": true, "explain": "Media Analytics is video-native. mPulse is web-native. Both are RUM, but for different content types." },
-        { "text": "mPulse is more accurate", "correct": false, "explain": "Both measure real users. They measure different things." },
-        { "text": "Media Analytics is only for VOD", "correct": false, "explain": "It covers live, VOD, and download delivery." }
+        {
+          "text": "They're the same product",
+          "correct": false,
+          "explain": "Different products with different focus areas."
+        },
+        {
+          "text": "Media Analytics focuses on streaming-specific metrics (rebuffering, concurrent viewers, bitrate); mPulse focuses on web page performance (Core Web Vitals, page load)",
+          "correct": true,
+          "explain": "Media Analytics is video-native. mPulse is web-native. Both are RUM, but for different content types."
+        },
+        {
+          "text": "mPulse is more accurate",
+          "correct": false,
+          "explain": "Both measure real users. They measure different things."
+        },
+        {
+          "text": "Media Analytics is only for VOD",
+          "correct": false,
+          "explain": "It covers live, VOD, and download delivery."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Media Analytics Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Media Analytics Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/media-analytics/docs/welcome-to-media-analytics"
+      }
+    ],
     "free": [
-      { "title": "Akamai Control Center walkthrough", "meta": "Free · TechDocs", "tag": "free" }
+      {
+        "title": "Akamai Control Center walkthrough",
+        "meta": "Free · TechDocs",
+        "tag": "free",
+        "url": "https://control.akamai.com/"
+      }
     ],
     "paid": []
   }

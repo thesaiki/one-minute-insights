@@ -6,34 +6,100 @@
   "duration": "1 MIN",
   "category": "media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "MediaMelon's SmartSight platform is video-first streaming intelligence: real-time Quality-of-Experience (QoE) analytics, ad monetization intelligence, and AI-powered session insights. Their unified metric is StreamScore™.\n\nIntegrates with 40+ player SDKs across CTV, mobile, web, and set-top boxes. Trusted by platforms supporting 20M+ concurrent viewers." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "SmartSight's analytics pipeline runs on LKE — elastically scaling to absorb live event traffic spikes without pre-provisioning. NodeBalancers distribute telemetry ingestion across SmartSight's microservices with no single point of failure.\n\nReal example of LKE absorbing burst load (FIFA matches, NFL games) instead of standing capacity 24/7." },
-    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Any OTT, CTV, FAST, or live operator who is flying blind on player-side QoE. Differentiate from generic RUM (mPulse) by emphasising video-specific metrics: rebuffering ratio, ABR ladder utilisation, ad fill rate." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"MediaMelon = video-first QoE analytics on LKE. Generic RUM is HTML — MediaMelon is video.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "MediaMelon's SmartSight platform is video-first streaming intelligence: real-time Quality-of-Experience (QoE) analytics, ad monetization intelligence, and AI-powered session insights. Their unified metric is StreamScore™.\n\nIntegrates with 40+ player SDKs across CTV, mobile, web, and set-top boxes. Trusted by platforms supporting 20M+ concurrent viewers."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "SmartSight's analytics pipeline runs on LKE — elastically scaling to absorb live event traffic spikes without pre-provisioning. NodeBalancers distribute telemetry ingestion across SmartSight's microservices with no single point of failure.\n\nReal example of LKE absorbing burst load (FIFA matches, NFL games) instead of standing capacity 24/7."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "When To Position",
+      "body": "Any OTT, CTV, FAST, or live operator who is flying blind on player-side QoE. Differentiate from generic RUM (mPulse) by emphasising video-specific metrics: rebuffering ratio, ABR ladder utilisation, ad fill rate."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"MediaMelon = video-first QoE analytics on LKE. Generic RUM is HTML — MediaMelon is video.\""
+    }
   ],
   "quiz": [
     {
       "question": "A streaming platform already uses Akamai mPulse. Why also bring in MediaMelon?",
       "options": [
-        { "text": "They duplicate functionality", "correct": false, "explain": "They're complementary, not duplicates." },
-        { "text": "mPulse covers HTML/page metrics; MediaMelon covers video-specific QoE (rebuffering, ABR, ad fill)", "correct": true, "explain": "Different layers. mPulse = page experience. MediaMelon = video session experience." },
-        { "text": "mPulse doesn't work with video", "correct": false, "explain": "mPulse works with any page, including video pages — it just doesn't track video-internal metrics." },
-        { "text": "Cost reduction", "correct": false, "explain": "Adding a tool isn't a cost-reduction story." }
+        {
+          "text": "They duplicate functionality",
+          "correct": false,
+          "explain": "They're complementary, not duplicates."
+        },
+        {
+          "text": "mPulse covers HTML/page metrics; MediaMelon covers video-specific QoE (rebuffering, ABR, ad fill)",
+          "correct": true,
+          "explain": "Different layers. mPulse = page experience. MediaMelon = video session experience."
+        },
+        {
+          "text": "mPulse doesn't work with video",
+          "correct": false,
+          "explain": "mPulse works with any page, including video pages — it just doesn't track video-internal metrics."
+        },
+        {
+          "text": "Cost reduction",
+          "correct": false,
+          "explain": "Adding a tool isn't a cost-reduction story."
+        }
       ]
     },
     {
       "question": "Why does LKE matter for MediaMelon's pipeline?",
       "options": [
-        { "text": "It runs the player SDK", "correct": false, "explain": "Player SDKs run on the client device, not LKE." },
-        { "text": "Elastic scaling absorbs live-event telemetry spikes without pre-provisioning capacity", "correct": true, "explain": "Live events generate massive bursts. LKE + HPA scales pods just-in-time." },
-        { "text": "It's required for QoE math", "correct": false, "explain": "QoE math is software — runs anywhere. LKE handles operations and scale." },
-        { "text": "It replaces the player SDK", "correct": false, "explain": "No — the SDKs still run client-side." }
+        {
+          "text": "It runs the player SDK",
+          "correct": false,
+          "explain": "Player SDKs run on the client device, not LKE."
+        },
+        {
+          "text": "Elastic scaling absorbs live-event telemetry spikes without pre-provisioning capacity",
+          "correct": true,
+          "explain": "Live events generate massive bursts. LKE + HPA scales pods just-in-time."
+        },
+        {
+          "text": "It's required for QoE math",
+          "correct": false,
+          "explain": "QoE math is software — runs anywhere. LKE handles operations and scale."
+        },
+        {
+          "text": "It replaces the player SDK",
+          "correct": false,
+          "explain": "No — the SDKs still run client-side."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "MediaMelon + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
-    "free": [{ "title": "SmartSight overview", "meta": "Free · mediamelon.com", "tag": "free" }],
+    "official": [
+      {
+        "title": "MediaMelon + Akamai press release",
+        "meta": "akamai.com/newsroom",
+        "tag": "official",
+        "url": "https://www.mediamelon.com/"
+      }
+    ],
+    "free": [
+      {
+        "title": "SmartSight overview",
+        "meta": "Free · mediamelon.com",
+        "tag": "free",
+        "url": "https://www.mediamelon.com/smartsight/"
+      }
+    ],
     "paid": []
   }
 }

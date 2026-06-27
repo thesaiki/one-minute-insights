@@ -3,13 +3,15 @@ interface Props {
   title: string;
   meta: string;
   tag: string;
+  url?: string;
 }
-const { title, meta, tag } = Astro.props;
+const { title, meta, tag, url } = Astro.props;
+const Tag = url ? 'a' : 'div';
 ---
-<div class="resource-link">
+<Tag class="resource-link" {...(url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {})}>
   <div class="resource-info">
     <div class="resource-title">{title}</div>
     <div class="resource-meta">{meta}</div>
   </div>
   <span class={`resource-tag ${tag}`}>{tag.toUpperCase()}</span>
-</div>
+</Tag>

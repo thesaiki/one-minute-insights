@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "CI/CD is a conveyor belt in a factory. Code enters at one end (push), gets tested (quality control), packaged (build), and shipped to customers (deploy). If any station finds a defect, the belt stops." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Common CI/CD patterns for Linode deployments:\n\n- **GitHub Actions** — build, test, rsync/scp to Linode, or deploy to LKE\n- **GitLab CI** — same patterns, self-hosted runners on Linodes\n- **Linode CLI in CI** — `linode-cli` for provisioning resources as part of the pipeline\n- **Container workflows** — build Docker image → push to registry → update LKE Deployment\n\nSecrets: store `LINODE_TOKEN`, `SSH_PRIVATE_KEY` in CI/CD secrets, never in code." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "GitHub Actions for a static site: checkout → npm build → rsync dist/ to Linode Nanode via SSH. For LKE: checkout → docker build → push to GHCR → kubectl set image. Use `linode-cli` in CI for Terraform-managed infrastructure changes with `LINODE_TOKEN` from GitHub Secrets." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"GitHub Actions + rsync for static sites. Docker + kubectl for LKE. Always store tokens in CI/CD secrets, never in code.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "CI/CD is a conveyor belt in a factory. Code enters at one end (push), gets tested (quality control), packaged (build), and shipped to customers (deploy). If any station finds a defect, the belt stops."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Common CI/CD patterns for Linode deployments:\n\n- **GitHub Actions** — build, test, rsync/scp to Linode, or deploy to LKE\n- **GitLab CI** — same patterns, self-hosted runners on Linodes\n- **Linode CLI in CI** — `linode-cli` for provisioning resources as part of the pipeline\n- **Container workflows** — build Docker image → push to registry → update LKE Deployment\n\nSecrets: store `LINODE_TOKEN`, `SSH_PRIVATE_KEY` in CI/CD secrets, never in code."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "GitHub Actions for a static site: checkout → npm build → rsync dist/ to Linode Nanode via SSH. For LKE: checkout → docker build → push to GHCR → kubectl set image. Use `linode-cli` in CI for Terraform-managed infrastructure changes with `LINODE_TOKEN` from GitHub Secrets."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"GitHub Actions + rsync for static sites. Docker + kubectl for LKE. Always store tokens in CI/CD secrets, never in code.\""
+    }
   ],
   "quiz": [
     {
       "question": "You want to auto-deploy a static site to a Linode server on every push. What's the simplest approach?",
       "options": [
-        { "text": "SSH in manually and git pull", "correct": false, "explain": "Manual steps defeat the purpose of CI/CD." },
-        { "text": "GitHub Actions: build → rsync to Linode via SSH key", "correct": true, "explain": "Build in CI, rsync the output to your Linode. Store the SSH key as a GitHub Secret." },
-        { "text": "Set up a Jenkins server on a separate Linode", "correct": false, "explain": "Jenkins is overkill for a static site deploy. GitHub Actions is simpler." },
-        { "text": "Push to Object Storage from your laptop", "correct": false, "explain": "Manual deployment from a laptop isn't CI/CD." }
+        {
+          "text": "SSH in manually and git pull",
+          "correct": false,
+          "explain": "Manual steps defeat the purpose of CI/CD."
+        },
+        {
+          "text": "GitHub Actions: build → rsync to Linode via SSH key",
+          "correct": true,
+          "explain": "Build in CI, rsync the output to your Linode. Store the SSH key as a GitHub Secret."
+        },
+        {
+          "text": "Set up a Jenkins server on a separate Linode",
+          "correct": false,
+          "explain": "Jenkins is overkill for a static site deploy. GitHub Actions is simpler."
+        },
+        {
+          "text": "Push to Object Storage from your laptop",
+          "correct": false,
+          "explain": "Manual deployment from a laptop isn't CI/CD."
+        }
       ]
     },
     {
       "question": "Where should the LINODE_TOKEN be stored in a CI/CD pipeline?",
       "options": [
-        { "text": "In the repository's .env file", "correct": false, "explain": ".env files get committed — never store API tokens in the repo." },
-        { "text": "In the CI platform's encrypted secrets (e.g., GitHub Secrets)", "correct": true, "explain": "CI/CD platforms encrypt secrets at rest and expose them only during pipeline execution." },
-        { "text": "Hardcoded in the pipeline YAML", "correct": false, "explain": "Pipeline files are committed to Git — anyone with repo access sees the token." },
-        { "text": "In a public S3 bucket for easy access", "correct": false, "explain": "Never store credentials in public storage." }
+        {
+          "text": "In the repository's .env file",
+          "correct": false,
+          "explain": ".env files get committed — never store API tokens in the repo."
+        },
+        {
+          "text": "In the CI platform's encrypted secrets (e.g., GitHub Secrets)",
+          "correct": true,
+          "explain": "CI/CD platforms encrypt secrets at rest and expose them only during pipeline execution."
+        },
+        {
+          "text": "Hardcoded in the pipeline YAML",
+          "correct": false,
+          "explain": "Pipeline files are committed to Git — anyone with repo access sees the token."
+        },
+        {
+          "text": "In a public S3 bucket for easy access",
+          "correct": false,
+          "explain": "Never store credentials in public storage."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Linode CLI GitHub Action", "meta": "github.com/linode/action-linode-cli", "tag": "official" }],
+    "official": [
+      {
+        "title": "Linode CLI GitHub Action",
+        "meta": "github.com/linode/action-linode-cli",
+        "tag": "official",
+        "url": "https://github.com/linode/action-linode-cli"
+      }
+    ],
     "free": [
-      { "title": "GitHub Actions Documentation", "meta": "Free · docs.github.com", "tag": "free" }
+      {
+        "title": "GitHub Actions Documentation",
+        "meta": "Free · docs.github.com",
+        "tag": "free",
+        "url": "https://docs.github.com/en/actions"
+      }
     ],
     "paid": []
   }

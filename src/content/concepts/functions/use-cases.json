@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Akamai Functions is the Swiss Army knife of edge compute — too small to replace a full Linode, too capable to replace with an EdgeWorker. Reach for it when the workload is bursty, latency-sensitive, and small enough to scale to zero." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "High-fit use cases:\n\n- **Redirect engines** — 100K+ rules in KV, microsecond lookups\n- **Webhook receivers** — bursty inbound traffic, scale to zero between events\n- **API composition / BFF** — fan out to multiple backends, transform, return\n- **Token validation + minting** — JWT/PASETO issuance for sessions\n- **Image / asset transforms** — resize, watermark, format on demand\n- **AI pre-/post-processing** — prompt sanitization, response shaping for Inference Cloud\n- **A/B test routing** — variant selection with KV-stored experiment config" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Anti-patterns (don't use Functions for these):\n\n- Long-running jobs (use Linode + LKE)\n- Heavy ML training (use GPU Linodes)\n- Stateful streaming (use Linode + NATS/Redis)\n- High-throughput batch (Linode VMs are cheaper)\n\nThe rule of thumb: if the workload runs in <100ms of CPU time and benefits from horizontal scale, Functions wins. Otherwise, reach for Linode/LKE." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Functions = bursty, sub-100ms, horizontally-scaled workloads. Long-running or heavyweight work belongs on Linode.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Akamai Functions is the Swiss Army knife of edge compute — too small to replace a full Linode, too capable to replace with an EdgeWorker. Reach for it when the workload is bursty, latency-sensitive, and small enough to scale to zero."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "High-fit use cases:\n\n- **Redirect engines** — 100K+ rules in KV, microsecond lookups\n- **Webhook receivers** — bursty inbound traffic, scale to zero between events\n- **API composition / BFF** — fan out to multiple backends, transform, return\n- **Token validation + minting** — JWT/PASETO issuance for sessions\n- **Image / asset transforms** — resize, watermark, format on demand\n- **AI pre-/post-processing** — prompt sanitization, response shaping for Inference Cloud\n- **A/B test routing** — variant selection with KV-stored experiment config"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Anti-patterns (don't use Functions for these):\n\n- Long-running jobs (use Linode + LKE)\n- Heavy ML training (use GPU Linodes)\n- Stateful streaming (use Linode + NATS/Redis)\n- High-throughput batch (Linode VMs are cheaper)\n\nThe rule of thumb: if the workload runs in <100ms of CPU time and benefits from horizontal scale, Functions wins. Otherwise, reach for Linode/LKE."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Functions = bursty, sub-100ms, horizontally-scaled workloads. Long-running or heavyweight work belongs on Linode.\""
+    }
   ],
   "quiz": [
     {
       "question": "A customer wants to run nightly batch ETL processing 500GB of logs. Akamai Functions or Linode/LKE?",
       "options": [
-        { "text": "Akamai Functions — scales to zero", "correct": false, "explain": "Long-running batch is the wrong shape. Functions is for bursty, short-lived requests." },
-        { "text": "Linode + LKE — long-running, predictable, cheaper for sustained CPU", "correct": true, "explain": "Sustained-load batch is exactly what Linodes/LKE are built for. Functions would be wasteful." },
-        { "text": "EdgeWorkers", "correct": false, "explain": "CPU-time-bounded — won't finish a 500GB ETL." },
-        { "text": "Object Storage", "correct": false, "explain": "Storage, not compute." }
+        {
+          "text": "Akamai Functions — scales to zero",
+          "correct": false,
+          "explain": "Long-running batch is the wrong shape. Functions is for bursty, short-lived requests."
+        },
+        {
+          "text": "Linode + LKE — long-running, predictable, cheaper for sustained CPU",
+          "correct": true,
+          "explain": "Sustained-load batch is exactly what Linodes/LKE are built for. Functions would be wasteful."
+        },
+        {
+          "text": "EdgeWorkers",
+          "correct": false,
+          "explain": "CPU-time-bounded — won't finish a 500GB ETL."
+        },
+        {
+          "text": "Object Storage",
+          "correct": false,
+          "explain": "Storage, not compute."
+        }
       ]
     },
     {
       "question": "A media platform needs an image transform service: resize on demand, return WebP/AVIF, cache results. What's the right composition?",
       "options": [
-        { "text": "Linode VM running ImageMagick", "correct": false, "explain": "Works but doesn't scale to zero — bursty workloads waste compute." },
-        { "text": "Akamai Functions for the transform + CDN caching the result + Object Storage for source images", "correct": true, "explain": "Bursty, sub-100ms transforms = Functions. CDN caches the output. Object Storage holds originals. The textbook composition." },
-        { "text": "EdgeWorker only — JS image processing", "correct": false, "explain": "EdgeWorkers don't have the libraries or CPU time for image transforms." },
-        { "text": "A GPU Linode", "correct": false, "explain": "Overkill for image resizing — CPU is plenty." }
+        {
+          "text": "Linode VM running ImageMagick",
+          "correct": false,
+          "explain": "Works but doesn't scale to zero — bursty workloads waste compute."
+        },
+        {
+          "text": "Akamai Functions for the transform + CDN caching the result + Object Storage for source images",
+          "correct": true,
+          "explain": "Bursty, sub-100ms transforms = Functions. CDN caches the output. Object Storage holds originals. The textbook composition."
+        },
+        {
+          "text": "EdgeWorker only — JS image processing",
+          "correct": false,
+          "explain": "EdgeWorkers don't have the libraries or CPU time for image transforms."
+        },
+        {
+          "text": "A GPU Linode",
+          "correct": false,
+          "explain": "Overkill for image resizing — CPU is plenty."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Akamai Functions use cases", "meta": "akamai.com/products/functions", "tag": "official" }],
+    "official": [
+      {
+        "title": "Akamai Functions use cases",
+        "meta": "akamai.com/products/functions",
+        "tag": "official",
+        "url": "https://www.akamai.com/products/serverless-computing"
+      }
+    ],
     "free": [
-      { "title": "Build a URL shortener (Akamai blog)", "meta": "Free · Rust + Spin walkthrough", "tag": "free" },
-      { "title": "Edge-native apps with Akamai + Fermyon (blog)", "meta": "Free · architectural patterns", "tag": "free" }
+      {
+        "title": "Build a URL shortener (Akamai blog)",
+        "meta": "Free · Rust + Spin walkthrough",
+        "tag": "free",
+        "url": "https://www.akamai.com/blog"
+      },
+      {
+        "title": "Edge-native apps with Akamai + Fermyon (blog)",
+        "meta": "Free · architectural patterns",
+        "tag": "free",
+        "url": "https://www.akamai.com/blog"
+      }
     ],
     "paid": []
   }

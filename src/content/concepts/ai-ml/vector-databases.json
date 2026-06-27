@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A traditional database finds books by title or ISBN. A vector database finds books by meaning — 'show me books similar to this paragraph.' It stores the essence of data as mathematical coordinates and finds neighbors in that space." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Vector databases store embeddings — dense numerical representations of text, images, or audio. Popular options to self-host on Linode:\n\n- **Qdrant** — Rust-based, fast, great filtering. Runs in Docker.\n- **Weaviate** — Go-based, built-in vectorizers, GraphQL API\n- **Milvus** — distributed, Kubernetes-native, billion-scale\n- **pgvector** — PostgreSQL extension, use with Managed PostgreSQL\n\nAll pair with embedding models (OpenAI, Cohere, local sentence-transformers)." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "RAG (Retrieval-Augmented Generation) pipeline on Linode: embed your documents with a sentence-transformer on a GPU Linode → store vectors in Qdrant on a Dedicated Linode → query at inference time to ground LLM responses in your data. Use Block Storage for Qdrant persistence across reboots." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Self-host Qdrant or Weaviate on Dedicated Linodes for full control. Use pgvector on Managed PostgreSQL for simpler use cases. Block Storage keeps your index safe.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "A traditional database finds books by title or ISBN. A vector database finds books by meaning — 'show me books similar to this paragraph.' It stores the essence of data as mathematical coordinates and finds neighbors in that space."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Vector databases store embeddings — dense numerical representations of text, images, or audio. Popular options to self-host on Linode:\n\n- **Qdrant** — Rust-based, fast, great filtering. Runs in Docker.\n- **Weaviate** — Go-based, built-in vectorizers, GraphQL API\n- **Milvus** — distributed, Kubernetes-native, billion-scale\n- **pgvector** — PostgreSQL extension, use with Managed PostgreSQL\n\nAll pair with embedding models (OpenAI, Cohere, local sentence-transformers)."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "RAG (Retrieval-Augmented Generation) pipeline on Linode: embed your documents with a sentence-transformer on a GPU Linode → store vectors in Qdrant on a Dedicated Linode → query at inference time to ground LLM responses in your data. Use Block Storage for Qdrant persistence across reboots."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Self-host Qdrant or Weaviate on Dedicated Linodes for full control. Use pgvector on Managed PostgreSQL for simpler use cases. Block Storage keeps your index safe.\""
+    }
   ],
   "quiz": [
     {
       "question": "What's the simplest way to add vector search to an existing PostgreSQL-based app on Linode?",
       "options": [
-        { "text": "Migrate to MongoDB", "correct": false, "explain": "No migration needed — PostgreSQL has a vector extension." },
-        { "text": "Enable the pgvector extension on Managed PostgreSQL", "correct": true, "explain": "pgvector adds vector similarity search directly to PostgreSQL — no separate database needed." },
-        { "text": "Store vectors as JSON arrays", "correct": false, "explain": "JSON arrays can't do efficient similarity search. You need a proper vector index." },
-        { "text": "Use Object Storage for vectors", "correct": false, "explain": "Object Storage is for files, not queryable vector indices." }
+        {
+          "text": "Migrate to MongoDB",
+          "correct": false,
+          "explain": "No migration needed — PostgreSQL has a vector extension."
+        },
+        {
+          "text": "Enable the pgvector extension on Managed PostgreSQL",
+          "correct": true,
+          "explain": "pgvector adds vector similarity search directly to PostgreSQL — no separate database needed."
+        },
+        {
+          "text": "Store vectors as JSON arrays",
+          "correct": false,
+          "explain": "JSON arrays can't do efficient similarity search. You need a proper vector index."
+        },
+        {
+          "text": "Use Object Storage for vectors",
+          "correct": false,
+          "explain": "Object Storage is for files, not queryable vector indices."
+        }
       ]
     },
     {
       "question": "You're building a RAG system that needs to handle 100M vectors. Which vector DB should you consider?",
       "options": [
-        { "text": "pgvector — it handles any scale", "correct": false, "explain": "pgvector works for millions, but 100M+ is where purpose-built vector DBs shine." },
-        { "text": "Milvus on LKE — built for billion-scale distributed vector search", "correct": true, "explain": "Milvus is designed for massive scale with distributed architecture. Deploy on LKE for horizontal scaling." },
-        { "text": "SQLite with a plugin", "correct": false, "explain": "SQLite doesn't have production-grade vector search at this scale." },
-        { "text": "Store everything in Redis", "correct": false, "explain": "Redis has vector search (RediSearch) but isn't optimized for 100M+ vectors." }
+        {
+          "text": "pgvector — it handles any scale",
+          "correct": false,
+          "explain": "pgvector works for millions, but 100M+ is where purpose-built vector DBs shine."
+        },
+        {
+          "text": "Milvus on LKE — built for billion-scale distributed vector search",
+          "correct": true,
+          "explain": "Milvus is designed for massive scale with distributed architecture. Deploy on LKE for horizontal scaling."
+        },
+        {
+          "text": "SQLite with a plugin",
+          "correct": false,
+          "explain": "SQLite doesn't have production-grade vector search at this scale."
+        },
+        {
+          "text": "Store everything in Redis",
+          "correct": false,
+          "explain": "Redis has vector search (RediSearch) but isn't optimized for 100M+ vectors."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Managed Databases Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Managed Databases Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/managed-databases"
+      }
+    ],
     "free": [
-      { "title": "Qdrant Documentation", "meta": "Free · qdrant.tech/documentation", "tag": "free" },
-      { "title": "pgvector GitHub", "meta": "Free · github.com/pgvector", "tag": "free" }
+      {
+        "title": "Qdrant Documentation",
+        "meta": "Free · qdrant.tech/documentation",
+        "tag": "free",
+        "url": "https://qdrant.tech/documentation/"
+      },
+      {
+        "title": "pgvector GitHub",
+        "meta": "Free · github.com/pgvector",
+        "tag": "free",
+        "url": "https://github.com/pgvector/pgvector"
+      }
     ],
     "paid": []
   }

@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": "media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Harmonic (NASDAQ: HLIT) is the worldwide leader in virtualized video and broadband. Their VOS360 SaaS platform covers the full broadcast media chain:\n\n- VOS360 Media SaaS — playout, encoding, packaging, origin, nPVR\n- VOS360 Ad SaaS — full personalised ad insertion workflow\n\nAI features include automatic SCTE-35 marker insertion, sports clipping, automated subtitles, voice-cloned translation." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Both VOS360 Media SaaS and VOS360 Ad SaaS are qualified on Akamai Connected Cloud. Critically, VOS360 Media powers Akamai Media Services Live 5 (MSL5) — the next-gen suite for 24/7 live linear streaming.\n\nHarmonic supports a hybrid model: keep encoding on-prem (fixed cost), move storage, DVR, and origin to the cloud (variable, elastic). Akamai Object Storage is the natural archive tier for cloud nPVR — cheap long-term retention without hyperscaler egress." },
-    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Traditional broadcasters and pay-TV operators with on-prem playout who want a hybrid path to cloud. Harmonic's history with broadcast workflows (DOCSIS, vCMTS, virtualized broadband) gives them deep credibility with the operations side of broadcast IT — they're not a streaming-only newcomer." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Harmonic VOS360 = broadcast operations as SaaS on Akamai. Powers MSL5. Hybrid (on-prem + cloud) is a first-class deployment model.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "Harmonic (NASDAQ: HLIT) is the worldwide leader in virtualized video and broadband. Their VOS360 SaaS platform covers the full broadcast media chain:\n\n- VOS360 Media SaaS — playout, encoding, packaging, origin, nPVR\n- VOS360 Ad SaaS — full personalised ad insertion workflow\n\nAI features include automatic SCTE-35 marker insertion, sports clipping, automated subtitles, voice-cloned translation."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "Both VOS360 Media SaaS and VOS360 Ad SaaS are qualified on Akamai Connected Cloud. Critically, VOS360 Media powers Akamai Media Services Live 5 (MSL5) — the next-gen suite for 24/7 live linear streaming.\n\nHarmonic supports a hybrid model: keep encoding on-prem (fixed cost), move storage, DVR, and origin to the cloud (variable, elastic). Akamai Object Storage is the natural archive tier for cloud nPVR — cheap long-term retention without hyperscaler egress."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "When To Position",
+      "body": "Traditional broadcasters and pay-TV operators with on-prem playout who want a hybrid path to cloud. Harmonic's history with broadcast workflows (DOCSIS, vCMTS, virtualized broadband) gives them deep credibility with the operations side of broadcast IT — they're not a streaming-only newcomer."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Harmonic VOS360 = broadcast operations as SaaS on Akamai. Powers MSL5. Hybrid (on-prem + cloud) is a first-class deployment model.\""
+    }
   ],
   "quiz": [
     {
       "question": "What's the strategic significance of Harmonic VOS360 powering Akamai Media Services Live 5?",
       "options": [
-        { "text": "It's the new default origin for all Akamai customers", "correct": false, "explain": "It powers MSL5 specifically, not all customers." },
-        { "text": "VOS360 is the engine behind Akamai's next-gen 24/7 live linear streaming product", "correct": true, "explain": "MSL5 is Akamai's media services suite for live event broadcasting and linear streaming. Harmonic's VOS360 Media SaaS powers it." },
-        { "text": "It replaces all other QCPs", "correct": false, "explain": "It coexists with Ateme, Bitmovin, and others." },
-        { "text": "It's only for VOD", "correct": false, "explain": "MSL5 is specifically about live linear, not VOD." }
+        {
+          "text": "It's the new default origin for all Akamai customers",
+          "correct": false,
+          "explain": "It powers MSL5 specifically, not all customers."
+        },
+        {
+          "text": "VOS360 is the engine behind Akamai's next-gen 24/7 live linear streaming product",
+          "correct": true,
+          "explain": "MSL5 is Akamai's media services suite for live event broadcasting and linear streaming. Harmonic's VOS360 Media SaaS powers it."
+        },
+        {
+          "text": "It replaces all other QCPs",
+          "correct": false,
+          "explain": "It coexists with Ateme, Bitmovin, and others."
+        },
+        {
+          "text": "It's only for VOD",
+          "correct": false,
+          "explain": "MSL5 is specifically about live linear, not VOD."
+        }
       ]
     },
     {
       "question": "A pay-TV operator has on-prem playout but wants long-term archive in the cloud (nPVR). What's the Harmonic hybrid pattern?",
       "options": [
-        { "text": "Move everything to cloud immediately", "correct": false, "explain": "Harmonic's explicit story is hybrid — fixed costs stay on-prem, variable costs go to cloud." },
-        { "text": "Keep encoding on-prem (fixed cost), move nPVR archive to Akamai Object Storage (variable cost, elastic)", "correct": true, "explain": "Exactly the hybrid story Harmonic positions. nPVR has unpredictable retention growth — cloud elasticity wins." },
-        { "text": "Run nPVR on a single Linode", "correct": false, "explain": "Object Storage is the right tier — Linodes are compute, not archival storage." },
-        { "text": "Use Block Storage for nPVR", "correct": false, "explain": "Block Storage is for active filesystem workloads. Object Storage scales to PB cheaply." }
+        {
+          "text": "Move everything to cloud immediately",
+          "correct": false,
+          "explain": "Harmonic's explicit story is hybrid — fixed costs stay on-prem, variable costs go to cloud."
+        },
+        {
+          "text": "Keep encoding on-prem (fixed cost), move nPVR archive to Akamai Object Storage (variable cost, elastic)",
+          "correct": true,
+          "explain": "Exactly the hybrid story Harmonic positions. nPVR has unpredictable retention growth — cloud elasticity wins."
+        },
+        {
+          "text": "Run nPVR on a single Linode",
+          "correct": false,
+          "explain": "Object Storage is the right tier — Linodes are compute, not archival storage."
+        },
+        {
+          "text": "Use Block Storage for nPVR",
+          "correct": false,
+          "explain": "Block Storage is for active filesystem workloads. Object Storage scales to PB cheaply."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Harmonic + Akamai partner page", "meta": "akamai.com/resources/partner-story/harmonic", "tag": "official" }],
+    "official": [
+      {
+        "title": "Harmonic + Akamai partner page",
+        "meta": "akamai.com/resources/partner-story/harmonic",
+        "tag": "official",
+        "url": "https://www.harmonicinc.com/"
+      }
+    ],
     "free": [
-      { "title": "VOS360 + Akamai customer story (TFiR)", "meta": "Free · video interview", "tag": "free" },
-      { "title": "Harmonic VOS360 product page", "meta": "Free · harmonicinc.com", "tag": "free" }
+      {
+        "title": "VOS360 + Akamai customer story (TFiR)",
+        "meta": "Free · video interview",
+        "tag": "free",
+        "url": "https://www.harmonicinc.com/video-streaming/cloud-streaming-platform/"
+      },
+      {
+        "title": "Harmonic VOS360 product page",
+        "meta": "Free · harmonicinc.com",
+        "tag": "free",
+        "url": "https://www.harmonicinc.com/video-streaming/cloud-streaming-platform/"
+      }
     ],
     "paid": []
   }

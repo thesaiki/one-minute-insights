@@ -6,39 +6,113 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Object Storage is your warehouse. Block storage is your kitchen pantry. You don't cook from the warehouse — but you keep all the inventory there." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai Object Storage is S3-compatible. Anything that speaks the S3 protocol (rclone, aws-cli, boto3, mc) works. You get:\n\n- Per-cluster endpoints (E1, E2, E3 — different regions and capacity tiers)\n- Bucket-level CORS, lifecycle, ACLs\n- Bucket-level S3 access keys (scope per app)\n- $5/month per 250 GB + $0.005/GB egress (often free up to a quota)" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Use the E3 endpoint for high-throughput workloads. Migrate from AWS S3 with rclone copy s3:bucket linode:bucket --fast-list. Object Storage is the default origin behind Akamai CDN — pair them for global distribution." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"S3-compatible buckets at flat pricing — your warehouse for everything that doesn't need to live on a disk.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Object Storage is your warehouse. Block storage is your kitchen pantry. You don't cook from the warehouse — but you keep all the inventory there."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai Object Storage is S3-compatible. Anything that speaks the S3 protocol (rclone, aws-cli, boto3, mc) works. You get:\n\n- Per-cluster endpoints (E1, E2, E3 — different regions and capacity tiers)\n- Bucket-level CORS, lifecycle, ACLs\n- Bucket-level S3 access keys (scope per app)\n- $5/month per 250 GB + $0.005/GB egress (often free up to a quota)"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Use the E3 endpoint for high-throughput workloads. Migrate from AWS S3 with rclone copy s3:bucket linode:bucket --fast-list. Object Storage is the default origin behind Akamai CDN — pair them for global distribution."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"S3-compatible buckets at flat pricing — your warehouse for everything that doesn't need to live on a disk.\""
+    }
   ],
   "quiz": [
     {
       "question": "Your app uses boto3 against AWS S3. What's the migration story for Akamai Object Storage?",
       "options": [
-        { "text": "Rewrite to a proprietary SDK", "correct": false, "explain": "There is no proprietary SDK. The S3 API is the API." },
-        { "text": "Change endpoint URL and access keys — code stays", "correct": true, "explain": "Object Storage is S3-compatible. You point boto3 at the cluster endpoint with new keys." },
-        { "text": "Migration isn't possible without re-architecting", "correct": false, "explain": "It's a config change, not a re-architecture." },
-        { "text": "Use only the linode-cli for uploads", "correct": false, "explain": "CLI works, but so does any S3 SDK." }
+        {
+          "text": "Rewrite to a proprietary SDK",
+          "correct": false,
+          "explain": "There is no proprietary SDK. The S3 API is the API."
+        },
+        {
+          "text": "Change endpoint URL and access keys — code stays",
+          "correct": true,
+          "explain": "Object Storage is S3-compatible. You point boto3 at the cluster endpoint with new keys."
+        },
+        {
+          "text": "Migration isn't possible without re-architecting",
+          "correct": false,
+          "explain": "It's a config change, not a re-architecture."
+        },
+        {
+          "text": "Use only the linode-cli for uploads",
+          "correct": false,
+          "explain": "CLI works, but so does any S3 SDK."
+        }
       ]
     },
     {
       "question": "Best tool to move 60TB from S3 to Akamai Object Storage?",
       "options": [
-        { "text": "aws s3 cp in a loop", "correct": false, "explain": "Single-threaded and slow. Not built for this scale." },
-        { "text": "rclone with --fast-list and parallel workers", "correct": true, "explain": "rclone is purpose-built for inter-cloud migration. --fast-list batches LIST calls; --transfers tunes parallelism." },
-        { "text": "Manually drag and drop in the dashboard", "correct": false, "explain": "Not viable at TB scale." },
-        { "text": "Email Akamai support a hard drive", "correct": false, "explain": "There's no Snowball-style import service today." }
+        {
+          "text": "aws s3 cp in a loop",
+          "correct": false,
+          "explain": "Single-threaded and slow. Not built for this scale."
+        },
+        {
+          "text": "rclone with --fast-list and parallel workers",
+          "correct": true,
+          "explain": "rclone is purpose-built for inter-cloud migration. --fast-list batches LIST calls; --transfers tunes parallelism."
+        },
+        {
+          "text": "Manually drag and drop in the dashboard",
+          "correct": false,
+          "explain": "Not viable at TB scale."
+        },
+        {
+          "text": "Email Akamai support a hard drive",
+          "correct": false,
+          "explain": "There's no Snowball-style import service today."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Object Storage Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Object Storage Documentation",
+        "meta": "techdocs.akamai.com",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/object-storage"
+      }
+    ],
     "free": [
-      { "title": "rclone migration guides", "meta": "Free · Official rclone docs", "tag": "free" },
-      { "title": "S3 API compatibility matrix", "meta": "Free · TechDocs reference", "tag": "free" }
+      {
+        "title": "rclone migration guides",
+        "meta": "Free · Official rclone docs",
+        "tag": "free",
+        "url": "https://rclone.org/s3/#linode-object-storage"
+      },
+      {
+        "title": "S3 API compatibility matrix",
+        "meta": "Free · TechDocs reference",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/cloud-computing/docs/object-storage"
+      }
     ],
     "paid": [
-      { "title": "Cloud Storage Patterns (O'Reilly)", "meta": "$45 · Architecture patterns", "tag": "paid" }
+      {
+        "title": "Cloud Storage Patterns (O'Reilly)",
+        "meta": "$45 · Architecture patterns",
+        "tag": "paid",
+        "url": "https://www.oreilly.com/library/view/cloud-native-patterns/9781617294297/"
+      }
     ]
   }
 }

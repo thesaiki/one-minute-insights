@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Spin is the IKEA assembly kit for Wasm functions. One CLI, every language, flat-pack instructions — no proprietary tooling, no platform lock-in." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Spin is the open-source developer framework and CLI for building Wasm applications. CNCF sandbox project. The developer workflow:\n\n- `spin new` — scaffold a project from a template (Rust, Go, JS, Python)\n- `spin build` — compile to Wasm\n- `spin up` — run locally with full HTTP server\n- `spin aka deploy` — push to Akamai Functions globally\n\nSame artifact runs locally, on SpinKube (Kubernetes), and on Akamai Functions. Portability is the headline." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "A Spin app is just a Wasm binary plus a `spin.toml` manifest declaring HTTP triggers, KV bindings, and outbound network grants. The capability-based security model: by default a function can't see filesystem, network, or env vars unless explicitly granted." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Spin = the open-source framework and CLI. Same Wasm binary runs local → Kubernetes → Akamai Functions. Zero lock-in.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Spin is the IKEA assembly kit for Wasm functions. One CLI, every language, flat-pack instructions — no proprietary tooling, no platform lock-in."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Spin is the open-source developer framework and CLI for building Wasm applications. CNCF sandbox project. The developer workflow:\n\n- `spin new` — scaffold a project from a template (Rust, Go, JS, Python)\n- `spin build` — compile to Wasm\n- `spin up` — run locally with full HTTP server\n- `spin aka deploy` — push to Akamai Functions globally\n\nSame artifact runs locally, on SpinKube (Kubernetes), and on Akamai Functions. Portability is the headline."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "A Spin app is just a Wasm binary plus a `spin.toml` manifest declaring HTTP triggers, KV bindings, and outbound network grants. The capability-based security model: by default a function can't see filesystem, network, or env vars unless explicitly granted."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Spin = the open-source framework and CLI. Same Wasm binary runs local → Kubernetes → Akamai Functions. Zero lock-in.\""
+    }
   ],
   "quiz": [
     {
       "question": "How does a Spin function get permission to make HTTP calls or read a key from KV?",
       "options": [
-        { "text": "It can do anything by default", "correct": false, "explain": "Opposite — Wasm modules are locked-in by default. Capabilities must be explicitly granted." },
-        { "text": "Capabilities are explicitly declared in spin.toml", "correct": true, "explain": "Capability-based security. Outbound network, KV stores, and other resources are listed per-component in the manifest." },
-        { "text": "You set environment variables only", "correct": false, "explain": "Env vars don't grant network or storage access." },
-        { "text": "You compile with a special flag", "correct": false, "explain": "It's a runtime/manifest concern, not a compile flag." }
+        {
+          "text": "It can do anything by default",
+          "correct": false,
+          "explain": "Opposite — Wasm modules are locked-in by default. Capabilities must be explicitly granted."
+        },
+        {
+          "text": "Capabilities are explicitly declared in spin.toml",
+          "correct": true,
+          "explain": "Capability-based security. Outbound network, KV stores, and other resources are listed per-component in the manifest."
+        },
+        {
+          "text": "You set environment variables only",
+          "correct": false,
+          "explain": "Env vars don't grant network or storage access."
+        },
+        {
+          "text": "You compile with a special flag",
+          "correct": false,
+          "explain": "It's a runtime/manifest concern, not a compile flag."
+        }
       ]
     },
     {
       "question": "Same Spin app should run locally for development, on Kubernetes for staging, on Akamai Functions for production. What changes between them?",
       "options": [
-        { "text": "You rewrite the app for each platform", "correct": false, "explain": "No rewrite — that's the point of Spin's portability." },
-        { "text": "The Wasm binary is identical; only the deployment target changes", "correct": true, "explain": "Same Wasm artifact, same spin.toml. Local = `spin up`, K8s = SpinKube, Akamai = `spin aka deploy`." },
-        { "text": "Akamai Functions only supports JavaScript", "correct": false, "explain": "Multi-language: Rust, Go, JS, Python, anything that compiles to Wasm." },
-        { "text": "You need a different framework per environment", "correct": false, "explain": "Spin is the framework everywhere." }
+        {
+          "text": "You rewrite the app for each platform",
+          "correct": false,
+          "explain": "No rewrite — that's the point of Spin's portability."
+        },
+        {
+          "text": "The Wasm binary is identical; only the deployment target changes",
+          "correct": true,
+          "explain": "Same Wasm artifact, same spin.toml. Local = `spin up`, K8s = SpinKube, Akamai = `spin aka deploy`."
+        },
+        {
+          "text": "Akamai Functions only supports JavaScript",
+          "correct": false,
+          "explain": "Multi-language: Rust, Go, JS, Python, anything that compiles to Wasm."
+        },
+        {
+          "text": "You need a different framework per environment",
+          "correct": false,
+          "explain": "Spin is the framework everywhere."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Spin documentation", "meta": "developer.fermyon.com", "tag": "official" }],
+    "official": [
+      {
+        "title": "Spin documentation",
+        "meta": "developer.fermyon.com",
+        "tag": "official",
+        "url": "https://developer.fermyon.com/spin/v3/quickstart"
+      }
+    ],
     "free": [
-      { "title": "Spin on GitHub", "meta": "Free · CNCF sandbox project", "tag": "free" },
-      { "title": "SpinKube for Kubernetes", "meta": "Free · run Spin in your cluster", "tag": "free" }
+      {
+        "title": "Spin on GitHub",
+        "meta": "Free · CNCF sandbox project",
+        "tag": "free",
+        "url": "https://github.com/fermyon/spin"
+      },
+      {
+        "title": "SpinKube for Kubernetes",
+        "meta": "Free · run Spin in your cluster",
+        "tag": "free",
+        "url": "https://www.spinkube.dev/"
+      }
     ],
     "paid": []
   }

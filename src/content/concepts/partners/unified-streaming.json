@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": "media",
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Unified Streaming pioneered just-in-time packaging (JITP). Instead of pre-packaging every asset into HLS, DASH, and MSS variants (3x storage), you store one mezzanine MP4 and let Unified Origin produce manifests and segments on demand for each player request.\n\nFounded 2012. 150+ broadcasters, telcos, and streaming platforms. Built-in support for DRM, SCTE-35 timed metadata, multi-channel audio, captions, and subtitles." },
-    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Unified Origin is an Apache module that runs on Linode Dedicated CPU instances. Recommended production sizing: 8 CPU / 16 GB RAM. Common deployment options:\n\n- Linode VM running Unified Origin → Object Storage as mezzanine bucket → Akamai CDN for delivery\n- Same as above but using Akamai NetStorage instead\n- Hybrid: Linode for Origin + AWS S3 as mezzanine (for customers mid-migration)\n\nDeploy via Docker Marketplace App or apt package. Trial license available immediately." },
-    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Customers who store large VOD libraries and want to slash storage cost — JITP cuts storage 3x by avoiding pre-packaged variants. Especially compelling when paired with Object Storage's flat pricing. Also the right answer for customers needing DRM, SCTE-35, and multi-audio support without writing custom packaging logic." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Unified Streaming = JITP on Linode. Store one mezzanine, package on demand, save 3x on storage.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "What They Do",
+      "body": "Unified Streaming pioneered just-in-time packaging (JITP). Instead of pre-packaging every asset into HLS, DASH, and MSS variants (3x storage), you store one mezzanine MP4 and let Unified Origin produce manifests and segments on demand for each player request.\n\nFounded 2012. 150+ broadcasters, telcos, and streaming platforms. Built-in support for DRM, SCTE-35 timed metadata, multi-channel audio, captions, and subtitles."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How They Run on Akamai",
+      "body": "Unified Origin is an Apache module that runs on Linode Dedicated CPU instances. Recommended production sizing: 8 CPU / 16 GB RAM. Common deployment options:\n\n- Linode VM running Unified Origin → Object Storage as mezzanine bucket → Akamai CDN for delivery\n- Same as above but using Akamai NetStorage instead\n- Hybrid: Linode for Origin + AWS S3 as mezzanine (for customers mid-migration)\n\nDeploy via Docker Marketplace App or apt package. Trial license available immediately."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "When To Position",
+      "body": "Customers who store large VOD libraries and want to slash storage cost — JITP cuts storage 3x by avoiding pre-packaged variants. Especially compelling when paired with Object Storage's flat pricing. Also the right answer for customers needing DRM, SCTE-35, and multi-audio support without writing custom packaging logic."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Unified Streaming = JITP on Linode. Store one mezzanine, package on demand, save 3x on storage.\""
+    }
   ],
   "quiz": [
     {
       "question": "What's the storage-cost benefit of just-in-time packaging vs. pre-packaging?",
       "options": [
-        { "text": "No difference — both store the same data", "correct": false, "explain": "Pre-packaging multiplies storage by format count (HLS, DASH, MSS)." },
-        { "text": "Roughly 3x less storage — only the mezzanine MP4 is stored, variants are produced on demand", "correct": true, "explain": "Pre-packaging stores HLS + DASH + MSS variants separately. JITP stores one mezzanine, packages on each request." },
-        { "text": "It's actually more expensive", "correct": false, "explain": "It's cheaper — that's the whole point." },
-        { "text": "It eliminates the need for storage entirely", "correct": false, "explain": "The mezzanine still needs to live somewhere." }
+        {
+          "text": "No difference — both store the same data",
+          "correct": false,
+          "explain": "Pre-packaging multiplies storage by format count (HLS, DASH, MSS)."
+        },
+        {
+          "text": "Roughly 3x less storage — only the mezzanine MP4 is stored, variants are produced on demand",
+          "correct": true,
+          "explain": "Pre-packaging stores HLS + DASH + MSS variants separately. JITP stores one mezzanine, packages on each request."
+        },
+        {
+          "text": "It's actually more expensive",
+          "correct": false,
+          "explain": "It's cheaper — that's the whole point."
+        },
+        {
+          "text": "It eliminates the need for storage entirely",
+          "correct": false,
+          "explain": "The mezzanine still needs to live somewhere."
+        }
       ]
     },
     {
       "question": "Unified Streaming recommends what Linode plan family for production?",
       "options": [
-        { "text": "Nanode (smallest, cheapest)", "correct": false, "explain": "Nanodes are too small for production packaging load." },
-        { "text": "Dedicated CPU (8 vCPU / 16 GB RAM minimum)", "correct": true, "explain": "Dedicated CPU reserves physical cores for predictable performance under sustained load — what JITP needs." },
-        { "text": "GPU Linode", "correct": false, "explain": "JITP is CPU-bound, not GPU-bound." },
-        { "text": "Shared CPU only", "correct": false, "explain": "Shared CPU has noisy-neighbour risk for sustained workloads." }
+        {
+          "text": "Nanode (smallest, cheapest)",
+          "correct": false,
+          "explain": "Nanodes are too small for production packaging load."
+        },
+        {
+          "text": "Dedicated CPU (8 vCPU / 16 GB RAM minimum)",
+          "correct": true,
+          "explain": "Dedicated CPU reserves physical cores for predictable performance under sustained load — what JITP needs."
+        },
+        {
+          "text": "GPU Linode",
+          "correct": false,
+          "explain": "JITP is CPU-bound, not GPU-bound."
+        },
+        {
+          "text": "Shared CPU only",
+          "correct": false,
+          "explain": "Shared CPU has noisy-neighbour risk for sustained workloads."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Unified Streaming + Akamai partner page", "meta": "akamai.com/resources/partner-story/unified-streaming", "tag": "official" }],
+    "official": [
+      {
+        "title": "Unified Streaming + Akamai partner page",
+        "meta": "akamai.com/resources/partner-story/unified-streaming",
+        "tag": "official",
+        "url": "https://www.unified-streaming.com/"
+      }
+    ],
     "free": [
-      { "title": "Unified Origin documentation", "meta": "Free · docs.unified-streaming.com", "tag": "free" },
-      { "title": "VOD on Akamai Connected Cloud (Medium series)", "meta": "Free · 2-part walkthrough", "tag": "free" }
+      {
+        "title": "Unified Origin documentation",
+        "meta": "Free · docs.unified-streaming.com",
+        "tag": "free",
+        "url": "https://docs.unified-streaming.com/"
+      },
+      {
+        "title": "VOD on Akamai Connected Cloud (Medium series)",
+        "meta": "Free · 2-part walkthrough",
+        "tag": "free",
+        "url": "https://www.unified-streaming.com/"
+      }
     ],
     "paid": []
   }

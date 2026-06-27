@@ -6,38 +6,107 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Terraform is a blueprint. You don't build a house by walking around pointing at things — you draw the plan first, review it, then build. Change the blueprint, review the diff, build again. The blueprint is the source of truth." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "The Linode Terraform provider (`linode/linode`) manages all Akamai Cloud resources:\n\n- `linode_instance` — compute instances (Shared, Dedicated, GPU)\n- `linode_lke_cluster` — managed Kubernetes\n- `linode_object_storage_bucket` — S3-compatible storage\n- `linode_database_mysql_v2` / `_postgresql_v2` — managed databases\n- `linode_firewall` — cloud firewall rules\n- `linode_vpc` / `linode_vpc_subnet` — private networking\n- `linode_nodebalancer` — L4/L7 load balancers" },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Quick start: `terraform init` with `linode/linode ~> 2.30` provider, set `LINODE_TOKEN` env var, write your `.tf` files, `terraform plan` to review, `terraform apply` to provision. Store state remotely (S3-compatible backend on Object Storage) for team collaboration." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Terraform + Linode provider = every Akamai Cloud resource as code. Plan → review → apply. State is the source of truth.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Terraform is a blueprint. You don't build a house by walking around pointing at things — you draw the plan first, review it, then build. Change the blueprint, review the diff, build again. The blueprint is the source of truth."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "The Linode Terraform provider (`linode/linode`) manages all Akamai Cloud resources:\n\n- `linode_instance` — compute instances (Shared, Dedicated, GPU)\n- `linode_lke_cluster` — managed Kubernetes\n- `linode_object_storage_bucket` — S3-compatible storage\n- `linode_database_mysql_v2` / `_postgresql_v2` — managed databases\n- `linode_firewall` — cloud firewall rules\n- `linode_vpc` / `linode_vpc_subnet` — private networking\n- `linode_nodebalancer` — L4/L7 load balancers"
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Quick start: `terraform init` with `linode/linode ~> 2.30` provider, set `LINODE_TOKEN` env var, write your `.tf` files, `terraform plan` to review, `terraform apply` to provision. Store state remotely (S3-compatible backend on Object Storage) for team collaboration."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Terraform + Linode provider = every Akamai Cloud resource as code. Plan → review → apply. State is the source of truth.\""
+    }
   ],
   "quiz": [
     {
       "question": "What's the correct provider source for Linode in Terraform?",
       "options": [
-        { "text": "hashicorp/linode", "correct": false, "explain": "The provider is published by Linode, not HashiCorp." },
-        { "text": "linode/linode", "correct": true, "explain": "Source is linode/linode in the Terraform registry." },
-        { "text": "akamai/linode", "correct": false, "explain": "The provider is under the linode namespace, not akamai." },
-        { "text": "cloud/linode", "correct": false, "explain": "Not a valid provider namespace." }
+        {
+          "text": "hashicorp/linode",
+          "correct": false,
+          "explain": "The provider is published by Linode, not HashiCorp."
+        },
+        {
+          "text": "linode/linode",
+          "correct": true,
+          "explain": "Source is linode/linode in the Terraform registry."
+        },
+        {
+          "text": "akamai/linode",
+          "correct": false,
+          "explain": "The provider is under the linode namespace, not akamai."
+        },
+        {
+          "text": "cloud/linode",
+          "correct": false,
+          "explain": "Not a valid provider namespace."
+        }
       ]
     },
     {
       "question": "How should a team store Terraform state for Linode infrastructure?",
       "options": [
-        { "text": "Commit terraform.tfstate to Git", "correct": false, "explain": "Never commit state — it contains secrets. Use a remote backend." },
-        { "text": "S3-compatible backend pointing to Linode Object Storage", "correct": true, "explain": "Object Storage is S3-compatible, supports the Terraform S3 backend, and keeps state centralized and encrypted." },
-        { "text": "Each person keeps their own local state", "correct": false, "explain": "Local state causes conflicts when multiple people manage the same infrastructure." },
-        { "text": "Delete state after each apply", "correct": false, "explain": "Without state, Terraform can't track resources and will try to recreate everything." }
+        {
+          "text": "Commit terraform.tfstate to Git",
+          "correct": false,
+          "explain": "Never commit state — it contains secrets. Use a remote backend."
+        },
+        {
+          "text": "S3-compatible backend pointing to Linode Object Storage",
+          "correct": true,
+          "explain": "Object Storage is S3-compatible, supports the Terraform S3 backend, and keeps state centralized and encrypted."
+        },
+        {
+          "text": "Each person keeps their own local state",
+          "correct": false,
+          "explain": "Local state causes conflicts when multiple people manage the same infrastructure."
+        },
+        {
+          "text": "Delete state after each apply",
+          "correct": false,
+          "explain": "Without state, Terraform can't track resources and will try to recreate everything."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Linode Terraform Provider Docs", "meta": "registry.terraform.io/providers/linode", "tag": "official" }],
+    "official": [
+      {
+        "title": "Linode Terraform Provider Docs",
+        "meta": "registry.terraform.io/providers/linode",
+        "tag": "official",
+        "url": "https://registry.terraform.io/providers/linode/linode/latest/docs"
+      }
+    ],
     "free": [
-      { "title": "HashiCorp Learn — Terraform Basics", "meta": "Free · developer.hashicorp.com", "tag": "free" }
+      {
+        "title": "HashiCorp Learn — Terraform Basics",
+        "meta": "Free · developer.hashicorp.com",
+        "tag": "free",
+        "url": "https://developer.hashicorp.com/terraform/tutorials"
+      }
     ],
     "paid": [
-      { "title": "HashiCorp Terraform Associate Cert", "meta": "$70 · Vendor-neutral IaC cert", "tag": "paid" }
+      {
+        "title": "HashiCorp Terraform Associate Cert",
+        "meta": "$70 · Vendor-neutral IaC cert",
+        "tag": "paid",
+        "url": "https://www.hashicorp.com/certification/terraform-associate"
+      }
     ]
   }
 }

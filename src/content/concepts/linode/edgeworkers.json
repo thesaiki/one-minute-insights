@@ -6,36 +6,105 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "EdgeWorkers are receptionists at every Akamai office worldwide. They handle paperwork (auth, redirects, A/B routing) before bothering head office (your origin)." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "EdgeWorkers run JavaScript at every Akamai PoP — 4,000+ globally. They hook into the request lifecycle:\n\n- onClientRequest — before cache lookup\n- onOriginRequest — before forwarding to origin\n- onOriginResponse / onClientResponse — modify replies\n\nSub-millisecond cold start. CPU-time bounded. Pair with EdgeKV for global low-latency state." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Common workloads: JWT validation, geo-routing, A/B test variant selection, header rewriting, image transforms, valet-claim-check token patterns. For longer-running or Wasm workloads, use Akamai Functions (Fermyon Spin) on Linode instead." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"EdgeWorkers run JS at every PoP. Use them to make decisions before traffic ever hits your origin.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "EdgeWorkers are receptionists at every Akamai office worldwide. They handle paperwork (auth, redirects, A/B routing) before bothering head office (your origin)."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "EdgeWorkers run JavaScript at every Akamai PoP — 4,000+ globally. They hook into the request lifecycle:\n\n- onClientRequest — before cache lookup\n- onOriginRequest — before forwarding to origin\n- onOriginResponse / onClientResponse — modify replies\n\nSub-millisecond cold start. CPU-time bounded. Pair with EdgeKV for global low-latency state."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Common workloads: JWT validation, geo-routing, A/B test variant selection, header rewriting, image transforms, valet-claim-check token patterns. For longer-running or Wasm workloads, use Akamai Functions (Fermyon Spin) on Linode instead."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"EdgeWorkers run JS at every PoP. Use them to make decisions before traffic ever hits your origin.\""
+    }
   ],
   "quiz": [
     {
       "question": "Where does an EdgeWorker actually execute?",
       "options": [
-        { "text": "On a single central Linode", "correct": false, "explain": "EdgeWorkers run at every PoP — that's the point." },
-        { "text": "At the Akamai PoP closest to the user", "correct": true, "explain": "JavaScript runs at the edge — 4,000+ PoPs — for sub-ms latency." },
-        { "text": "On the user's browser", "correct": false, "explain": "That's a Service Worker, not an EdgeWorker." },
-        { "text": "On AWS Lambda@Edge", "correct": false, "explain": "EdgeWorkers are Akamai's native runtime, not Lambda@Edge." }
+        {
+          "text": "On a single central Linode",
+          "correct": false,
+          "explain": "EdgeWorkers run at every PoP — that's the point."
+        },
+        {
+          "text": "At the Akamai PoP closest to the user",
+          "correct": true,
+          "explain": "JavaScript runs at the edge — 4,000+ PoPs — for sub-ms latency."
+        },
+        {
+          "text": "On the user's browser",
+          "correct": false,
+          "explain": "That's a Service Worker, not an EdgeWorker."
+        },
+        {
+          "text": "On AWS Lambda@Edge",
+          "correct": false,
+          "explain": "EdgeWorkers are Akamai's native runtime, not Lambda@Edge."
+        }
       ]
     },
     {
       "question": "When should you reach for Akamai Functions (Spin) instead of EdgeWorkers?",
       "options": [
-        { "text": "When you need lower CPU-time limits", "correct": false, "explain": "Functions actually allow longer execution and richer runtimes." },
-        { "text": "When you need Wasm, longer execution, or Rust/Go/TS", "correct": true, "explain": "Functions = Fermyon Spin on Linode. Wasm-based, supports multiple languages, longer execution windows." },
-        { "text": "When you want JavaScript only", "correct": false, "explain": "EdgeWorkers are JS-only; Functions support more." },
-        { "text": "When the workload is read-only", "correct": false, "explain": "Read-only isn't the deciding factor — language and execution model are." }
+        {
+          "text": "When you need lower CPU-time limits",
+          "correct": false,
+          "explain": "Functions actually allow longer execution and richer runtimes."
+        },
+        {
+          "text": "When you need Wasm, longer execution, or Rust/Go/TS",
+          "correct": true,
+          "explain": "Functions = Fermyon Spin on Linode. Wasm-based, supports multiple languages, longer execution windows."
+        },
+        {
+          "text": "When you want JavaScript only",
+          "correct": false,
+          "explain": "EdgeWorkers are JS-only; Functions support more."
+        },
+        {
+          "text": "When the workload is read-only",
+          "correct": false,
+          "explain": "Read-only isn't the deciding factor — language and execution model are."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "EdgeWorkers Documentation", "meta": "techdocs.akamai.com/edgeworkers", "tag": "official" }],
+    "official": [
+      {
+        "title": "EdgeWorkers Documentation",
+        "meta": "techdocs.akamai.com/edgeworkers",
+        "tag": "official",
+        "url": "https://techdocs.akamai.com/edgeworkers/docs/welcome-to-edgeworkers"
+      }
+    ],
     "free": [
-      { "title": "EdgeWorkers examples on GitHub", "meta": "Free · Sample bundles", "tag": "free" },
-      { "title": "EdgeKV API reference", "meta": "Free · TechDocs", "tag": "free" }
+      {
+        "title": "EdgeWorkers examples on GitHub",
+        "meta": "Free · Sample bundles",
+        "tag": "free",
+        "url": "https://github.com/akamai/edgeworkers-examples"
+      },
+      {
+        "title": "EdgeKV API reference",
+        "meta": "Free · TechDocs",
+        "tag": "free",
+        "url": "https://techdocs.akamai.com/edgekv/docs/welcome-to-edgekv"
+      }
     ],
     "paid": []
   }

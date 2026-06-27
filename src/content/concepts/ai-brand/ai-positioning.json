@@ -6,35 +6,99 @@
   "duration": "1 MIN",
   "category": null,
   "steps": [
-    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Akamai is the highway system of the internet. AI is the new fleet of self-driving trucks. Akamai isn't building the trucks — they're making the highways smarter, adding weigh stations that check cargo (security), and building rest stops where trucks can refuel (inference at the edge)." },
-    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai's AI strategy has three pillars:\n\n- **AI for Akamai**: Using ML internally to improve CDN routing, threat detection, and cache efficiency\n- **Akamai for AI**: Providing infrastructure (GPU Linodes, Inference Cloud, Object Storage) for customers building AI\n- **AI at the edge**: Running inference workloads at edge PoPs via Akamai Functions and Neural Magic partnerships\n\nThe Fermyon acquisition (Dec 2025) and GPU capacity expansion signal commitment to becoming an AI compute platform, not just a CDN." },
-    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Key moves: $450M+ invested in cloud infrastructure, Fermyon acquisition for Wasm-based edge compute, partnerships with Neural Magic (CPU inference) and NVIDIA (GPU availability), Inference Cloud for model hosting. Competitors (Cloudflare Workers AI, AWS Bedrock) are doing similar — Akamai's differentiator is the 4,000+ PoP footprint for distributed inference." },
-    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Akamai's AI play: smarter CDN internally, GPU/inference infra for customers, and distributed AI at the edge. The PoP footprint is the moat.\"" }
+    {
+      "type": "analogy",
+      "emoji": "💡",
+      "label": "The Analogy",
+      "body": "Akamai is the highway system of the internet. AI is the new fleet of self-driving trucks. Akamai isn't building the trucks — they're making the highways smarter, adding weigh stations that check cargo (security), and building rest stops where trucks can refuel (inference at the edge)."
+    },
+    {
+      "type": "how",
+      "emoji": "🔧",
+      "label": "How It Works",
+      "body": "Akamai's AI strategy has three pillars:\n\n- **AI for Akamai**: Using ML internally to improve CDN routing, threat detection, and cache efficiency\n- **Akamai for AI**: Providing infrastructure (GPU Linodes, Inference Cloud, Object Storage) for customers building AI\n- **AI at the edge**: Running inference workloads at edge PoPs via Akamai Functions and Neural Magic partnerships\n\nThe Fermyon acquisition (Dec 2025) and GPU capacity expansion signal commitment to becoming an AI compute platform, not just a CDN."
+    },
+    {
+      "type": "real",
+      "emoji": "🌍",
+      "label": "Real World",
+      "body": "Key moves: $450M+ invested in cloud infrastructure, Fermyon acquisition for Wasm-based edge compute, partnerships with Neural Magic (CPU inference) and NVIDIA (GPU availability), Inference Cloud for model hosting. Competitors (Cloudflare Workers AI, AWS Bedrock) are doing similar — Akamai's differentiator is the 4,000+ PoP footprint for distributed inference."
+    },
+    {
+      "type": "takeaway",
+      "emoji": "🧠",
+      "label": null,
+      "body": "\"Akamai's AI play: smarter CDN internally, GPU/inference infra for customers, and distributed AI at the edge. The PoP footprint is the moat.\""
+    }
   ],
   "quiz": [
     {
       "question": "What are the three pillars of Akamai's AI strategy?",
       "options": [
-        { "text": "Build LLMs, sell LLMs, host LLMs", "correct": false, "explain": "Akamai isn't building foundation models — they're providing infrastructure and edge compute." },
-        { "text": "AI for Akamai (internal ML), Akamai for AI (customer infra), AI at the edge (distributed inference)", "correct": true, "explain": "Internal optimization, customer-facing GPU/inference infrastructure, and edge-distributed AI workloads." },
-        { "text": "Replace CDN with AI, replace WAF with AI, replace DNS with AI", "correct": false, "explain": "AI augments these products — it doesn't replace them." },
-        { "text": "Partner with OpenAI exclusively", "correct": false, "explain": "Akamai is model-agnostic — they provide infrastructure, not models." }
+        {
+          "text": "Build LLMs, sell LLMs, host LLMs",
+          "correct": false,
+          "explain": "Akamai isn't building foundation models — they're providing infrastructure and edge compute."
+        },
+        {
+          "text": "AI for Akamai (internal ML), Akamai for AI (customer infra), AI at the edge (distributed inference)",
+          "correct": true,
+          "explain": "Internal optimization, customer-facing GPU/inference infrastructure, and edge-distributed AI workloads."
+        },
+        {
+          "text": "Replace CDN with AI, replace WAF with AI, replace DNS with AI",
+          "correct": false,
+          "explain": "AI augments these products — it doesn't replace them."
+        },
+        {
+          "text": "Partner with OpenAI exclusively",
+          "correct": false,
+          "explain": "Akamai is model-agnostic — they provide infrastructure, not models."
+        }
       ]
     },
     {
       "question": "What's Akamai's key differentiator vs. Cloudflare Workers AI or AWS Bedrock?",
       "options": [
-        { "text": "Cheaper GPUs", "correct": false, "explain": "GPU pricing is competitive but not the primary differentiator." },
-        { "text": "4,000+ PoP footprint enabling distributed inference closer to users than any competitor", "correct": true, "explain": "No one else has 4,000+ edge locations. Distributed inference at that scale reduces latency for real-time AI workloads." },
-        { "text": "Proprietary AI models", "correct": false, "explain": "Akamai is infrastructure, not a model provider." },
-        { "text": "They don't compete — different markets", "correct": false, "explain": "Direct competition in edge compute and AI infrastructure." }
+        {
+          "text": "Cheaper GPUs",
+          "correct": false,
+          "explain": "GPU pricing is competitive but not the primary differentiator."
+        },
+        {
+          "text": "4,000+ PoP footprint enabling distributed inference closer to users than any competitor",
+          "correct": true,
+          "explain": "No one else has 4,000+ edge locations. Distributed inference at that scale reduces latency for real-time AI workloads."
+        },
+        {
+          "text": "Proprietary AI models",
+          "correct": false,
+          "explain": "Akamai is infrastructure, not a model provider."
+        },
+        {
+          "text": "They don't compete — different markets",
+          "correct": false,
+          "explain": "Direct competition in edge compute and AI infrastructure."
+        }
       ]
     }
   ],
   "resources": {
-    "official": [{ "title": "Akamai AI & ML Solutions", "meta": "akamai.com/solutions/ai", "tag": "official" }],
+    "official": [
+      {
+        "title": "Akamai AI & ML Solutions",
+        "meta": "akamai.com/solutions/ai",
+        "tag": "official",
+        "url": "https://www.akamai.com/solutions/ai"
+      }
+    ],
     "free": [
-      { "title": "Akamai 2025 Annual Report — AI Strategy", "meta": "Free · investor.akamai.com", "tag": "free" }
+      {
+        "title": "Akamai 2025 Annual Report — AI Strategy",
+        "meta": "Free · investor.akamai.com",
+        "tag": "free",
+        "url": "https://www.akamai.com/company/investor-relations"
+      }
     ],
     "paid": []
   }
