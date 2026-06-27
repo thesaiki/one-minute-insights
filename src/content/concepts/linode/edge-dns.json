@@ -1,0 +1,41 @@
+{
+  "id": "edge-dns",
+  "icon": "🧭",
+  "title": "Edge DNS",
+  "subtitle": "Authoritative DNS at the edge",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Edge DNS is the building directory in every lobby of Akamai's global network. Visitors get pointed to the right floor instantly — never the wrong one." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Edge DNS is authoritative DNS hosted across Akamai's anycast network. Features:\n\n- Anycast — every query hits the nearest PoP\n- DNSSEC support\n- 100% uptime SLA on Enterprise tier\n- API + Terraform provider for record management\n- Pairs with GTM for traffic steering" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Combine with GTM (Global Traffic Management) for geo / latency / weighted steering. Use Linode DNS Manager for simpler workloads — it's free and bundled with every Linode account." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Edge DNS = authoritative anycast DNS. Linode DNS Manager = free, simpler. GTM = the steering layer on top.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You need weighted DNS routing across two regions. What do you use?",
+      "options": [
+        { "text": "Just round-robin A records", "correct": false, "explain": "Round-robin doesn't do weights or health checks." },
+        { "text": "GTM (Global Traffic Management) on top of Edge DNS", "correct": true, "explain": "GTM adds health-checked, weighted, geo-aware steering on top of authoritative DNS." },
+        { "text": "NodeBalancer geo policy", "correct": false, "explain": "NodeBalancers are L4/L7 LBs, not global DNS steering." },
+        { "text": "EdgeWorker DNS rewrite", "correct": false, "explain": "EdgeWorkers don't serve DNS responses." }
+      ]
+    },
+    {
+      "question": "You're prototyping. Which DNS service should you reach for first?",
+      "options": [
+        { "text": "Edge DNS Enterprise", "correct": false, "explain": "Overkill for a prototype." },
+        { "text": "Linode DNS Manager (free, included)", "correct": true, "explain": "Bundled with every Linode account — perfect for dev and prototypes. Upgrade to Edge DNS when you need anycast / DNSSEC." },
+        { "text": "A self-hosted bind9 server", "correct": false, "explain": "You can, but why? DNS Manager is free." },
+        { "text": "Cloudflare DNS", "correct": false, "explain": "Works but defeats the point of staying within Akamai." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Edge DNS Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Linode DNS Manager guide", "meta": "Free · Bundled with Linode", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

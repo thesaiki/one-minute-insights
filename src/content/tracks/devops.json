@@ -1,0 +1,11 @@
+{
+  "id": "devops",
+  "theme": "teal",
+  "number": "TRACK 08",
+  "title": "DevOps & IaC",
+  "tagline": "Terraform, Ansible, CI/CD pipelines, GitOps, Packer images, and infrastructure monitoring — the DevOps toolkit for Akamai Connected Cloud.",
+  "cornerEmoji": "🔄",
+  "pills": ["Terraform", "Ansible", "CI/CD", "GitOps", "Monitoring"],
+  "conceptOrder": ["terraform-linode", "ansible-linode", "cicd-pipelines", "gitops-lke", "packer-images", "infra-monitoring"],
+  "categorized": false
+}

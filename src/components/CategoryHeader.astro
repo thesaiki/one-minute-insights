@@ -1,0 +1,17 @@
+---
+interface Props {
+  emoji: string;
+  label: string;
+  description: string;
+  count: number;
+}
+const { emoji, label, description, count } = Astro.props;
+---
+<div class="category-header">
+  <span class="category-emoji">{emoji}</span>
+  <div class="category-info">
+    <div class="category-label">{label}</div>
+    <div class="category-desc">{description}</div>
+  </div>
+  <span class="category-count">{count}</span>
+</div>

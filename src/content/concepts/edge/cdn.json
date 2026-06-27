@@ -1,0 +1,43 @@
+{
+  "id": "cdn",
+  "icon": "🏪",
+  "title": "Akamai CDN",
+  "subtitle": "A copy of your content in every neighbourhood",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A CDN is like having a local convenience store on every street corner. Customers don't walk to the central warehouse — they grab the closest copy of what they need." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai CDN caches content at 4,000+ PoPs globally. Configuration lives in Property Manager — a hierarchical rule tree. Common products:\n\n- Ion: full-site acceleration with mPulse RUM bundled\n- AMD (Adaptive Media Delivery): live + on-demand video, ABR\n- DSA (Dynamic Site Accelerator): TCP optimization for non-cacheable APIs" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Activate a Property to staging first, validate, then promote to production. Use Fast Purge for invalidation. Origin is usually Object Storage (static), a NodeBalancer (dynamic), or both via origin selection rules." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"CDN = your content closer to users. Property Manager = the rule tree that controls everything. Stage first, always.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You're shipping a new Property change. Correct order?",
+      "options": [
+        { "text": "Push directly to production", "correct": false, "explain": "Never. Always stage first." },
+        { "text": "Activate to staging → validate → promote to production", "correct": true, "explain": "Property Manager has separate staging and production networks. Stage first, validate, then promote." },
+        { "text": "Edit and refresh — Property Manager auto-applies", "correct": false, "explain": "No auto-apply. Activations are explicit and versioned." },
+        { "text": "Use Fast Purge to deploy", "correct": false, "explain": "Fast Purge is for cache invalidation, not deployment." }
+      ]
+    },
+    {
+      "question": "Your origin is Object Storage. You also need to fall back to a Linode for dynamic API calls. How?",
+      "options": [
+        { "text": "Run two Properties side-by-side", "correct": false, "explain": "A single Property can route to multiple origins." },
+        { "text": "Use origin selection rules — match path or host, route to the right origin", "correct": true, "explain": "Property Manager rules can select different origins per path/host. Static → Object Storage. /api → Linode/NodeBalancer." },
+        { "text": "Manual DNS round-robin", "correct": false, "explain": "You'd lose CDN intelligence and per-path routing." },
+        { "text": "It's not supported", "correct": false, "explain": "It's a standard pattern." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "CDN & Property Manager Docs", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Akamai CLI for property management", "meta": "Free · CLI + Terraform", "tag": "free" }
+    ],
+    "paid": [
+      { "title": "Akamai University courses", "meta": "Customer-only · Role-based", "tag": "paid" }
+    ]
+  }
+}

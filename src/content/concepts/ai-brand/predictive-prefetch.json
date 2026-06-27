@@ -1,0 +1,41 @@
+{
+  "id": "predictive-prefetch",
+  "icon": "🔮",
+  "title": "AI-Powered CDN (Predictive Prefetch)",
+  "subtitle": "The CDN that knows what you'll click next",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A regular CDN waits for you to order coffee before pouring. An AI-powered CDN watches you walk in, recognises you're a latte person, and starts steaming the milk before you reach the counter." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai's Predictive Prefetch (part of Ion) uses ML models trained on real navigation patterns to predict which assets a user will need next. The CDN pushes resources to the browser cache before the user clicks.\n\n- Models trained on anonymised mPulse RUM data\n- Per-page prediction: which links/images are likely next\n- No origin changes required — config in Property Manager\n- Pairs with HTTP/2 Server Push and Resource Hints (preload, prefetch)" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "E-commerce product listing → product detail page transition: Predictive Prefetch pre-loads hero images and JS bundles for the top-3 most-likely-clicked products. Result: perceived page load drops by 30-50% for predicted navigations. Works best on high-traffic sites where the model has strong signal." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Predictive Prefetch = ML-driven pre-loading. The CDN anticipates what users need next, cutting perceived load time by up to 50%.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What data does Predictive Prefetch use to train its models?",
+      "options": [
+        { "text": "Server access logs only", "correct": false, "explain": "Server logs miss client-side navigation patterns. RUM captures actual user journeys." },
+        { "text": "Anonymised mPulse RUM data — real user navigation patterns", "correct": true, "explain": "mPulse beacons capture what users actually click, enabling accurate next-page prediction." },
+        { "text": "Manual URL lists from the customer", "correct": false, "explain": "That's static prefetch — Predictive Prefetch is ML-driven and automatic." },
+        { "text": "Google Analytics data", "correct": false, "explain": "It uses Akamai's own RUM data (mPulse), not third-party analytics." }
+      ]
+    },
+    {
+      "question": "Does Predictive Prefetch require origin changes?",
+      "options": [
+        { "text": "Yes — you need a new API endpoint", "correct": false, "explain": "No origin changes. Configuration is entirely in Property Manager." },
+        { "text": "No — it's configured in Property Manager with no origin changes", "correct": true, "explain": "Enable in the rule tree, and the CDN handles prediction and prefetching at the edge." },
+        { "text": "Yes — you need to implement a recommendation engine", "correct": false, "explain": "Akamai's ML models handle prediction. No customer-side engine needed." },
+        { "text": "Only if you use React", "correct": false, "explain": "Framework-agnostic. Works with any web stack." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Ion Predictive Prefetch Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Akamai Blog — Predictive Content", "meta": "Free · akamai.com/blog", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

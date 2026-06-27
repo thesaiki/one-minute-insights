@@ -1,0 +1,42 @@
+{
+  "id": "ml-pipelines",
+  "icon": "🔬",
+  "title": "ML Pipeline Architectures",
+  "subtitle": "From data to deployment, automated",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "An ML pipeline is a factory assembly line. Raw materials (data) enter at one end, pass through stations (cleaning, feature engineering, training, evaluation), and a finished product (deployed model) rolls off the other end. Automate the line, and every new batch of data produces a better product." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Key pipeline components on Linode:\n\n- **Data ingestion** — pull from Object Storage, APIs, or databases\n- **Processing** — Spark/Dask on LKE for distributed transforms\n- **Training** — GPU Linodes with PyTorch/TensorFlow\n- **Experiment tracking** — MLflow or Weights & Biases (self-hosted on a Linode)\n- **Model registry** — MLflow or Object Storage for versioned checkpoints\n- **Serving** — vLLM/TGI on GPU Linodes behind a NodeBalancer" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Minimal pipeline: data in Object Storage → training job on a GPU Linode triggered by CI/CD → model checkpoint saved back to Object Storage → vLLM picks up the latest checkpoint. Use GitHub Actions or Argo Workflows on LKE for orchestration. MLflow on a Shared Linode tracks experiments." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Object Storage for data + GPU Linodes for training + LKE for orchestration + NodeBalancer for serving = a complete ML pipeline on Akamai infrastructure.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "Where should you store training data and model checkpoints in a Linode ML pipeline?",
+      "options": [
+        { "text": "On the GPU instance's local disk", "correct": false, "explain": "Local disk doesn't persist across instance rebuilds. Use Object Storage for durability." },
+        { "text": "Object Storage — S3-compatible, durable, accessible from any instance", "correct": true, "explain": "Object Storage provides durable, versioned storage accessible from any Linode. Perfect for datasets and checkpoints." },
+        { "text": "In the database", "correct": false, "explain": "Databases aren't designed for large binary blobs like model weights." },
+        { "text": "Git LFS", "correct": false, "explain": "Git LFS works for small models but doesn't scale for production ML data." }
+      ]
+    },
+    {
+      "question": "You want to orchestrate a multi-step ML pipeline on Linode. What's the recommended approach?",
+      "options": [
+        { "text": "Cron jobs on a single Linode", "correct": false, "explain": "Cron works for simple schedules but lacks dependency management, retries, and monitoring." },
+        { "text": "Argo Workflows or Kubeflow Pipelines on LKE", "correct": true, "explain": "Kubernetes-native workflow engines handle dependencies, retries, GPU scheduling, and monitoring." },
+        { "text": "Manual SSH and run scripts", "correct": false, "explain": "Not reproducible or scalable." },
+        { "text": "EdgeWorkers to chain API calls", "correct": false, "explain": "EdgeWorkers run lightweight JS at the CDN edge — not suitable for ML orchestration." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Linode Guides — Machine Learning", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "MLflow Documentation", "meta": "Free · mlflow.org", "tag": "free" },
+      { "title": "Argo Workflows", "meta": "Free · argoproj.github.io", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

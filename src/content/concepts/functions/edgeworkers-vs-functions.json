@@ -1,0 +1,39 @@
+{
+  "id": "edgeworkers-vs-functions",
+  "icon": "⚖️",
+  "title": "EdgeWorkers vs. Akamai Functions",
+  "subtitle": "When to reach for which serverless option",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "EdgeWorkers are the receptionist at every door — fast, JS-only, handles hellos and routing. Akamai Functions is the back office — multi-language, longer-running, keeps the books and serves richer logic." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Both are serverless, but they target different problems:\n\nEdgeWorkers:\n- JavaScript only\n- Runs at every Akamai PoP (4,000+ locations)\n- Bound CPU time per request\n- Hooks into the CDN request lifecycle (onClientRequest, onOriginRequest, etc.)\n\nAkamai Functions:\n- Rust, Go, JS, Python — anything compiling to Wasm\n- Runs across Akamai's core and distributed regions\n- Longer execution windows\n- Built-in KV store, SCAN APIs, outbound HTTP — the back-office story\n- Integrates with Property Manager, GTM, Object Storage, Managed Databases" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "They're complementary. A canonical pattern: EdgeWorker validates a token at the PoP (microseconds), then routes valid requests to an Akamai Function that does richer logic — DB query, AI inference call, multi-step workflow. The token-validation/business-logic split is the textbook combo." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"EdgeWorkers = JS at every PoP for ultra-thin logic. Functions = multi-language, richer back-office logic. Pair them.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You need to validate a JWT on every request before letting it through to your origin. Which fits best?",
+      "options": [
+        { "text": "Akamai Functions — call from origin", "correct": false, "explain": "You want this at the PoP, before the origin is reached." },
+        { "text": "EdgeWorker — runs at every PoP, sub-ms, perfect for token checks", "correct": true, "explain": "Token validation is exactly the EdgeWorker sweet spot: JS at the PoP, hooks onClientRequest, blocks invalid traffic before it hits origin." },
+        { "text": "A Linode running Node.js", "correct": false, "explain": "Adds origin round-trip latency — defeats the purpose." },
+        { "text": "Object Storage", "correct": false, "explain": "Storage doesn't validate tokens." }
+      ]
+    },
+    {
+      "question": "You need a Rust function that calls a Postgres database, transforms the result, and returns JSON. EdgeWorker or Akamai Functions?",
+      "options": [
+        { "text": "EdgeWorker — JavaScript only, no Rust", "correct": false, "explain": "Correct that EdgeWorkers are JS-only — but the answer is to use Functions." },
+        { "text": "Akamai Functions — Rust support, longer execution, outbound DB calls", "correct": true, "explain": "Rust + DB call + transformation = back-office logic. Akamai Functions is built for it." },
+        { "text": "Run Rust on a Linode VM", "correct": false, "explain": "Works, but unnecessary for serverless workloads. Functions scales to zero." },
+        { "text": "It's impossible without Lambda", "correct": false, "explain": "Akamai Functions handles this natively." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Akamai Functions vs. EdgeWorkers (docs)", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [{ "title": "Build a serverless URL shortener (blog)", "meta": "Free · akamai.com/blog · Rust + Spin", "tag": "free" }],
+    "paid": []
+  }
+}

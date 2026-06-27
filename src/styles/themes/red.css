@@ -1,0 +1,32 @@
+/* Media/Streaming theme (red) — Track 06 */
+.red-mode {
+  --accent: #ef4444;
+  --accent-bright: #f87171;
+  --accent-deep: #7f1d1d;
+  --accent-glow: rgba(239, 68, 68, 0.15);
+  --bg-card-2: #1c0808;
+  --border: #2e0e0e;
+  --border-strong: #4a1616;
+}
+
+.red-mode .lesson-body code { background: rgba(239, 68, 68, 0.12); color: var(--accent-bright); }
+.red-mode .takeaway-quote { border-color: rgba(239, 68, 68, 0.3); }
+.red-mode .quiz-option.correct { background: rgba(239, 68, 68, 0.08); border-color: var(--accent); color: var(--accent-bright); }
+.red-mode .quiz-option.correct .opt-marker { background: var(--accent); border-color: var(--accent); color: #1a0000; }
+.red-mode .feedback-box.correct { background: rgba(239, 68, 68, 0.05); border-color: var(--accent); }
+.red-mode .feedback-box.correct .feedback-title { color: var(--accent-bright); }
+.red-mode .progress-pip.active, .red-mode .progress-pip.complete { background: var(--accent); }
+.red-mode .action-btn { background: linear-gradient(135deg, var(--accent-bright), var(--accent)); color: #1a0000; border-color: var(--accent-bright); }
+.red-mode .action-btn.outline { background: transparent; color: var(--accent-bright); border-color: var(--accent); }
+.red-mode .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-bright)); }
+.red-mode .resource-tag.free { background: rgba(239, 68, 68, 0.15); color: var(--accent-bright); border-color: rgba(239, 68, 68, 0.3); }
+.red-mode .play-icon { background: rgba(239, 68, 68, 0.1); color: var(--accent); }
+.red-mode .play-icon.done { background: var(--accent); color: #1a0000; }
+.red-mode .concept-row.completed { border-color: rgba(239, 68, 68, 0.25); background: rgba(239, 68, 68, 0.05); }
+.red-mode .concept-row.completed .concept-title { color: var(--accent-bright); }
+.red-mode .back-btn { color: var(--accent); }
+.red-mode .back-btn:hover { border-color: var(--accent); }
+.red-mode .topbar-title, .red-mode .topbar-meta { color: var(--accent); }
+.red-mode .streak { background: linear-gradient(160deg, #4a1616, #2e0e0e); border-color: #6b1f1f; }
+.red-mode .streak-label { color: var(--accent-bright); }
+.red-mode .result-score.perfect { color: var(--accent); }

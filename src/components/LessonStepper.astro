@@ -1,0 +1,52 @@
+---
+interface Step {
+  type: string;
+  emoji: string;
+  label: string | null;
+  body: string;
+}
+
+interface Props {
+  step: Step;
+  stepIndex: number;
+  totalSteps: number;
+}
+
+const { step, stepIndex, totalSteps } = Astro.props;
+
+/**
+ * Parse lesson body text into HTML.
+ * Handles paragraph breaks (\n\n), bullet lists (lines starting with - ), and inline code.
+ */
+function formatBody(text: string): string {
+  const parts = text.split('\n\n');
+  return parts.map(part => {
+    const lines = part.split('\n');
+    if (lines[0].startsWith('- ')) {
+      return `<ul>${lines.map(l => `<li>${formatInline(l.slice(2))}</li>`).join('')}</ul>`;
+    }
+    return `<p>${formatInline(part.replace(/\n/g, '<br>'))}</p>`;
+  }).join('');
+}
+
+function formatInline(text: string): string {
+  return text.replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+
+const isTakeaway = step.type === 'takeaway';
+const bodyHtml = isTakeaway ? '' : formatBody(step.body);
+---
+
+<div class="lesson-step-label">
+  <span class="lesson-step-emoji">{step.emoji}</span>
+  <span>{step.label || 'Take Away'}</span>
+</div>
+
+{isTakeaway ? (
+  <div class="takeaway-quote">
+    <div class="takeaway-emoji">{step.emoji}</div>
+    <div class="takeaway-text">{step.body}</div>
+  </div>
+) : (
+  <div class="lesson-body" set:html={bodyHtml} />
+)}

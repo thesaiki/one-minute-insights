@@ -1,0 +1,11 @@
+{
+  "id": "linode",
+  "theme": "green",
+  "number": "TRACK 01",
+  "title": "Akamai Cloud",
+  "tagline": "Linodes, LKE, Object Storage, NodeBalancers, EdgeWorkers — the building blocks every solutions architect needs cold.",
+  "cornerEmoji": "☁️",
+  "pills": ["Compute", "LKE", "Storage", "Networking", "Edge"],
+  "conceptOrder": ["linodes", "lke", "object-storage", "nodebalancer", "edgeworkers", "edge-dns", "block-storage", "vpc-vlan"],
+  "categorized": false
+}

@@ -1,0 +1,42 @@
+{
+  "id": "gitops-lke",
+  "icon": "🔄",
+  "title": "GitOps with LKE",
+  "subtitle": "Git as the single source of truth for infrastructure",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "GitOps is like having a GPS that constantly recalculates your route. Git is the destination. The GitOps controller compares where you are (cluster state) with where you should be (Git repo) and steers you back on track — automatically." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "GitOps controllers for LKE:\n\n- **ArgoCD** — declarative, Kubernetes-native CD. Watches a Git repo, syncs manifests to LKE.\n- **Flux** — toolkit approach, composable controllers for source, kustomize, Helm.\n\nWorkflow: push manifest changes to Git → controller detects diff → applies to cluster. No `kubectl apply` from laptops. Drift detection: if someone manually edits a resource, the controller reverts it." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Install ArgoCD on LKE: `kubectl create namespace argocd && kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml`. Point it at your Git repo. Every PR merge auto-deploys. Rollback = git revert." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"ArgoCD or Flux on LKE. Git is the source of truth. Push to deploy, revert to rollback. No manual kubectl from laptops.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What's the key difference between GitOps and traditional CI/CD?",
+      "options": [
+        { "text": "GitOps doesn't use Git", "correct": false, "explain": "Git is literally in the name — it's the core." },
+        { "text": "GitOps uses a pull model — a controller in the cluster pulls desired state from Git", "correct": true, "explain": "Traditional CI/CD pushes changes to the cluster. GitOps pulls: the cluster watches Git and self-corrects." },
+        { "text": "GitOps is for monoliths, CI/CD is for microservices", "correct": false, "explain": "GitOps works especially well with microservices and Kubernetes." },
+        { "text": "They're the same thing", "correct": false, "explain": "The pull-based reconciliation loop is what makes GitOps distinct." }
+      ]
+    },
+    {
+      "question": "Someone manually edited a Deployment on your LKE cluster. What does ArgoCD do?",
+      "options": [
+        { "text": "Nothing — manual changes are respected", "correct": false, "explain": "ArgoCD detects drift between Git and cluster state." },
+        { "text": "Detects the drift and reverts the change to match Git (if auto-sync is enabled)", "correct": true, "explain": "ArgoCD continuously reconciles cluster state with Git. Manual edits are overwritten." },
+        { "text": "Deletes the entire namespace", "correct": false, "explain": "ArgoCD reverts only the drifted resources, not everything." },
+        { "text": "Sends an email to the admin", "correct": false, "explain": "ArgoCD can alert, but its primary action is reconciliation, not notification." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "LKE Documentation", "meta": "techdocs.akamai.com/lke", "tag": "official" }],
+    "free": [
+      { "title": "ArgoCD Documentation", "meta": "Free · argo-cd.readthedocs.io", "tag": "free" },
+      { "title": "Flux Documentation", "meta": "Free · fluxcd.io", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

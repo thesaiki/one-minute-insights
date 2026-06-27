@@ -1,0 +1,39 @@
+{
+  "id": "apicontext",
+  "icon": "🛰️",
+  "title": "APIContext",
+  "subtitle": "Synthetic API monitoring & compliance testing",
+  "duration": "1 MIN",
+  "category": "non-media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "APIContext provides synthetic monitoring and conformance testing for APIs. They run scripted tests from real-world client locations and check both performance (latency, error rate) and correctness (schema, regulatory conformance — useful in financial services).\n\nDifferent from RUM (which watches real users). Synthetic = continuous controlled tests, even when no users are around." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "APIContext launched synthetic test runners from 24 Akamai availability zones. Their backend uses Linode services across the board: LKE, StackScripts, NodeBalancers, Managed Databases, and Terraform for IaC.\n\nResult: external API performance testing from real Akamai PoPs, mirroring where actual customers live." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "API-heavy enterprises: fintech, open banking, B2B SaaS, anyone with regulatory conformance requirements (PSD2, FAPI). Position alongside mPulse: mPulse for browser-side real users, APIContext for backend-API synthetic + conformance." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"APIContext = synthetic API testing from 24 Akamai zones. Pair with mPulse for full real + synthetic coverage.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A fintech needs continuous PSD2 conformance proof for their open-banking APIs. Which QCP?",
+      "options": [
+        { "text": "mPulse alone", "correct": false, "explain": "mPulse is browser-side RUM, not API conformance." },
+        { "text": "APIContext — synthetic + conformance testing from Akamai zones", "correct": true, "explain": "Designed for exactly this: continuous conformance against API specs and regulatory schemas." },
+        { "text": "Hydrolix", "correct": false, "explain": "Hydrolix observes; APIContext actively probes and validates schemas." },
+        { "text": "Yospace", "correct": false, "explain": "Video ad insertion — wrong domain." }
+      ]
+    },
+    {
+      "question": "Synthetic vs. RUM — when do you need both?",
+      "options": [
+        { "text": "They're identical, just pick one", "correct": false, "explain": "They measure different things." },
+        { "text": "Synthetic catches issues 24/7 even with no traffic; RUM tells you what real users experience", "correct": true, "explain": "Use both: synthetic for continuous SLA proof, RUM for real-world experience." },
+        { "text": "RUM is enough on its own", "correct": false, "explain": "RUM only fires when users hit you. Off-hours regressions slip through." },
+        { "text": "Synthetic is enough on its own", "correct": false, "explain": "Synthetic doesn't reflect actual user device/network mix." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "APIContext + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
+    "free": [{ "title": "APIContext platform overview", "meta": "Free · apicontext.com", "tag": "free" }],
+    "paid": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "what-are-functions",
+  "icon": "⚡",
+  "title": "What Akamai Functions Is",
+  "subtitle": "WebAssembly-based serverless, globally distributed",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Akamai Functions is a microwave oven at every Akamai location worldwide. Drop in your code, it heats up in less than a millisecond, serves the meal, cools down. No warmup, no idle bill." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai Functions is the function-as-a-service product built on the Spin/Wasmtime engine. Akamai acquired Fermyon (the company behind Spin) in December 2025, so what was \"Fermyon Wasm Functions on Akamai\" is now Akamai Functions.\n\nKey traits:\n\n- Sub-millisecond cold start (Spin apps boot in ~0.5ms)\n- Tiny binaries (a Rust hello-world is ~280 KB)\n- Wasmtime sandbox — stronger isolation than V8 isolates or containers\n- Deploys globally across Akamai's core and distributed regions in seconds" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Generally available since November 2025, scaled to 75M requests/sec in production. Used by media, gaming, and commerce brands. Deploy with: `spin aka deploy`. Same Spin app runs locally, on Kubernetes (SpinKube), and on Akamai Functions — no rewrite." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Akamai Functions = sub-millisecond Wasm serverless, globally distributed. One command deploys everywhere.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "How fast is the Akamai Functions cold start?",
+      "options": [
+        { "text": "Several seconds (typical container)", "correct": false, "explain": "Containers take seconds; Wasm is in a different class." },
+        { "text": "About 100-200 milliseconds (typical Lambda)", "correct": false, "explain": "Lambda cold starts in 100s of ms. Wasm is sub-millisecond." },
+        { "text": "Sub-millisecond (~0.5 ms)", "correct": true, "explain": "Spin apps cold-start in ~0.5 ms. Effectively no cold-start tax." },
+        { "text": "It depends on the region", "correct": false, "explain": "It's sub-ms everywhere — the distributed runtime is the point." }
+      ]
+    },
+    {
+      "question": "Akamai acquired Fermyon in December 2025. What does that mean for the product roadmap?",
+      "options": [
+        { "text": "The product is being shut down", "correct": false, "explain": "Opposite — it's being deepened with Akamai's platform integrations." },
+        { "text": "Spin is now proprietary and closed-source", "correct": false, "explain": "Spin and SpinKube remain open-source CNCF projects. Fermyon's co-founders continue to lead them inside Akamai." },
+        { "text": "Fermyon Wasm Functions becomes Akamai Functions, deeply integrated with Akamai's edge, security, and Inference Cloud", "correct": true, "explain": "The product is being rebranded and integrated with Akamai's broader stack — CDN, AAP, Inference Cloud, Object Storage." },
+        { "text": "It's now AWS Lambda compatible", "correct": false, "explain": "No — it's its own runtime based on Wasmtime, not Lambda." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Akamai Functions product page", "meta": "akamai.com/products/functions", "tag": "official" }],
+    "free": [
+      { "title": "Akamai acquires Fermyon (press release)", "meta": "Free · akamai.com/newsroom", "tag": "free" },
+      { "title": "Spin framework on GitHub", "meta": "Free · CNCF sandbox project", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

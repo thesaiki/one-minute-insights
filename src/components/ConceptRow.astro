@@ -1,0 +1,45 @@
+---
+interface Props {
+  id: string;
+  icon: string;
+  title: string;
+  subtitle: string;
+  trackId: string;
+}
+const { id, icon, title, subtitle, trackId } = Astro.props;
+---
+<a href={`/lessons/${trackId}/${id}`} class="concept-row" data-concept={id} data-track={trackId}>
+  <div class="concept-icon">{icon}</div>
+  <div class="concept-text">
+    <div class="concept-title">{title}</div>
+    <div class="concept-sub">{subtitle}</div>
+  </div>
+  <div class="play-icon">&#9654;</div>
+</a>
+
+<script>
+  // Client-side: mark completed concepts from localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const progress = JSON.parse(localStorage.getItem('linodestick:progress') || '{}');
+      document.querySelectorAll<HTMLElement>('.concept-row').forEach(row => {
+        const trackId = row.dataset.track;
+        const conceptId = row.dataset.concept;
+        if (trackId && conceptId && progress[trackId]?.[conceptId]?.completed) {
+          row.classList.add('completed');
+          const playIcon = row.querySelector('.play-icon');
+          if (playIcon) {
+            playIcon.classList.add('done');
+            playIcon.textContent = '✓';
+          }
+          const titleEl = row.querySelector('.concept-title');
+          if (titleEl) {
+            // completed title styling handled by CSS
+          }
+        }
+      });
+    } catch {
+      // Ignore localStorage errors
+    }
+  });
+</script>

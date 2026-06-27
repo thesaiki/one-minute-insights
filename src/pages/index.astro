@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrackCard from '../components/TrackCard.astro';
+import { getAllTracks } from '../lib/data';
+
+const tracks = getAllTracks();
+---
+<BaseLayout>
+  <div class="hero">
+    <span class="eyebrow">ONE MINUTE INSIGHTS</span>
+    <h1>Concepts that<br><em>actually stick.</em></h1>
+    <p>1-minute concepts. Real analogies. Quizzes that lock it in. Pick your track.</p>
+  </div>
+
+  {tracks.map(track => (
+    <TrackCard
+      id={track.id}
+      theme={track.theme}
+      number={track.number}
+      title={track.title}
+      tagline={track.tagline}
+      cornerEmoji={track.cornerEmoji}
+      pills={track.pills}
+      conceptCount={track.concepts.length}
+    />
+  ))}
+
+  <div class="foot-note">1 concept &middot; 1 quiz &middot; every day</div>
+</BaseLayout>

@@ -1,0 +1,39 @@
+{
+  "id": "neural-magic",
+  "icon": "🧠",
+  "title": "Neural Magic",
+  "subtitle": "Deep-learning inference on CPUs (no GPU required)",
+  "duration": "1 MIN",
+  "category": "non-media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Neural Magic's software accelerates deep learning inference on CPU-based servers — no GPU required. They use automated model sparsification (pruning + quantization) to compress models so inference runs efficiently on commodity CPUs.\n\nAkamai and Neural Magic share MIT origins. Both HQ'd in Cambridge, Massachusetts." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Neural Magic's DeepSparse engine runs on standard Linode CPU plans (Dedicated CPU). For workloads that fit a sparsified model, this is dramatically cheaper than GPU plans.\n\nFits Akamai's distributed inference story: small inference workloads at every PoP, on CPUs that are already there, instead of rare and expensive GPU capacity." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Workloads where GPU cost is prohibitive: real-time fraud detection, recommendation scoring, document classification, edge anomaly detection. Especially compelling at the edge where GPUs are scarce but CPUs are everywhere." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Neural Magic = AI inference on CPUs. Position when GPU cost or scarcity is the blocker.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A customer needs real-time fraud-scoring inference globally but can't justify GPU cost in 30 regions. Which QCP fits?",
+      "options": [
+        { "text": "Neural Magic — sparsified models running on CPU Linodes everywhere", "correct": true, "explain": "CPUs are everywhere; GPUs are not. Sparsification makes CPU inference fast enough for real-time." },
+        { "text": "GPU Linodes alone", "correct": false, "explain": "That's the cost problem they're trying to solve." },
+        { "text": "Hydrolix", "correct": false, "explain": "Observability — wrong layer." },
+        { "text": "EZDRM", "correct": false, "explain": "Video DRM — wrong domain entirely." }
+      ]
+    },
+    {
+      "question": "How does Neural Magic's approach align with Akamai's distributed-inference vision?",
+      "options": [
+        { "text": "It centralises inference in one region", "correct": false, "explain": "Opposite — it enables distribution." },
+        { "text": "CPUs are widely available across 30+ Akamai regions; GPUs aren't. Sparsification puts inference everywhere CPUs already are", "correct": true, "explain": "Inference distribution requires hardware ubiquity. CPUs achieve that; GPUs don't." },
+        { "text": "It requires all-new GPU hardware", "correct": false, "explain": "Specifically the opposite — no new GPU hardware needed." },
+        { "text": "It only runs on edge devices", "correct": false, "explain": "Runs on Linode CPU plans — server-side, just on commodity hardware." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Neural Magic + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
+    "free": [{ "title": "DeepSparse on GitHub", "meta": "Free · open source", "tag": "free" }],
+    "paid": []
+  }
+}

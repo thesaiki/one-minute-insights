@@ -1,0 +1,39 @@
+{
+  "id": "kv-store",
+  "icon": "🗝️",
+  "title": "Built-in KV Store",
+  "subtitle": "Globally available key-value for Functions",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "The Functions KV store is the Post-it note pad at every desk. Stash a token, redirect rule, or feature flag — every Function instance worldwide reads it instantly." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai Functions ships with a built-in KV store accessible via the Spin SDK in any supported language:\n\n```\nlet store = Store::open_default()?;\nstore.set(\"user:42\", b\"{\\\"plan\\\":\\\"pro\\\"}\")?;\nlet val = store.get(\"user:42\")?;\n```\n\nKey features:\n- Globally readable from any Function instance\n- Per-component isolation (one Function can't read another's keys without a binding)\n- Designed for read-heavy workloads (redirects, feature flags, configuration, session lookups)" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Canonical use: managing 100,000+ redirect rules. Pre-Functions, this either sat on origin (slow) or hardcoded into the EdgeWorker (un-updateable without a deploy). With Functions KV: rules live in the store, the Function looks them up in microseconds, and updates propagate without a deploy.\n\nNot a primary database — pair with Linode Managed Postgres for source of truth, treat KV as the read-fast cache." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Functions KV = read-fast KV everywhere your Functions run. Cache, flags, redirects, tokens. Not a primary DB.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You're managing 1M URL redirect rules for a major site migration. Where do you store them?",
+      "options": [
+        { "text": "Hardcoded in the EdgeWorker", "correct": false, "explain": "Every change becomes a deploy. Doesn't scale to 1M rules." },
+        { "text": "Functions KV store, looked up per request by the Function", "correct": true, "explain": "Built for this. Rules stored once, read in microseconds globally. Updates propagate without a deploy." },
+        { "text": "A single Postgres instance", "correct": false, "explain": "Adds latency on every request. KV is the right tier in front of Postgres." },
+        { "text": "In-memory only — load on cold start", "correct": false, "explain": "Loading 1M rules on every cold start is expensive. KV avoids it." }
+      ]
+    },
+    {
+      "question": "How does the Functions KV store relate to EdgeKV?",
+      "options": [
+        { "text": "They're the same product", "correct": false, "explain": "Different products for different runtimes." },
+        { "text": "Functions KV is for Functions; EdgeKV is for EdgeWorkers — same idea (low-latency KV), different runtimes", "correct": true, "explain": "Both are read-fast KV stores. EdgeKV pairs with EdgeWorkers (PoP-level JS). Functions KV pairs with Akamai Functions (Wasm at core/distributed regions)." },
+        { "text": "EdgeKV doesn't exist anymore", "correct": false, "explain": "EdgeKV is still very much alive — it's the EdgeWorker companion." },
+        { "text": "Functions KV replaces Postgres", "correct": false, "explain": "KV is read-fast, not transactional. Pair with Postgres for source of truth." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Functions KV documentation", "meta": "developer.fermyon.com/wasm-functions", "tag": "official" }],
+    "free": [{ "title": "Spin KV reference", "meta": "Free · developer.fermyon.com", "tag": "free" }],
+    "paid": []
+  }
+}

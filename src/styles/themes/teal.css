@@ -1,0 +1,32 @@
+/* DevOps theme (teal) — Track 08 */
+.teal-mode {
+  --accent: #14b8a6;
+  --accent-bright: #2dd4bf;
+  --accent-deep: #134e4a;
+  --accent-glow: rgba(20, 184, 166, 0.15);
+  --bg-card-2: #081814;
+  --border: #0e2e28;
+  --border-strong: #164a3e;
+}
+
+.teal-mode .lesson-body code { background: rgba(20, 184, 166, 0.12); color: var(--accent-bright); }
+.teal-mode .takeaway-quote { border-color: rgba(20, 184, 166, 0.3); }
+.teal-mode .quiz-option.correct { background: rgba(20, 184, 166, 0.08); border-color: var(--accent); color: var(--accent-bright); }
+.teal-mode .quiz-option.correct .opt-marker { background: var(--accent); border-color: var(--accent); color: #001a14; }
+.teal-mode .feedback-box.correct { background: rgba(20, 184, 166, 0.05); border-color: var(--accent); }
+.teal-mode .feedback-box.correct .feedback-title { color: var(--accent-bright); }
+.teal-mode .progress-pip.active, .teal-mode .progress-pip.complete { background: var(--accent); }
+.teal-mode .action-btn { background: linear-gradient(135deg, var(--accent-bright), var(--accent)); color: #001a14; border-color: var(--accent-bright); }
+.teal-mode .action-btn.outline { background: transparent; color: var(--accent-bright); border-color: var(--accent); }
+.teal-mode .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-bright)); }
+.teal-mode .resource-tag.free { background: rgba(20, 184, 166, 0.15); color: var(--accent-bright); border-color: rgba(20, 184, 166, 0.3); }
+.teal-mode .play-icon { background: rgba(20, 184, 166, 0.1); color: var(--accent); }
+.teal-mode .play-icon.done { background: var(--accent); color: #001a14; }
+.teal-mode .concept-row.completed { border-color: rgba(20, 184, 166, 0.25); background: rgba(20, 184, 166, 0.05); }
+.teal-mode .concept-row.completed .concept-title { color: var(--accent-bright); }
+.teal-mode .back-btn { color: var(--accent); }
+.teal-mode .back-btn:hover { border-color: var(--accent); }
+.teal-mode .topbar-title, .teal-mode .topbar-meta { color: var(--accent); }
+.teal-mode .streak { background: linear-gradient(160deg, #164a3e, #0e2e28); border-color: #1f6b5a; }
+.teal-mode .streak-label { color: var(--accent-bright); }
+.teal-mode .result-score.perfect { color: var(--accent); }

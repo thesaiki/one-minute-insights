@@ -1,0 +1,15 @@
+{
+  "id": "partners",
+  "theme": "amber",
+  "number": "TRACK 03",
+  "title": "Qualified Compute Partners",
+  "tagline": "The QCP ecosystem — pre-qualified ISVs that deploy and scale on Akamai Connected Cloud. Split by Media and Non-Media so you know who to bring into a deal.",
+  "cornerEmoji": "🤝",
+  "pills": ["Media", "Non-Media", "ISV", "Ecosystem"],
+  "conceptOrder": ["ateme", "yospace", "ezdrm", "mediamelon", "scaleflex", "bitmovin", "harmonic", "unified-streaming", "hydrolix", "avesha", "neural-magic", "apicontext"],
+  "categorized": true,
+  "categories": [
+    { "id": "media", "label": "Media & Broadcast", "emoji": "🎬", "desc": "Encoding, packaging, ad insertion, DRM, streaming analytics — the broadcast supply chain on Akamai." },
+    { "id": "non-media", "label": "Non-Media Tech", "emoji": "🛠️", "desc": "Observability, AI inference, Kubernetes, DAM, API monitoring — horizontal infrastructure ISVs." }
+  ]
+}

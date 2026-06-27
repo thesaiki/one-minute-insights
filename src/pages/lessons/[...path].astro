@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LessonIsland from '../../components/LessonIsland';
+import { getAllConceptPaths, getConcept, getTrack, getThemeMode } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getAllConceptPaths().map(({ trackId, conceptId }) => ({
+    params: { path: `${trackId}/${conceptId}` },
+    props: { trackId, conceptId },
+  }));
+}
+
+const { trackId, conceptId } = Astro.props;
+const track = getTrack(trackId)!;
+const concept = getConcept(trackId, conceptId)!;
+const themeMode = getThemeMode(track.theme);
+---
+<BaseLayout title={`${concept.title} — One Minute Insights`} themeClass={themeMode}>
+  <LessonIsland
+    client:load
+    steps={concept.steps}
+    trackId={trackId}
+    conceptId={conceptId}
+    conceptIcon={concept.icon}
+    conceptTitle={concept.title}
+  />
+</BaseLayout>

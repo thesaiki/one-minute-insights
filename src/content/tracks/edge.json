@@ -1,0 +1,11 @@
+{
+  "id": "edge",
+  "theme": "blue",
+  "number": "TRACK 02",
+  "title": "Akamai Edge",
+  "tagline": "CDN, EdgeKV, App & API Protector, mPulse — what every solutions architect needs to know about delivering at the edge.",
+  "cornerEmoji": "🌐",
+  "pills": ["CDN", "EdgeKV", "WAF", "mPulse", "GTM"],
+  "conceptOrder": ["cdn", "edgekv", "app-protector", "mpulse", "gtm"],
+  "categorized": false
+}

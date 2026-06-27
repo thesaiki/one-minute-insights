@@ -1,0 +1,11 @@
+{
+  "id": "ai-brand",
+  "theme": "rose",
+  "number": "TRACK 05",
+  "title": "AI Brand Presence",
+  "tagline": "How Akamai is positioning itself in the AI era — from predictive CDN to bot management, edge inference, and AI-powered security guardrails.",
+  "cornerEmoji": "🤖",
+  "pills": ["AI Strategy", "Predictive CDN", "Guardrails", "Bot Mgmt", "Edge AI"],
+  "conceptOrder": ["ai-positioning", "predictive-prefetch", "ai-guardrails", "bot-manager-ai", "edge-ai-inference", "ai-customer-stories"],
+  "categorized": false
+}

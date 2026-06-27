@@ -1,0 +1,41 @@
+{
+  "id": "amd",
+  "icon": "📺",
+  "title": "Adaptive Media Delivery (AMD)",
+  "subtitle": "ABR video delivery at global scale",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "AMD is like a waiter who reads the room. If the diner (viewer) is on fast Wi-Fi, serve the steak (4K). If they're on a slow connection, serve the soup (480p). The kitchen (origin) prepares all versions; AMD picks the right one for each guest." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Adaptive Media Delivery is Akamai's CDN product purpose-built for video. It handles:\n\n- HLS and DASH manifest delivery and segment caching\n- ABR (adaptive bitrate) — the player requests segments at the quality matching current bandwidth\n- Token authentication to protect premium streams\n- Tiered distribution — shield origins from thundering-herd cache misses\n- Mid-tier caching and segment prefetching for live events\n\nAMD is configured in Property Manager, just like Ion, but with video-specific behaviors: manifest manipulation, segment duration hints, live-to-VOD transition rules." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Every major live sports broadcast on Akamai runs through AMD. The typical architecture: encoder (Ateme/Bitmovin) → origin (Unified Streaming or MSL) → AMD (CDN delivery) → player. AMD handles millions of concurrent viewers per event, with mid-tier caching shielding the origin from segment storms." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"AMD = Akamai's video CDN. HLS/DASH delivery, ABR, token auth, tiered caching — configured in Property Manager like any other property.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What makes AMD different from Ion (Akamai's standard web CDN)?",
+      "options": [
+        { "text": "They're identical products", "correct": false, "explain": "AMD has video-specific optimizations: manifest manipulation, segment caching, ABR awareness, live event handling." },
+        { "text": "AMD is optimized for HLS/DASH video delivery with manifest manipulation, segment caching, and live event support", "correct": true, "explain": "Ion is for web pages and APIs. AMD understands video manifests, segments, and live-vs-VOD transitions." },
+        { "text": "AMD is cheaper", "correct": false, "explain": "Pricing depends on traffic volume. AMD's value is in video-specific features." },
+        { "text": "AMD only works with Akamai encoders", "correct": false, "explain": "AMD works with any origin that produces HLS/DASH — Akamai or third-party." }
+      ]
+    },
+    {
+      "question": "During a live sports event, millions of viewers request the same segment simultaneously. What AMD feature prevents origin overload?",
+      "options": [
+        { "text": "Rate limiting viewers", "correct": false, "explain": "You don't want to rate-limit legitimate viewers during a live event." },
+        { "text": "Tiered distribution with mid-tier caching — shields the origin behind cache layers", "correct": true, "explain": "Mid-tier caches absorb the thundering herd. Only one request per segment reaches origin; the rest are served from cache." },
+        { "text": "Dropping low-quality streams", "correct": false, "explain": "You want to serve all quality levels. Caching handles the load." },
+        { "text": "Redirecting to YouTube", "correct": false, "explain": "That defeats the purpose of having your own delivery infrastructure." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Adaptive Media Delivery Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "AMD Property Manager Behaviors", "meta": "Free · TechDocs reference", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

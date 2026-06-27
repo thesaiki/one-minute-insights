@@ -1,0 +1,33 @@
+/* Akamai / Edge theme (blue) — Track 02 */
+.akamai-mode {
+  --accent: #0099cc;
+  --accent-bright: #38bdf8;
+  --accent-deep: #0c4a6e;
+  --accent-glow: rgba(0, 153, 204, 0.15);
+  --bg-card-2: #08141c;
+  --border: #0e2a3a;
+  --border-strong: #143d54;
+}
+
+.akamai-mode .lesson-body code { background: rgba(0, 153, 204, 0.12); color: #38bdf8; }
+.akamai-mode .takeaway-quote { border-color: rgba(0, 153, 204, 0.3); }
+.akamai-mode .quiz-option.correct { background: rgba(0, 153, 204, 0.08); border-color: var(--akamai); color: #38bdf8; }
+.akamai-mode .quiz-option.correct .opt-marker { background: var(--akamai); border-color: var(--akamai); color: #001a26; }
+.akamai-mode .feedback-box.correct { background: rgba(0, 153, 204, 0.05); border-color: var(--akamai); }
+.akamai-mode .feedback-box.correct .feedback-title { color: #38bdf8; }
+.akamai-mode .progress-pip.active, .akamai-mode .progress-pip.complete { background: var(--akamai); }
+.akamai-mode .action-btn { background: linear-gradient(135deg, #38bdf8, var(--akamai)); color: #001a26; border-color: #38bdf8; }
+.akamai-mode .action-btn.outline { background: transparent; color: #38bdf8; border-color: var(--akamai); }
+.akamai-mode .progress-fill { background: linear-gradient(90deg, var(--akamai), #38bdf8); }
+.akamai-mode .resource-tag.free { background: rgba(0, 153, 204, 0.15); color: #38bdf8; border-color: rgba(0, 153, 204, 0.3); }
+.akamai-mode .play-icon { background: rgba(0, 153, 204, 0.1); color: var(--akamai); }
+.akamai-mode .play-icon.done { background: var(--akamai); color: #001a26; }
+.akamai-mode .concept-row.completed { border-color: rgba(0, 153, 204, 0.25); background: rgba(0, 153, 204, 0.05); }
+.akamai-mode .concept-row.completed .concept-title { color: #38bdf8; }
+.akamai-mode .back-btn { color: var(--akamai); }
+.akamai-mode .back-btn:hover { border-color: var(--akamai); }
+.akamai-mode .topbar-title, .akamai-mode .topbar-meta { color: var(--akamai); }
+.akamai-mode .streak { background: linear-gradient(160deg, #0c3548, #052838); border-color: #154e6e; }
+.akamai-mode .streak-label { color: #38bdf8; }
+.akamai-mode .next-card .corner-emoji { opacity: 0.45; }
+.akamai-mode .result-score.perfect { color: var(--akamai); }

@@ -1,0 +1,39 @@
+{
+  "id": "ateme",
+  "icon": "🎞️",
+  "title": "Ateme",
+  "subtitle": "End-to-end video compression & delivery",
+  "duration": "1 MIN",
+  "category": "media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Ateme is a global video compression and delivery vendor. They build the encoders and packagers (TITAN family) that compress live and on-demand video — the studio that prepares your master tape for the world.\n\nUsed by tier-one broadcasters, OTT services, and pay-TV operators worldwide." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Ateme TITAN deploys on Linode and LKE. Customers pick:\n\n- Self-managed origin: Ateme on customer-owned Linodes\n- Akamai-managed origin: Ateme bundled with Akamai delivery\n\nCompression efficiency + Akamai's flat egress pricing = lower bandwidth and storage cost vs. running on a hyperscaler." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Bring Ateme into deals where the customer needs end-to-end live or VOD encode/package and is leaving an AWS Elemental or hardware-encoder environment. Pairs naturally with EZDRM (DRM) and Yospace (SSAI)." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Ateme = encoder/packager on Akamai. Position when the customer owns the video supply chain end-to-end.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A pay-TV operator needs to migrate their entire live encoding/packaging stack off AWS Elemental. Which QCP do you bring in?",
+      "options": [
+        { "text": "Hydrolix (TrafficPeak)", "correct": false, "explain": "Hydrolix is observability, not encoding." },
+        { "text": "Ateme TITAN on Linode/LKE", "correct": true, "explain": "Ateme is the QCP for end-to-end video compression and packaging — direct Elemental replacement." },
+        { "text": "Scaleflex", "correct": false, "explain": "Scaleflex is digital asset management for image/video, not live encoding." },
+        { "text": "APIContext", "correct": false, "explain": "API monitoring — wrong domain." }
+      ]
+    },
+    {
+      "question": "What's the customer's deployment choice with Ateme on Akamai?",
+      "options": [
+        { "text": "Akamai-only managed origin, no choice", "correct": false, "explain": "There's an explicit choice between self- and Akamai-managed." },
+        { "text": "Self-managed (own Linodes) or Akamai-managed origin", "correct": true, "explain": "Customers pick the level of operational ownership they want." },
+        { "text": "Only on bare-metal Linodes", "correct": false, "explain": "Runs on virtualized Linodes and LKE." },
+        { "text": "Only as a SaaS endpoint", "correct": false, "explain": "Ateme TITAN is deployed software, not just SaaS." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Ateme + Akamai partner page", "meta": "akamai.com/partners", "tag": "official" }],
+    "free": [{ "title": "Ateme TITAN documentation", "meta": "Free · ateme.com", "tag": "free" }],
+    "paid": []
+  }
+}

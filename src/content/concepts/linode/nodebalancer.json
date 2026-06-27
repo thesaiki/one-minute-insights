@@ -1,0 +1,42 @@
+{
+  "id": "nodebalancer",
+  "icon": "⚖️",
+  "title": "NodeBalancer",
+  "subtitle": "Managed L4/L7 load balancer",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A NodeBalancer is a traffic cop at the front door of your building. Routes visitors to the right tenant. Doesn't care which apartment is full — just keeps people moving." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "NodeBalancers are managed L4/L7 load balancers. Features:\n\n- Public IP assigned automatically\n- TCP, HTTP, HTTPS protocols\n- Active health checks (HTTP path or TCP connect)\n- Sticky sessions (cookie or table-based)\n- TLS termination with bring-your-own cert\n- $10/month flat per balancer" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "On LKE, you don't create them by hand. Set Service type=LoadBalancer in your manifest and the cloud-controller-manager provisions one. For non-K8s workloads (raw Linodes, Linode Marketplace apps), use linode-cli nodebalancers create." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"NodeBalancer = managed LB. On LKE it's automatic. Off LKE it's one CLI call.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You set type=LoadBalancer on an LKE Service. What happens?",
+      "options": [
+        { "text": "Nothing — you must manually create one", "correct": false, "explain": "LKE auto-provisions it via the cloud-controller-manager." },
+        { "text": "A NodeBalancer is auto-provisioned with a public IP", "correct": true, "explain": "The CCM watches for type=LoadBalancer Services and creates a NodeBalancer routing to your pod IPs." },
+        { "text": "A static IP is reserved but not bound to anything", "correct": false, "explain": "The IP is bound to the new NodeBalancer immediately." },
+        { "text": "It defaults to ClusterIP", "correct": false, "explain": "type=LoadBalancer always provisions an external balancer." }
+      ]
+    },
+    {
+      "question": "Where is TLS terminated for HTTPS traffic on a NodeBalancer?",
+      "options": [
+        { "text": "Always at the pod", "correct": false, "explain": "You can configure either: TLS at the NB, or pass-through to the pod." },
+        { "text": "At the NodeBalancer if you upload a cert; otherwise pass-through", "correct": true, "explain": "Configure the NB with a cert + key for HTTPS termination, or use TCP mode for pass-through to your origin." },
+        { "text": "Only at the Akamai CDN — never the NB", "correct": false, "explain": "CDN termination is separate. NBs handle their own TLS." },
+        { "text": "NodeBalancers don't support TLS", "correct": false, "explain": "They do — natively." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "NodeBalancer Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "LKE LoadBalancer guide", "meta": "Free · Annotation reference", "tag": "free" },
+      { "title": "Linode CCM on GitHub", "meta": "Free · Source + issues", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

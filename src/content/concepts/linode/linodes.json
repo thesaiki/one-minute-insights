@@ -1,0 +1,44 @@
+{
+  "id": "linodes",
+  "icon": "🏠",
+  "title": "Linodes",
+  "subtitle": "Your private cloud apartment",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A Linode is your own apartment in Akamai's building. Fully isolated from neighbours. You pick the size, the layout, the locks on the door." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "A Linode is a virtual machine running on Akamai Connected Cloud — what AWS calls EC2 and GCP calls Compute Engine. You control:\n\n- Plan size (Nanode, Shared, Dedicated, GPU)\n- Region (one of 30+ data centers worldwide)\n- OS image (Ubuntu, Debian, RHEL, Alpine, custom)\n- Networking (private IP, VLAN, firewall rules)" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Spin one up with linode-cli linodes create. Production teams provision them via Terraform or the Linode API — never the dashboard. A g6-dedicated-4 (4 vCPU, 8GB RAM) costs ~$36/month flat. No hidden egress fees." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"A Linode is a VM you actually own — flat pricing, no surprises, in 30+ regions worldwide.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What's the main pricing difference between Linodes and AWS EC2?",
+      "options": [
+        { "text": "Linodes are billed per second", "correct": false, "explain": "Both bill hourly. The real difference is egress: Linode includes generous bandwidth, AWS charges per GB." },
+        { "text": "Linode pricing includes generous outbound bandwidth", "correct": true, "explain": "Linode plans include 1–20 TB of outbound transfer. AWS charges $0.09/GB after the first GB." },
+        { "text": "Linodes are spot-only", "correct": false, "explain": "Linodes are on-demand with flat hourly pricing — no spot model." },
+        { "text": "Linodes can't be resized", "correct": false, "explain": "Linodes resize between plans with a single API call or CLI command." }
+      ]
+    },
+    {
+      "question": "You need a GPU for ML inference. What do you provision?",
+      "options": [
+        { "text": "A Dedicated CPU plan", "correct": false, "explain": "Dedicated CPU has no GPU. You need the GPU plan family." },
+        { "text": "A GPU Linode (RTX 4000 Ada / NVIDIA Quadro)", "correct": true, "explain": "Linode's GPU plans expose RTX 4000 Ada and Quadro RTX 6000 cards with NVIDIA drivers pre-installed." },
+        { "text": "An LKE node pool", "correct": false, "explain": "You can add GPU nodes to LKE, but the underlying instance type is still a GPU Linode." },
+        { "text": "A Shared CPU Nanode", "correct": false, "explain": "Nanodes are the smallest, cheapest, no-GPU tier." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Linode Compute Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Akamai TechDocs — Getting Started", "meta": "Free · Official guides", "tag": "free" },
+      { "title": "linode-cli on GitHub", "meta": "Free · Source + recipes", "tag": "free" }
+    ],
+    "paid": [
+      { "title": "A Cloud Guru — Linode Fundamentals", "meta": "Subscription · Hands-on labs", "tag": "paid" }
+    ]
+  }
+}

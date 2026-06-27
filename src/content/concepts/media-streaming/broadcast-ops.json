@@ -1,0 +1,41 @@
+{
+  "id": "broadcast-ops",
+  "icon": "🎛️",
+  "title": "Broadcast Operations Control Center",
+  "subtitle": "Real-time operational visibility for live events",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "The Broadcast Operations Control Center is mission control for live streaming. Just as NASA monitors every system on a spacecraft from one room, BOCC gives operators a single pane of glass over every stream, every encoder, every CDN edge — during the most high-pressure moments in media." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "BOCC provides real-time operational dashboards for live broadcasts:\n\n- **Stream health monitoring**: Ingest status, encoder output quality, manifest availability\n- **CDN status**: Per-PoP cache health, error rates, throughput by region\n- **Viewer impact**: Real-time concurrent viewer count correlated with quality metrics\n- **Alerting**: Threshold-based alerts for encoder failures, CDN errors, and QoE degradation\n- **Multi-CDN visibility**: When using multiple CDNs, compare performance side-by-side\n\nIntegrates with MSL, AMD, and third-party monitoring tools (MediaMelon, Conviva)." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "FIFA World Cup final: 20M+ concurrent viewers across 200 countries. The BOCC team monitors encoder health, CDN throughput per region, and viewer-side QoE — all in real time. If a PoP degrades, traffic reroutes automatically via GTM; BOCC confirms the shift and validates viewer experience recovery within seconds." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"BOCC = mission control for live broadcasting. Single pane of glass over encoders, CDN, and viewer QoE during high-pressure live events.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "During a World Cup match, a PoP in South America shows elevated error rates. What does the BOCC team see?",
+      "options": [
+        { "text": "Nothing — they find out from Twitter complaints", "correct": false, "explain": "BOCC provides real-time alerting. They know before viewers complain." },
+        { "text": "Real-time alerts, per-PoP error rates, and automatic GTM rerouting — they validate recovery within seconds", "correct": true, "explain": "BOCC surfaces the issue, GTM reroutes traffic, and operators confirm viewer QoE normalizes." },
+        { "text": "A weekly email report", "correct": false, "explain": "Live events need real-time monitoring, not weekly reports." },
+        { "text": "They have to manually check each PoP", "correct": false, "explain": "BOCC aggregates all PoPs into a single dashboard with automated alerting." }
+      ]
+    },
+    {
+      "question": "A broadcaster uses Akamai and a backup CDN. How does BOCC help?",
+      "options": [
+        { "text": "It only shows Akamai data", "correct": false, "explain": "BOCC supports multi-CDN visibility." },
+        { "text": "Multi-CDN comparison: side-by-side performance, error rates, and viewer QoE across all CDN providers", "correct": true, "explain": "Operators see which CDN is performing better per region and can shift traffic accordingly." },
+        { "text": "It blocks the backup CDN", "correct": false, "explain": "BOCC is monitoring, not enforcement." },
+        { "text": "It automatically switches all traffic to the cheapest CDN", "correct": false, "explain": "Traffic decisions are based on quality, not cost. Operators make the call." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Akamai Broadcast Operations", "meta": "akamai.com/products/broadcast-operations", "tag": "official" }],
+    "free": [
+      { "title": "Live Event Best Practices", "meta": "Free · TechDocs", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

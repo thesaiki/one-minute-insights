@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuizIsland from '../../components/QuizIsland';
+import { getAllConceptPaths, getConcept, getTrack, getThemeMode } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getAllConceptPaths().map(({ trackId, conceptId }) => ({
+    params: { path: `${trackId}/${conceptId}` },
+    props: { trackId, conceptId },
+  }));
+}
+
+const { trackId, conceptId } = Astro.props;
+const track = getTrack(trackId)!;
+const concept = getConcept(trackId, conceptId)!;
+const themeMode = getThemeMode(track.theme);
+
+// Find the takeaway text from steps
+const takeawayStep = concept.steps.find(s => s.type === 'takeaway');
+const takeawayText = takeawayStep?.body || '';
+---
+<BaseLayout title={`Quiz: ${concept.title} — One Minute Insights`} themeClass={themeMode}>
+  <QuizIsland
+    client:load
+    questions={concept.quiz}
+    trackId={trackId}
+    conceptId={conceptId}
+    conceptTitle={concept.title}
+    takeawayText={takeawayText}
+  />
+</BaseLayout>

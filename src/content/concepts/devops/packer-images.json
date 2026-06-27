@@ -1,0 +1,41 @@
+{
+  "id": "packer-images",
+  "icon": "📀",
+  "title": "Packer Images",
+  "subtitle": "Golden images — bake once, deploy many",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Cloud-init is cooking dinner from scratch every night. Packer is meal prepping on Sunday. You bake a custom image with everything installed, then new instances boot in seconds — fully configured, no waiting for apt install." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "HashiCorp Packer + the Linode builder (`packer-plugin-linode`):\n\n1. Packer spins up a temporary Linode\n2. Runs your provisioning scripts (shell, Ansible, etc.)\n3. Creates a disk image from the configured instance\n4. Saves it as a private image in your Linode account\n5. Destroys the temporary instance\n\nResult: a golden image you can launch anywhere, instantly." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Build a Packer template that installs Nginx, Node.js, your app code, and monitoring agents. Run `packer build template.pkr.hcl`. The output is an image ID. Use that image ID in Terraform (`image = 'private/12345678'`) to launch preconfigured instances. Rebuild the image in CI weekly to pick up security patches." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Packer bakes golden images. Terraform deploys them. New instances boot in seconds, fully configured. Rebuild weekly in CI for security patches.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "Why use Packer instead of cloud-init for instance provisioning?",
+      "options": [
+        { "text": "Cloud-init is deprecated", "correct": false, "explain": "Cloud-init is still widely used and supported. Packer is an alternative, not a replacement." },
+        { "text": "Packer bakes a pre-configured image — instances boot instantly without waiting for install scripts", "correct": true, "explain": "Cloud-init runs at boot (slow). Packer runs once during image creation — every subsequent boot is instant." },
+        { "text": "Packer is free, cloud-init is paid", "correct": false, "explain": "Both are free. The difference is when provisioning happens." },
+        { "text": "Packer works with Kubernetes, cloud-init doesn't", "correct": false, "explain": "Both work in different contexts. Packer is for VM images, not K8s pods." }
+      ]
+    },
+    {
+      "question": "How do you reference a Packer-built image in Terraform?",
+      "options": [
+        { "text": "image = 'packer/latest'", "correct": false, "explain": "Not a valid image reference format." },
+        { "text": "image = 'private/<image-id>' using the ID from Packer's output", "correct": true, "explain": "Packer outputs the image ID. Use it as 'private/<id>' in linode_instance." },
+        { "text": "Upload the image file to Object Storage", "correct": false, "explain": "Packer saves images directly to your Linode account — no manual upload." },
+        { "text": "Packer images can't be used with Terraform", "correct": false, "explain": "They work perfectly together — that's the standard workflow." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Packer Linode Plugin", "meta": "github.com/linode/packer-plugin-linode", "tag": "official" }],
+    "free": [
+      { "title": "HashiCorp Learn — Packer Basics", "meta": "Free · developer.hashicorp.com", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

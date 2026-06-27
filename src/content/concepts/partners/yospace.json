@@ -1,0 +1,39 @@
+{
+  "id": "yospace",
+  "icon": "🪡",
+  "title": "Yospace",
+  "subtitle": "Server-side ad insertion (SSAI)",
+  "duration": "1 MIN",
+  "category": "media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Yospace pioneered SSAI — server-side ad insertion. Instead of the client video player calling an ad server (easily blocked), the stream itself has ads stitched into it on the server, so every viewer gets a personalised, ad-blocker-resistant experience.\n\nReference customers: DIRECTV, FOX, Tubi, Warner Bros. Discovery, Channel 4, ITV, Optus." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Yospace runs as a stateless workload on LKE. Per-viewer manifest manipulation happens on Linodes positioned close to the encoder/packager. Akamai CDN fronts the stitched output for delivery.\n\nThe whole pipeline — encoder (Ateme) → SSAI (Yospace) → CDN (Akamai) — runs on a single platform." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Position Yospace whenever ad-supported revenue is on the line: FAST channels, AVOD, free-tier OTT, live sports. They've monetised five Olympics, five FIFA World Cups, and stitch 3.5 billion ads/month." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Yospace = SSAI on LKE. The ad-supported half of the streaming business runs through them.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A FAST channel operator wants ad-blocker-resistant ad insertion. Best QCP fit?",
+      "options": [
+        { "text": "EZDRM", "correct": false, "explain": "EZDRM is DRM (content protection), not ad insertion." },
+        { "text": "Yospace SSAI on LKE", "correct": true, "explain": "SSAI stitches ads server-side into the stream — invisible to client-side blockers." },
+        { "text": "MediaMelon", "correct": false, "explain": "MediaMelon is QoE analytics, not insertion." },
+        { "text": "Ateme", "correct": false, "explain": "Ateme encodes/packages — Yospace inserts." }
+      ]
+    },
+    {
+      "question": "Why is SSAI more reliable for ad delivery than client-side ad insertion (CSAI)?",
+      "options": [
+        { "text": "It's cheaper to run", "correct": false, "explain": "Cost isn't the main reason — reliability is." },
+        { "text": "Ads are stitched into the stream server-side; client ad-blockers can't isolate them", "correct": true, "explain": "Stitched ads look like the content stream. CSAI calls a separate ad URL the client can block." },
+        { "text": "It works without a CDN", "correct": false, "explain": "A CDN still delivers the stitched stream." },
+        { "text": "It uses less bandwidth", "correct": false, "explain": "Bandwidth is similar — the ad bytes still go down the wire." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Yospace + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
+    "free": [{ "title": "Yospace SSAI overview", "meta": "Free · yospace.com", "tag": "free" }],
+    "paid": []
+  }
+}

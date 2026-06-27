@@ -1,0 +1,41 @@
+{
+  "id": "download-delivery",
+  "icon": "⬇️",
+  "title": "Download Delivery",
+  "subtitle": "Large file distribution at scale",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Download Delivery is the postal service for digital goods. A game studio ships a 100GB update to 50 million players worldwide — Download Delivery ensures every player gets the complete package quickly, without the studio's servers melting." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Download Delivery is Akamai's CDN product for large file distribution (software updates, game patches, firmware, ISOs). Optimizations:\n\n- Progressive download with resume support\n- Byte-range request handling for partial updates\n- Background download scheduling (off-peak pre-positioning)\n- Token authentication for paid/licensed content\n- NetStorage integration for origin (Akamai-managed storage)\n\nUnlike AMD (which optimizes for streaming segments), DD optimizes for complete file delivery — different caching heuristics, timeout handling, and connection management." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Game publishers use Download Delivery for day-one patches (50-100GB to millions of consoles simultaneously). OS vendors push updates via DD. Enterprise software companies distribute installers. The key metric is completion rate, not time-to-first-byte: every download must finish, even on flaky connections." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Download Delivery = large file CDN. Games, updates, firmware. Optimized for completion rate and resume, not streaming.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A game publisher needs to push a 90GB patch to 30 million players on launch day. Which Akamai product?",
+      "options": [
+        { "text": "Ion (web CDN)", "correct": false, "explain": "Ion is optimized for web pages and APIs, not 90GB file downloads." },
+        { "text": "Download Delivery — optimized for large file distribution with resume support", "correct": true, "explain": "DD handles progressive download, resume on disconnect, and scales to millions of concurrent downloads." },
+        { "text": "AMD (Adaptive Media Delivery)", "correct": false, "explain": "AMD is for video streaming, not file downloads." },
+        { "text": "Object Storage direct download", "correct": false, "explain": "Object Storage is origin, not delivery. You need CDN in front for global scale." }
+      ]
+    },
+    {
+      "question": "What's the key metric for Download Delivery vs. streaming delivery?",
+      "options": [
+        { "text": "Time-to-first-byte", "correct": false, "explain": "Important for web, less so for large downloads. Completion rate matters more." },
+        { "text": "Completion rate — every download must finish, even on unreliable connections", "correct": true, "explain": "A 90% downloaded game patch is useless. Resume support and connection management ensure 100% completion." },
+        { "text": "Bitrate adaptation", "correct": false, "explain": "That's ABR streaming (AMD territory). Downloads are full-speed, not adaptive." },
+        { "text": "Cache hit ratio", "correct": false, "explain": "Cache hits matter, but client-side completion is the user-facing metric." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Download Delivery Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "NetStorage integration guide", "meta": "Free · TechDocs", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

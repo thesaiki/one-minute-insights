@@ -1,0 +1,41 @@
+{
+  "id": "ai-customer-stories",
+  "icon": "📖",
+  "title": "AI Customer Stories",
+  "subtitle": "How real companies use Akamai for AI workloads",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Customer stories are the restaurant reviews of enterprise tech. Nobody trusts the chef's own opinion — they trust what other diners said after eating the meal." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Key reference architectures on Akamai's AI infrastructure:\n\n- **Media/Entertainment**: AI-powered content recommendation engines running on GPU Linodes, served through CDN with personalised edge logic via Functions\n- **E-commerce**: Real-time product recommendation inference on Neural Magic CPUs, with Bot Manager protecting the catalog from scraper bots\n- **Financial Services**: Fraud detection models distributed across regions on LKE, with AAP enforcing API schemas on model endpoints\n- **Healthcare/Life Sciences**: HIPAA-compliant model hosting on dedicated Linodes with VPC isolation, Object Storage for training datasets" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "OneFootball (Bitmovin + Akamai): AI-driven highlight clipping from 1,000+ live matches/month. Harmonic VOS360: AI-powered SCTE-35 ad marker insertion and automated sports clipping. Neural Magic references: CPU-based inference for fraud detection at a major credit union (14M members). These stories demonstrate that AI on Akamai isn't theoretical — it's in production at scale." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"AI on Akamai is production-proven: media AI, fraud detection, recommendation engines, content protection. Lead with the reference that matches your customer's vertical.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A media company asks for an AI reference on Akamai. Which story do you lead with?",
+      "options": [
+        { "text": "A fintech fraud detection case study", "correct": false, "explain": "Match the vertical. Media customer = media reference." },
+        { "text": "OneFootball: AI highlight clipping from 1,000+ matches/month on Bitmovin + Akamai Cloud", "correct": true, "explain": "Vertical match: media company, AI use case (automated clipping), running on Akamai infrastructure." },
+        { "text": "A generic cloud migration story", "correct": false, "explain": "The customer asked about AI specifically — lead with an AI reference." },
+        { "text": "Akamai's internal use of ML for CDN routing", "correct": false, "explain": "Internal use is interesting but not a customer reference." }
+      ]
+    },
+    {
+      "question": "What makes Akamai's AI customer stories different from AWS/GCP AI stories?",
+      "options": [
+        { "text": "They're all about chatbots", "correct": false, "explain": "Akamai's stories span media, security, e-commerce, and financial services." },
+        { "text": "They emphasise distributed edge inference and flat egress pricing — not just centralised GPU clusters", "correct": true, "explain": "Akamai's differentiator is distribution and predictable cost, not just raw GPU scale." },
+        { "text": "They only involve small companies", "correct": false, "explain": "References include tier-one broadcasters, major credit unions, and global sports platforms." },
+        { "text": "There are no real AI customer stories yet", "correct": false, "explain": "Multiple production references exist across verticals." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Akamai Customer Stories", "meta": "akamai.com/resources/customer-stories", "tag": "official" }],
+    "free": [
+      { "title": "OneFootball + Bitmovin + Akamai case study", "meta": "Free · akamai.com/resources", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

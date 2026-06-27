@@ -1,0 +1,41 @@
+{
+  "id": "origin-shield",
+  "icon": "🛡️",
+  "title": "Origin Shield for Media",
+  "subtitle": "Protecting your origin from cache-miss storms",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Origin Shield is a VIP entrance to your origin server. Instead of every PoP worldwide knocking on the origin's door for the same segment, one designated bouncer (the shield) fetches it once and distributes copies to everyone else." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Origin Shield (also called Tiered Distribution or Site Shield in Akamai terminology) adds a middle caching tier between edge PoPs and your origin:\n\n- Edge PoPs cache-miss → Shield PoP → Origin\n- Multiple edge misses for the same object collapse into one origin fetch\n- Reduces origin load by 80-95% for popular content\n- Shield PoPs are designated by region (US, EU, APAC)\n\nFor media: critical during live events when thousands of edge PoPs simultaneously need the same new segment. Without shielding, the origin sees N requests instead of 1." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "A live event generates 2-second HLS segments. 4,000 edge PoPs all miss cache simultaneously for the newest segment. Without Origin Shield: 4,000 requests to origin. With Origin Shield: ~10 shield PoPs fetch from origin, then serve the other 3,990 edge PoPs. Origin sees 10 requests instead of 4,000 — a 400x reduction." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Origin Shield = a caching layer between edge and origin. Collapses thousands of cache misses into a handful. Essential for live media.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "A live stream generates new segments every 2 seconds. Without Origin Shield, how many requests might the origin see per segment?",
+      "options": [
+        { "text": "One request — CDN handles the rest", "correct": false, "explain": "Without shielding, every edge PoP that has a cache miss contacts origin independently." },
+        { "text": "One per edge PoP — potentially thousands of simultaneous requests for the same segment", "correct": true, "explain": "Each of 4,000+ PoPs misses cache for a brand-new segment and contacts origin. Origin Shield collapses this." },
+        { "text": "Zero — segments are pre-pushed", "correct": false, "explain": "Live segments can't be pre-pushed — they don't exist until the encoder produces them." },
+        { "text": "Exactly 10", "correct": false, "explain": "10 is roughly the number WITH Origin Shield (one per shield region). Without it, the number is much higher." }
+      ]
+    },
+    {
+      "question": "What percentage of origin load reduction does Origin Shield typically achieve?",
+      "options": [
+        { "text": "10-20%", "correct": false, "explain": "Much higher for popular content." },
+        { "text": "80-95% — most requests are served from the shield tier, not origin", "correct": true, "explain": "For live and popular VOD, shield caching absorbs the vast majority of edge cache misses." },
+        { "text": "100% — origin is never contacted", "correct": false, "explain": "Shield still needs to fetch from origin on its own cache miss. But it reduces frequency dramatically." },
+        { "text": "It depends on the DNS TTL", "correct": false, "explain": "DNS TTL is irrelevant here. Content caching TTLs and popularity drive the reduction." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Tiered Distribution Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Site Shield Configuration Guide", "meta": "Free · TechDocs", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

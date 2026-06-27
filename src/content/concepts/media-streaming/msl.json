@@ -1,0 +1,41 @@
+{
+  "id": "msl",
+  "icon": "📡",
+  "title": "Media Services Live (MSL)",
+  "subtitle": "Managed live streaming ingest and origin",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "MSL is the satellite uplink truck at a live event. It receives the raw feed from the camera crew (encoder), packages it for broadcast, and hands it off to the delivery network (AMD/CDN). You focus on the event; MSL handles the plumbing." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Media Services Live is Akamai's managed ingest and origin for live streams. Two generations:\n\n- **MSL4**: Current production — SRT/RTMP ingest, HLS/DASH packaging, DRM token insertion, SCTE-35 passthrough, multi-CDN origin support\n- **MSL5** (next-gen): Powered by Harmonic VOS360 — adds 24/7 linear playout, cloud nPVR, AI-powered ad marker insertion, automated sports clipping\n\nMSL removes the need to run your own origin infrastructure for live events. Ingest an SRT/RTMP feed, MSL produces HLS/DASH manifests, AMD delivers." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Live sports workflow: camera → encoder (on-site or cloud, e.g. Ateme) → SRT feed to MSL ingest point → MSL packages HLS/DASH with DRM tokens → AMD delivers to millions of viewers. For 24/7 linear channels (news, sports networks), MSL5 with Harmonic VOS360 handles continuous playout without custom origin infrastructure." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"MSL = managed live ingest and origin. Feed it SRT/RTMP, get HLS/DASH out. MSL5 (Harmonic VOS360) adds 24/7 playout and AI features.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What's the key difference between MSL4 and MSL5?",
+      "options": [
+        { "text": "MSL5 is just MSL4 with a new name", "correct": false, "explain": "MSL5 is a fundamentally different platform, powered by Harmonic VOS360." },
+        { "text": "MSL5 is powered by Harmonic VOS360, adding 24/7 playout, cloud nPVR, and AI features like automated ad markers", "correct": true, "explain": "MSL5 expands from event-based live to full 24/7 linear operations with AI-powered automation." },
+        { "text": "MSL5 doesn't support live — only VOD", "correct": false, "explain": "MSL5 is specifically for live, including 24/7 linear." },
+        { "text": "MSL5 eliminates the need for an encoder", "correct": false, "explain": "You still need an encoder upstream. MSL handles ingest and origin." }
+      ]
+    },
+    {
+      "question": "A broadcaster needs managed live ingest for an SRT feed, producing HLS/DASH with DRM. What do they use?",
+      "options": [
+        { "text": "AMD alone", "correct": false, "explain": "AMD is delivery (CDN). You need MSL for ingest and origin." },
+        { "text": "MSL for ingest + origin, AMD for CDN delivery", "correct": true, "explain": "MSL receives the SRT feed, packages HLS/DASH, inserts DRM tokens. AMD distributes globally." },
+        { "text": "A Linode running FFmpeg", "correct": false, "explain": "Works for dev but not production live broadcasting. MSL is managed and reliable." },
+        { "text": "Object Storage only", "correct": false, "explain": "Object Storage can't do real-time ingest and packaging." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Media Services Live Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "MSL4 API Reference", "meta": "Free · TechDocs", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

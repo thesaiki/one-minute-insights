@@ -1,0 +1,41 @@
+{
+  "id": "ansible-linode",
+  "icon": "📋",
+  "title": "Ansible for Linode",
+  "subtitle": "Configuration management without agents",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Terraform builds the house. Ansible decorates it. You wouldn't use a crane to hang curtains, and you wouldn't use a screwdriver to pour the foundation. Use each tool for what it does best." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Ansible manages Linode instances in two ways:\n\n- **linode.cloud collection** — provision Linodes, manage DNS, Object Storage via the API\n- **SSH-based configuration** — install packages, configure services, deploy apps on existing instances\n\nPlaybooks are YAML. No agent required — Ansible connects over SSH. Idempotent: run it 10 times, same result.\n\nPair with Terraform: Terraform provisions, Ansible configures." },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Install the collection: `ansible-galaxy collection install linode.cloud`. Write a playbook that provisions a Linode, waits for it to boot, then SSHes in to install Nginx, configure TLS with certbot, and deploy your app. Use `ansible-vault` for secrets (API tokens, passwords)." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Terraform provisions infrastructure. Ansible configures it. Together they cover the full lifecycle. Use linode.cloud collection for API tasks, SSH for server configuration.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "When should you use Ansible instead of Terraform for Linode?",
+      "options": [
+        { "text": "Always — Ansible replaces Terraform", "correct": false, "explain": "They're complementary. Terraform is better at infrastructure lifecycle management." },
+        { "text": "For server configuration after Terraform provisions the infrastructure", "correct": true, "explain": "Terraform creates resources, Ansible configures them. Different strengths." },
+        { "text": "Never — Terraform does everything", "correct": false, "explain": "Terraform isn't great at ongoing server configuration and app deployment." },
+        { "text": "Only for AWS, not Linode", "correct": false, "explain": "Ansible works with any SSH-accessible server plus has the linode.cloud collection." }
+      ]
+    },
+    {
+      "question": "How does Ansible connect to Linode instances?",
+      "options": [
+        { "text": "It installs an agent on boot", "correct": false, "explain": "Ansible is agentless — that's a key differentiator from Chef/Puppet." },
+        { "text": "SSH — no agent required", "correct": true, "explain": "Ansible connects over SSH using your existing keys. Nothing to install on the target." },
+        { "text": "Through the Linode API only", "correct": false, "explain": "The API is used for provisioning, but configuration runs over SSH." },
+        { "text": "HTTPS webhook", "correct": false, "explain": "Ansible uses SSH, not webhooks." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Ansible Linode Collection", "meta": "galaxy.ansible.com/linode/cloud", "tag": "official" }],
+    "free": [
+      { "title": "Ansible Documentation", "meta": "Free · docs.ansible.com", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

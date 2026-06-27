@@ -1,0 +1,11 @@
+{
+  "id": "media-streaming",
+  "theme": "red",
+  "number": "TRACK 06",
+  "title": "Akamai Media/Streaming",
+  "tagline": "Adaptive Media Delivery, Media Services Live, Download Delivery, and the analytics and operations tools that power the world's biggest broadcasts.",
+  "cornerEmoji": "🎬",
+  "pills": ["AMD", "MSL", "Download", "Analytics", "Origin Shield"],
+  "conceptOrder": ["amd", "msl", "download-delivery", "media-analytics", "broadcast-ops", "origin-shield"],
+  "categorized": false
+}

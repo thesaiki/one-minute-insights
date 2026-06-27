@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResourceLink from '../../components/ResourceLink.astro';
+import { getAllConceptPaths, getConcept, getTrack, getThemeMode } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getAllConceptPaths().map(({ trackId, conceptId }) => ({
+    params: { path: `${trackId}/${conceptId}` },
+    props: { trackId, conceptId },
+  }));
+}
+
+const { trackId, conceptId } = Astro.props;
+const track = getTrack(trackId)!;
+const concept = getConcept(trackId, conceptId)!;
+const themeMode = getThemeMode(track.theme);
+const r = concept.resources;
+
+// Find next concept in this track
+const conceptIdx = track.concepts.findIndex(c => c.id === conceptId);
+const nextConcept = track.concepts[conceptIdx + 1];
+---
+<BaseLayout title={`Resources: ${concept.title} — One Minute Insights`} themeClass={themeMode}>
+  <div class="screen">
+    <div class="topbar">
+      <a href={`/quiz/${trackId}/${conceptId}`} class="back-btn">&larr;</a>
+      <div class="topbar-title">📚 GO DEEPER</div>
+      <div class="spacer"></div>
+    </div>
+
+    <div class="resources-head">
+      <h2>{concept.title}</h2>
+      <p>Curated resources — free and paid, best rated.</p>
+    </div>
+
+    {r.official?.length > 0 && (
+      <div class="resource-section">
+        <div class="resource-section-label">📘 OFFICIAL DOCS</div>
+        {r.official.map(item => (
+          <ResourceLink title={item.title} meta={item.meta} tag="official" />
+        ))}
+      </div>
+    )}
+
+    {r.free?.length > 0 && (
+      <div class="resource-section">
+        <div class="resource-section-label">🆓 FREE RESOURCES</div>
+        {r.free.map(item => (
+          <ResourceLink title={item.title} meta={item.meta} tag="free" />
+        ))}
+      </div>
+    )}
+
+    {r.paid?.length > 0 && (
+      <div class="resource-section">
+        <div class="resource-section-label">💳 PAID — WORTH IT</div>
+        {r.paid.map(item => (
+          <ResourceLink title={item.title} meta={item.meta} tag="paid" />
+        ))}
+      </div>
+    )}
+
+    <div class="result-buttons final-buttons">
+      {nextConcept ? (
+        <a href={`/lessons/${trackId}/${nextConcept.id}`} class="action-btn">
+          Next Concept &rarr;
+        </a>
+      ) : (
+        <a href={`/tracks/${trackId}`} class="action-btn">
+          Back to Track
+        </a>
+      )}
+      <a href={`/quiz/${trackId}/${conceptId}`} class="action-btn solid-dark">
+        Retry Quiz
+      </a>
+    </div>
+  </div>
+</BaseLayout>

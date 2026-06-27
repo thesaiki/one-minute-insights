@@ -1,0 +1,11 @@
+{
+  "id": "ai-ml",
+  "theme": "cyan",
+  "number": "TRACK 07",
+  "title": "AI/ML on Linode",
+  "tagline": "GPU instances, model serving, vector databases, ML pipelines, and cost optimization — building AI/ML workloads on Akamai Connected Cloud.",
+  "cornerEmoji": "🧪",
+  "pills": ["GPU", "Model Serving", "Vector DB", "Pipelines", "Cost Opt"],
+  "conceptOrder": ["gpu-instances", "model-serving", "vector-databases", "ml-pipelines", "lke-ml-workloads", "ai-cost-optimization"],
+  "categorized": false
+}

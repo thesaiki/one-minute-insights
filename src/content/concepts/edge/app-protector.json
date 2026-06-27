@@ -1,0 +1,41 @@
+{
+  "id": "app-protector",
+  "icon": "🛡️",
+  "title": "App & API Protector",
+  "subtitle": "WAF, DDoS, bot, API security — at the edge",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "App & API Protector is the security guard who reads every visitor's ID before letting them into the building. The bad ones never reach your floor." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "AAP is Akamai's unified WAF + DDoS + bot + API security product. Capabilities:\n\n- Kona Rule Set (KRS) — managed WAF rules\n- Rate limiting (per IP, per path, per token)\n- Adaptive Security Engine — ML-based threat scoring\n- API discovery + schema enforcement\n- Custom rules in the Property Manager UI" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Start in alert mode — observe, don't block. Tune false positives over a week or two. Flip to deny mode once your baseline is clean. Audit log lives in Security Center; ship to your SIEM via DataStream." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"AAP blocks bad traffic at the edge — start in alert mode, tune, then enforce.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You just enabled the Kona Rule Set. What mode should you start in?",
+      "options": [
+        { "text": "Deny mode immediately", "correct": false, "explain": "Risk: false positives could block real users on day one." },
+        { "text": "Alert mode — observe, tune, then flip to deny", "correct": true, "explain": "Standard practice. Generate alerts for 1–2 weeks, tune false positives, then enforce." },
+        { "text": "Disabled — rules aren't needed", "correct": false, "explain": "Then why did you enable AAP?" },
+        { "text": "Bypass mode for all traffic", "correct": false, "explain": "Defeats the purpose entirely." }
+      ]
+    },
+    {
+      "question": "Where do AAP audit logs go for SIEM ingestion?",
+      "options": [
+        { "text": "Hand-emailed by support", "correct": false, "explain": "No." },
+        { "text": "Stream via DataStream to your S3 / Object Storage / SIEM", "correct": true, "explain": "DataStream pushes raw security and CDN logs to your destination of choice — Splunk, Elastic, Object Storage, etc." },
+        { "text": "Only viewable in the Security Center UI", "correct": false, "explain": "Available in UI and via DataStream." },
+        { "text": "Pulled via FTP nightly", "correct": false, "explain": "No FTP. DataStream is real-time." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "App & API Protector Docs", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "OWASP Top 10 mapping", "meta": "Free · How AAP covers each", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

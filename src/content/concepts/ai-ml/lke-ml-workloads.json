@@ -1,0 +1,43 @@
+{
+  "id": "lke-ml-workloads",
+  "icon": "🚢",
+  "title": "LKE for ML Workloads",
+  "subtitle": "Kubernetes-native GPU scheduling",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Running ML on LKE is like having a smart office manager. They assign the expensive corner offices (GPU nodes) to people who actually need them (training jobs), and move everyone else to regular desks (CPU nodes). When the office is quiet, they close floors to save electricity (autoscaling)." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "LKE supports mixed node pools — CPU and GPU in the same cluster:\n\n- **CPU pool** — shared or dedicated Linodes for API servers, databases, monitoring\n- **GPU pool** — GPU Linodes for training and inference pods\n- **Node selectors** — `nodeSelector: { gpu: 'true' }` directs ML pods to GPU nodes\n- **NVIDIA device plugin** — exposes GPUs as schedulable resources (`nvidia.com/gpu: 1`)\n- **Autoscaler** — scales GPU pool based on pending pod demand" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Create a mixed cluster: `linode-cli lke cluster-create --label ml-cluster --region us-ord --node_pools.type g6-standard-4 --node_pools.count 3 --node_pools.type g1-gpu-rtx4000-1 --node_pools.count 1`. Install the NVIDIA device plugin via Helm, then schedule inference pods with GPU resource requests." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"LKE with mixed pools: CPU nodes for general workloads, GPU nodes for ML. Kubernetes handles scheduling — your inference pods land on the right hardware automatically.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "How does a Kubernetes pod request a GPU on LKE?",
+      "options": [
+        { "text": "Set the instance type in the pod spec", "correct": false, "explain": "Kubernetes doesn't know about instance types. It uses resource requests." },
+        { "text": "Add `nvidia.com/gpu: 1` to the container's resource limits", "correct": true, "explain": "The NVIDIA device plugin exposes GPUs as `nvidia.com/gpu` resources. Kubernetes schedules pods to nodes that have them." },
+        { "text": "Label the pod with gpu=true", "correct": false, "explain": "Labels don't allocate resources. You need resource requests/limits." },
+        { "text": "GPUs are automatically assigned to all pods", "correct": false, "explain": "Only pods that explicitly request GPU resources get them." }
+      ]
+    },
+    {
+      "question": "You have 5 inference pods but only 2 GPU nodes. What happens?",
+      "options": [
+        { "text": "All 5 pods run, sharing the GPUs", "correct": false, "explain": "GPUs aren't shared between pods by default. Pods requesting GPUs that aren't available stay Pending." },
+        { "text": "3 pods stay Pending until the GPU pool autoscales or you add nodes", "correct": true, "explain": "If each pod requests 1 GPU and each node has 1 GPU, only 2 pods run. The rest wait for capacity." },
+        { "text": "Kubernetes crashes", "correct": false, "explain": "Kubernetes handles this gracefully — pending pods queue up." },
+        { "text": "The pods run on CPU instead", "correct": false, "explain": "If a pod requests a GPU, it won't be scheduled on a CPU-only node." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "LKE Documentation", "meta": "techdocs.akamai.com/lke", "tag": "official" }],
+    "free": [
+      { "title": "NVIDIA Device Plugin for Kubernetes", "meta": "Free · github.com/NVIDIA", "tag": "free" }
+    ],
+    "paid": [
+      { "title": "CKA Certification (CNCF)", "meta": "$395 · Vendor-neutral K8s cert", "tag": "paid" }
+    ]
+  }
+}

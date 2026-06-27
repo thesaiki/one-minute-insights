@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConceptRow from '../../components/ConceptRow.astro';
+import CategoryHeader from '../../components/CategoryHeader.astro';
+import { getAllTracks, getTrack, getThemeMode, getThemeClass, getTopbarLabel } from '../../lib/data';
+import type { Track, Concept } from '../../lib/data';
+
+export function getStaticPaths() {
+  const tracks = getAllTracks();
+  return tracks.map(track => ({
+    params: { trackId: track.id },
+  }));
+}
+
+const { trackId } = Astro.params;
+const track = getTrack(trackId!)!;
+const themeMode = getThemeMode(track.theme);
+const themeClass = getThemeClass(track.theme);
+const topbarLabel = getTopbarLabel(track);
+const analogyLabel = track.theme === 'amber' ? 'WHAT THEY DO' : 'THE ANALOGY';
+
+// First concept used as the default "up next" (client-side will override with actual progress)
+const firstConcept = track.concepts[0];
+---
+<BaseLayout title={`${track.title} — One Minute Insights`} themeClass={themeMode}>
+  <div class="screen">
+    <div class="topbar">
+      <a href="/" class="back-btn">&larr;</a>
+      <div class="topbar-title">{topbarLabel}</div>
+      <div class="spacer"></div>
+    </div>
+
+    <div class={`track-head ${themeClass}`}>
+      <h2>{track.title}</h2>
+      <div class="streak" id="streak-box">
+        <div class="streak-icon">🔥</div>
+        <div class="streak-num" id="streak-num">0</div>
+        <div class="streak-label">DONE</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="progress-text">0 of {track.concepts.length} complete</span>
+        <span class="pct" id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    {firstConcept && (
+      <>
+        <span class="up-next-label">UP NEXT</span>
+        <div class={`next-card ${themeClass}`} id="next-card">
+          <span class="corner-emoji">{firstConcept.icon}</span>
+          <div class="duration-tag">{firstConcept.duration}</div>
+          <h3 id="next-title">{firstConcept.title}</h3>
+          <div class="next-subtitle" id="next-subtitle">{firstConcept.subtitle}</div>
+          <div class="analogy-box">
+            <div class="analogy-label">{analogyLabel}</div>
+            <div class="analogy-text" id="next-analogy">
+              {firstConcept.steps[0]?.body || ''}
+            </div>
+          </div>
+          <div class="next-foot">
+            <div class="lesson-icons">
+              <div class="lesson-icon">💡</div>
+              <div class="lesson-icon">🔧</div>
+              <div class="lesson-icon">🌍</div>
+              <div class="lesson-icon">⚡</div>
+            </div>
+            <a href={`/lessons/${track.id}/${firstConcept.id}`} class="begin-btn" id="begin-btn">Begin &rarr;</a>
+          </div>
+        </div>
+      </>
+    )}
+
+    <span class="concepts-label">{track.categorized ? 'BROWSE BY CATEGORY' : 'ALL CONCEPTS'}</span>
+
+    <div class="concepts-list">
+      {track.categorized && track.categories ? (
+        track.categories.map(cat => {
+          const itemsInCat = track.concepts.filter((c: Concept) => c.category === cat.id);
+          if (!itemsInCat.length) return null;
+          return (
+            <>
+              <CategoryHeader
+                emoji={cat.emoji}
+                label={cat.label}
+                description={cat.desc}
+                count={itemsInCat.length}
+              />
+              {itemsInCat.map((c: Concept) => (
+                <ConceptRow
+                  id={c.id}
+                  icon={c.icon}
+                  title={c.title}
+                  subtitle={c.subtitle}
+                  trackId={track.id}
+                />
+              ))}
+            </>
+          );
+        })
+      ) : (
+        track.concepts.map((c: Concept) => (
+          <ConceptRow
+            id={c.id}
+            icon={c.icon}
+            title={c.title}
+            subtitle={c.subtitle}
+            trackId={track.id}
+          />
+        ))
+      )}
+    </div>
+  </div>
+
+  <script define:vars={{ trackId: track.id, concepts: track.concepts.map((c: Concept) => ({ id: c.id, icon: c.icon, title: c.title, subtitle: c.subtitle, analogy: c.steps[0]?.body || '', duration: c.duration })), totalConcepts: track.concepts.length }}>
+    // Client-side: update progress display from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const progress = JSON.parse(localStorage.getItem('linodestick:progress') || '{}');
+        const trackProgress = progress[trackId] || {};
+        const completed = Object.keys(trackProgress).length;
+        const pct = totalConcepts > 0 ? Math.round((completed / totalConcepts) * 100) : 0;
+
+        // Update streak
+        const streakNum = document.getElementById('streak-num');
+        if (streakNum) streakNum.textContent = String(completed);
+
+        // Update progress bar
+        const progressText = document.getElementById('progress-text');
+        if (progressText) progressText.textContent = `${completed} of ${totalConcepts} complete`;
+
+        const progressPct = document.getElementById('progress-pct');
+        if (progressPct) progressPct.textContent = `${pct}%`;
+
+        const progressFill = document.getElementById('progress-fill');
+        if (progressFill) progressFill.style.width = `${pct}%`;
+
+        // Find the next uncompleted concept
+        const nextConcept = concepts.find(c => !trackProgress[c.id]?.completed) || concepts[0];
+        if (nextConcept) {
+          const nextTitle = document.getElementById('next-title');
+          if (nextTitle) nextTitle.textContent = nextConcept.title;
+
+          const nextSubtitle = document.getElementById('next-subtitle');
+          if (nextSubtitle) nextSubtitle.textContent = nextConcept.subtitle;
+
+          const nextAnalogy = document.getElementById('next-analogy');
+          if (nextAnalogy) nextAnalogy.textContent = nextConcept.analogy;
+
+          const beginBtn = document.getElementById('begin-btn');
+          if (beginBtn) beginBtn.setAttribute('href', `/lessons/${trackId}/${nextConcept.id}`);
+        }
+      } catch {
+        // Ignore localStorage errors
+      }
+    });
+  </script>
+</BaseLayout>

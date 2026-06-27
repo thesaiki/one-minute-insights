@@ -1,0 +1,32 @@
+/* AI Brand Presence theme (rose) — Track 05 */
+.rose-mode {
+  --accent: #f43f5e;
+  --accent-bright: #fb7185;
+  --accent-deep: #881337;
+  --accent-glow: rgba(244, 63, 94, 0.15);
+  --bg-card-2: #1c0810;
+  --border: #2e0e1c;
+  --border-strong: #4a1632;
+}
+
+.rose-mode .lesson-body code { background: rgba(244, 63, 94, 0.12); color: var(--accent-bright); }
+.rose-mode .takeaway-quote { border-color: rgba(244, 63, 94, 0.3); }
+.rose-mode .quiz-option.correct { background: rgba(244, 63, 94, 0.08); border-color: var(--accent); color: var(--accent-bright); }
+.rose-mode .quiz-option.correct .opt-marker { background: var(--accent); border-color: var(--accent); color: #1a000a; }
+.rose-mode .feedback-box.correct { background: rgba(244, 63, 94, 0.05); border-color: var(--accent); }
+.rose-mode .feedback-box.correct .feedback-title { color: var(--accent-bright); }
+.rose-mode .progress-pip.active, .rose-mode .progress-pip.complete { background: var(--accent); }
+.rose-mode .action-btn { background: linear-gradient(135deg, var(--accent-bright), var(--accent)); color: #1a000a; border-color: var(--accent-bright); }
+.rose-mode .action-btn.outline { background: transparent; color: var(--accent-bright); border-color: var(--accent); }
+.rose-mode .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-bright)); }
+.rose-mode .resource-tag.free { background: rgba(244, 63, 94, 0.15); color: var(--accent-bright); border-color: rgba(244, 63, 94, 0.3); }
+.rose-mode .play-icon { background: rgba(244, 63, 94, 0.1); color: var(--accent); }
+.rose-mode .play-icon.done { background: var(--accent); color: #1a000a; }
+.rose-mode .concept-row.completed { border-color: rgba(244, 63, 94, 0.25); background: rgba(244, 63, 94, 0.05); }
+.rose-mode .concept-row.completed .concept-title { color: var(--accent-bright); }
+.rose-mode .back-btn { color: var(--accent); }
+.rose-mode .back-btn:hover { border-color: var(--accent); }
+.rose-mode .topbar-title, .rose-mode .topbar-meta { color: var(--accent); }
+.rose-mode .streak { background: linear-gradient(160deg, #4a1632, #2e0e1c); border-color: #6b1f4a; }
+.rose-mode .streak-label { color: var(--accent-bright); }
+.rose-mode .result-score.perfect { color: var(--accent); }

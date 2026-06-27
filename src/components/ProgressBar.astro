@@ -1,0 +1,9 @@
+---
+interface Props {
+  percent?: number;
+}
+const { percent = 0 } = Astro.props;
+---
+<div class="progress-bar">
+  <div class="progress-fill" style={`width: ${percent}%`}></div>
+</div>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  meta: string;
+  tag: string;
+}
+const { title, meta, tag } = Astro.props;
+---
+<div class="resource-link">
+  <div class="resource-info">
+    <div class="resource-title">{title}</div>
+    <div class="resource-meta">{meta}</div>
+  </div>
+  <span class={`resource-tag ${tag}`}>{tag.toUpperCase()}</span>
+</div>

@@ -1,0 +1,39 @@
+{
+  "id": "hydrolix",
+  "icon": "🔭",
+  "title": "Hydrolix",
+  "subtitle": "TrafficPeak — observability for Akamai-scale logs",
+  "duration": "1 MIN",
+  "category": "non-media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Hydrolix's TrafficPeak is a managed observability platform purpose-built for terabyte-scale log workloads. It changes the economics of observability: full-resolution data retention without the typical \"drop your logs to control cost\" trade-off.\n\nIntegrates directly with Akamai SIEM and DataStream 2 — your CDN and security logs flow in without custom plumbing." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "TrafficPeak is delivered as a managed service on Akamai Connected Cloud. Customers point DataStream 2 (CDN logs) and SIEM streams at TrafficPeak's ingestion endpoint. Sub-second query performance against billions of rows.\n\nUnlike sampling-based observability tools, TrafficPeak retains full-resolution data for long retention periods at a fraction of Datadog/Splunk pricing." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Any customer drowning in observability bill: high-volume CDN customers, security teams that need full-fidelity logs for forensics, or anyone whose Datadog/Splunk renewal is about to spike. Reference: World's largest credit union uses TrafficPeak across 14M members." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"TrafficPeak = full-resolution log retention at Akamai scale. Use it when the observability bill is the problem.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What's the core economic argument for TrafficPeak vs. Datadog/Splunk?",
+      "options": [
+        { "text": "Free observability", "correct": false, "explain": "Not free — but designed for predictable cost at scale." },
+        { "text": "Full-resolution data retention without dropping logs to control cost", "correct": true, "explain": "The pricing model lets customers keep full data instead of sampling/dropping to fit budget." },
+        { "text": "It only stores errors", "correct": false, "explain": "Opposite — it stores everything, even at high volume." },
+        { "text": "It replaces Akamai DataStream", "correct": false, "explain": "It consumes DataStream output. Different layer." }
+      ]
+    },
+    {
+      "question": "Which Akamai data sources flow naturally into TrafficPeak?",
+      "options": [
+        { "text": "Linode SSH logs only", "correct": false, "explain": "TrafficPeak ingests Akamai-platform data, not host-level SSH." },
+        { "text": "DataStream 2 (CDN logs) + Akamai SIEM (security logs)", "correct": true, "explain": "These are the native integration points — both push directly into TrafficPeak." },
+        { "text": "Only Object Storage events", "correct": false, "explain": "Object Storage events alone are a small slice of what TrafficPeak ingests." },
+        { "text": "Manual CSV uploads", "correct": false, "explain": "Streaming ingestion, not manual upload." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Hydrolix + Akamai press release", "meta": "akamai.com/newsroom", "tag": "official" }],
+    "free": [{ "title": "TrafficPeak product page", "meta": "Free · hydrolix.io", "tag": "free" }],
+    "paid": []
+  }
+}

@@ -1,0 +1,32 @@
+/* Functions theme (violet) — Track 04 */
+.functions-mode {
+  --accent: #a855f7;
+  --accent-bright: #c084fc;
+  --accent-deep: #4c1d95;
+  --accent-glow: rgba(168, 85, 247, 0.15);
+  --bg-card-2: #14081c;
+  --border: #261433;
+  --border-strong: #3d1e52;
+}
+
+.functions-mode .lesson-body code { background: rgba(168, 85, 247, 0.12); color: var(--accent-bright); }
+.functions-mode .takeaway-quote { border-color: rgba(168, 85, 247, 0.3); }
+.functions-mode .quiz-option.correct { background: rgba(168, 85, 247, 0.08); border-color: var(--accent); color: var(--accent-bright); }
+.functions-mode .quiz-option.correct .opt-marker { background: var(--accent); border-color: var(--accent); color: #1a0033; }
+.functions-mode .feedback-box.correct { background: rgba(168, 85, 247, 0.05); border-color: var(--accent); }
+.functions-mode .feedback-box.correct .feedback-title { color: var(--accent-bright); }
+.functions-mode .progress-pip.active, .functions-mode .progress-pip.complete { background: var(--accent); }
+.functions-mode .action-btn { background: linear-gradient(135deg, var(--accent-bright), var(--accent)); color: #1a0033; border-color: var(--accent-bright); }
+.functions-mode .action-btn.outline { background: transparent; color: var(--accent-bright); border-color: var(--accent); }
+.functions-mode .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-bright)); }
+.functions-mode .resource-tag.free { background: rgba(168, 85, 247, 0.15); color: var(--accent-bright); border-color: rgba(168, 85, 247, 0.3); }
+.functions-mode .play-icon { background: rgba(168, 85, 247, 0.1); color: var(--accent); }
+.functions-mode .play-icon.done { background: var(--accent); color: #1a0033; }
+.functions-mode .concept-row.completed { border-color: rgba(168, 85, 247, 0.25); background: rgba(168, 85, 247, 0.05); }
+.functions-mode .concept-row.completed .concept-title { color: var(--accent-bright); }
+.functions-mode .back-btn { color: var(--accent); }
+.functions-mode .back-btn:hover { border-color: var(--accent); }
+.functions-mode .topbar-title, .functions-mode .topbar-meta { color: var(--accent); }
+.functions-mode .streak { background: linear-gradient(160deg, #3d1e52, #261433); border-color: #5b2d7a; }
+.functions-mode .streak-label { color: var(--accent-bright); }
+.functions-mode .result-score.perfect { color: var(--accent); }

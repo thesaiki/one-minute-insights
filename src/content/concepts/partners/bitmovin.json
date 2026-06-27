@@ -1,0 +1,42 @@
+{
+  "id": "bitmovin",
+  "icon": "🎬",
+  "title": "Bitmovin",
+  "subtitle": "Live + VOD encoding, player, analytics",
+  "duration": "1 MIN",
+  "category": "media",
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "What They Do", "body": "Bitmovin is a video infrastructure company offering Live Encoder, VOD Encoder, Player, and Analytics — covering the full streaming lifecycle. They built the world's first commercial adaptive streaming player and the first software-defined cloud encoder.\n\nReference customers: BBC, Hulu, fuboTV, OneFootball. Their per-title and per-scene optimization (AI Scene Analysis) cuts storage and CDN cost by 30–55%." },
+    { "type": "how", "emoji": "🔧", "label": "How They Run on Akamai", "body": "Both Live Encoder and VOD Encoder run natively on Akamai Cloud. Bitmovin's Cloud Connect deploys encoding into customer-owned Akamai infrastructure. Pre-integrated with:\n\n- Akamai Object Storage (S3-generic API, V4 signing) for source/output\n- Akamai Media Services Live (MSL4) for ingest\n- Akamai CDN for delivery\n- EdgeWorkers for personalisation, A/B routing\n\nReducing data transfer out (DTO) by up to 94% vs. hyperscalers." },
+    { "type": "real", "emoji": "🌍", "label": "When To Position", "body": "Bitmovin is the natural choice when a customer wants a single vendor for encoder + player + analytics — fewer integration points, one support contract. OneFootball is the canonical reference: outgrew their old infrastructure at ~1,000 matches/month, picked Bitmovin Live Encoder + Akamai Cloud, deployed in two weeks." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Bitmovin = encoder + player + analytics, all on Akamai. One vendor for the streaming software stack, deploy in two weeks.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "What's the cost-saving claim of running Bitmovin Live Encoder on Akamai vs. AWS?",
+      "options": [
+        { "text": "Up to 94% lower data transfer out (DTO) costs", "correct": true, "explain": "Akamai's flat egress vs. AWS's per-GB pricing. With OneFootball as a reference, Akamai cites ~90% operational cost reduction." },
+        { "text": "Free encoding", "correct": false, "explain": "Encoding still has compute cost — egress is the savings." },
+        { "text": "Encoding runs 10x faster", "correct": false, "explain": "Bitmovin claims 2-6x faster transcoding, but the headline number is egress savings." },
+        { "text": "Storage is 100% free", "correct": false, "explain": "Storage is cheaper, not free." }
+      ]
+    },
+    {
+      "question": "A customer wants encoder + player + analytics from one vendor on Akamai. Which QCP fits?",
+      "options": [
+        { "text": "Ateme — encoder only", "correct": false, "explain": "Ateme is best-of-breed encoding but not a player/analytics one-stop." },
+        { "text": "Bitmovin — Live + VOD Encoder + Player + Analytics natively on Akamai", "correct": true, "explain": "Bitmovin is the QCP for the full software stack from one vendor." },
+        { "text": "EZDRM", "correct": false, "explain": "EZDRM is DRM only." },
+        { "text": "Unified Streaming", "correct": false, "explain": "Unified does packaging — not encoding/player/analytics." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Bitmovin + Akamai partner page", "meta": "akamai.com/resources/partner-story/bitmovin", "tag": "official" }],
+    "free": [
+      { "title": "Bitmovin Object Storage integration guide", "meta": "Free · developer.bitmovin.com", "tag": "free" },
+      { "title": "OneFootball customer story", "meta": "Free · akamai.com/resources", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

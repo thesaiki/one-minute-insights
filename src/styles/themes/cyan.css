@@ -1,0 +1,32 @@
+/* AI/ML theme (cyan) — Track 07 */
+.cyan-mode {
+  --accent: #06b6d4;
+  --accent-bright: #22d3ee;
+  --accent-deep: #164e63;
+  --accent-glow: rgba(6, 182, 212, 0.15);
+  --bg-card-2: #081418;
+  --border: #0e2a2e;
+  --border-strong: #164a4a;
+}
+
+.cyan-mode .lesson-body code { background: rgba(6, 182, 212, 0.12); color: var(--accent-bright); }
+.cyan-mode .takeaway-quote { border-color: rgba(6, 182, 212, 0.3); }
+.cyan-mode .quiz-option.correct { background: rgba(6, 182, 212, 0.08); border-color: var(--accent); color: var(--accent-bright); }
+.cyan-mode .quiz-option.correct .opt-marker { background: var(--accent); border-color: var(--accent); color: #001a1f; }
+.cyan-mode .feedback-box.correct { background: rgba(6, 182, 212, 0.05); border-color: var(--accent); }
+.cyan-mode .feedback-box.correct .feedback-title { color: var(--accent-bright); }
+.cyan-mode .progress-pip.active, .cyan-mode .progress-pip.complete { background: var(--accent); }
+.cyan-mode .action-btn { background: linear-gradient(135deg, var(--accent-bright), var(--accent)); color: #001a1f; border-color: var(--accent-bright); }
+.cyan-mode .action-btn.outline { background: transparent; color: var(--accent-bright); border-color: var(--accent); }
+.cyan-mode .progress-fill { background: linear-gradient(90deg, var(--accent), var(--accent-bright)); }
+.cyan-mode .resource-tag.free { background: rgba(6, 182, 212, 0.15); color: var(--accent-bright); border-color: rgba(6, 182, 212, 0.3); }
+.cyan-mode .play-icon { background: rgba(6, 182, 212, 0.1); color: var(--accent); }
+.cyan-mode .play-icon.done { background: var(--accent); color: #001a1f; }
+.cyan-mode .concept-row.completed { border-color: rgba(6, 182, 212, 0.25); background: rgba(6, 182, 212, 0.05); }
+.cyan-mode .concept-row.completed .concept-title { color: var(--accent-bright); }
+.cyan-mode .back-btn { color: var(--accent); }
+.cyan-mode .back-btn:hover { border-color: var(--accent); }
+.cyan-mode .topbar-title, .cyan-mode .topbar-meta { color: var(--accent); }
+.cyan-mode .streak { background: linear-gradient(160deg, #164a4a, #0e2a2e); border-color: #1f6b6b; }
+.cyan-mode .streak-label { color: var(--accent-bright); }
+.cyan-mode .result-score.perfect { color: var(--accent); }

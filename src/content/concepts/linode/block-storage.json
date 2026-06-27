@@ -1,0 +1,41 @@
+{
+  "id": "block-storage",
+  "icon": "💾",
+  "title": "Block Storage",
+  "subtitle": "Persistent volumes for your Linodes",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "Block Storage is an external drive you can unplug from one Linode and plug into another. Object Storage is a warehouse. Block Storage is the USB stick." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Block Storage volumes are NVMe-backed, attach to any Linode in the same region, and survive Linode deletion. Features:\n\n- Sizes from 10 GB to 16 TB\n- ext4 or XFS filesystems\n- $0.10/GB/month\n- Snapshot via Linode Images\n- CSI driver for LKE — dynamic PVCs out of the box" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Use for databases (Postgres, Redis persistence), CI build caches, media ingest buffers. Don't use for static asset hosting — that's Object Storage's job. Resize online: linode-cli volumes resize. The CSI driver handles PVC expansion automatically." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"Block Storage = a portable disk. Object Storage = a warehouse. Use the right one for the job.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "Your Postgres database needs 500GB of persistent storage. What do you use?",
+      "options": [
+        { "text": "Object Storage with s3fs mounted as a filesystem", "correct": false, "explain": "s3fs has poor random I/O performance — bad for databases." },
+        { "text": "A 500GB Block Storage volume attached to the Postgres Linode", "correct": true, "explain": "Block Storage is NVMe-backed and built for filesystem workloads like databases." },
+        { "text": "Local Linode disk only", "correct": false, "explain": "Local disk is fast but disappears if you rebuild the Linode. Use Block Storage for durability." },
+        { "text": "A NodeBalancer with sticky sessions", "correct": false, "explain": "That's a load balancer, not storage." }
+      ]
+    },
+    {
+      "question": "You delete a Linode that has a Block Storage volume attached. What happens to the volume?",
+      "options": [
+        { "text": "It's deleted with the Linode", "correct": false, "explain": "Volumes survive Linode deletion — that's the whole point." },
+        { "text": "It's detached and remains in your account", "correct": true, "explain": "You can attach it to another Linode in the same region. Data is preserved." },
+        { "text": "It's archived to Object Storage", "correct": false, "explain": "There's no automatic archival." },
+        { "text": "It's frozen for 30 days", "correct": false, "explain": "No freeze — just detach." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "Block Storage Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "Linode CSI driver on GitHub", "meta": "Free · LKE PVC integration", "tag": "free" }
+    ],
+    "paid": []
+  }
+}

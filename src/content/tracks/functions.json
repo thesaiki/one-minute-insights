@@ -1,0 +1,11 @@
+{
+  "id": "functions",
+  "theme": "violet",
+  "number": "TRACK 04",
+  "title": "Akamai Functions",
+  "tagline": "Wasm serverless on Akamai (formerly Fermyon Wasm Functions). Sub-millisecond cold starts, Rust/Go/JS/Python, deploy globally with one command.",
+  "cornerEmoji": "⚡",
+  "pills": ["WebAssembly", "Spin", "Serverless", "Edge-native"],
+  "conceptOrder": ["what-are-functions", "spin-framework", "edgeworkers-vs-functions", "kv-store", "use-cases"],
+  "categorized": false
+}

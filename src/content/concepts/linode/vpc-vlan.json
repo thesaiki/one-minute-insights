@@ -1,0 +1,42 @@
+{
+  "id": "vpc-vlan",
+  "icon": "🔌",
+  "title": "VPC & VLAN",
+  "subtitle": "Private networking — your isolated floor",
+  "duration": "1 MIN",
+  "category": null,
+  "steps": [
+    { "type": "analogy", "emoji": "💡", "label": "The Analogy", "body": "A VPC is your private floor in the Akamai building. VLAN is the locked corridor connecting specific apartments on that floor. Everyone else stays out." },
+    { "type": "how", "emoji": "🔧", "label": "How It Works", "body": "Akamai VPCs give you isolated, region-scoped private networks with custom subnets. VLANs are simpler L2 broadcast domains for grouping a few Linodes privately.\n\n- VPC: subnets, multiple NICs per Linode, NAT, default isolation\n- VLAN: flat L2, free, ideal for small clusters (up to 10 Linodes)\n- Cloud Firewall sits in front of either" },
+    { "type": "real", "emoji": "🌍", "label": "Real World", "body": "Run your DB tier on a VPC private subnet — no public IP, no exposure. Frontend tier in a public subnet. Cloud Firewall ruleset enforces both. For LKE, the cluster gets its own VPC by default." },
+    { "type": "takeaway", "emoji": "🧠", "label": null, "body": "\"VPC = isolated private network with subnets. VLAN = simpler L2 broadcast domain. Keep databases off the public internet.\"" }
+  ],
+  "quiz": [
+    {
+      "question": "You're running a Postgres replica on a Linode. What's the secure default?",
+      "options": [
+        { "text": "Public IP + SSH key only", "correct": false, "explain": "Still attack surface. Don't expose databases to the public internet." },
+        { "text": "VPC private subnet, no public IP, app tier in same VPC", "correct": true, "explain": "Zero public exposure. The app tier reaches it over the private subnet." },
+        { "text": "Object Storage with public-read", "correct": false, "explain": "Object Storage isn't a database, and public-read is the opposite of what you want." },
+        { "text": "NodeBalancer with TLS", "correct": false, "explain": "Still puts the DB on a public balancer. Don't do this." }
+      ]
+    },
+    {
+      "question": "Two Linodes need to talk privately and that's all. Smallest viable option?",
+      "options": [
+        { "text": "A full VPC with subnets", "correct": false, "explain": "Works, but overkill for two nodes." },
+        { "text": "A VLAN — free, L2, two NICs", "correct": true, "explain": "VLAN is the lightest-weight option for grouping a small number of Linodes privately. Free." },
+        { "text": "Public IPs with firewall rules", "correct": false, "explain": "Public exposure when you don't need it." },
+        { "text": "A NodeBalancer between them", "correct": false, "explain": "Load balancing isn't the requirement." }
+      ]
+    }
+  ],
+  "resources": {
+    "official": [{ "title": "VPC Documentation", "meta": "techdocs.akamai.com", "tag": "official" }],
+    "free": [
+      { "title": "VLAN guide on TechDocs", "meta": "Free · Includes networking topology", "tag": "free" },
+      { "title": "Cloud Firewall reference", "meta": "Free · Ruleset patterns", "tag": "free" }
+    ],
+    "paid": []
+  }
+}
