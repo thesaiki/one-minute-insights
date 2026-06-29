@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Claude Code project instructions (local only)
+CLAUDE.md
+
 # Terraform
 infra/.terraform/
 infra/*.tfstate
